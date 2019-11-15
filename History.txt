@@ -1,6 +1,8 @@
 History
 15-Nov-2019
 
+GOAL
+Document 
 
 00.
 Pre-requisites
@@ -17,7 +19,11 @@ Development environment:
 Windows 10
 Visual Studio 2015
 SDCC compiler installed
-devkitSMS
+devkitSMS configured	[above]
+Emulators setup:
+Fusion.exe
+meka.exe
+Emulicious.bat
 
 
 01.
@@ -25,5 +31,8 @@ devkitSMS
 Create bare bones template setup
 
 IMPORTANT
-Any utilities used in build.bat to build the source code should now be found here:
+Any utilities used in build.bat to build the source code like "ihx2sms" should now be found here:
 C:\Program Files\SDCC\bin
+
+Summary
+At the end of this sample you should have first basic Sega Master System software that could run on real SMS hardware
