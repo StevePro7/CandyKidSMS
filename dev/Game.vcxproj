@@ -18,6 +18,21 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="build.bat" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="angame\info_manager.h" />
+    <ClInclude Include="angame\_sms_manager.h" />
+    <ClInclude Include="angame\_snd_manager.h" />
+    <ClInclude Include="main.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="angame\info_manager.c" />
+    <ClCompile Include="angame\_sms_manager.c" />
+    <ClCompile Include="angame\_snd_manager.c" />
+    <ClCompile Include="main.c" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{1B06943A-5988-4DBA-A2D2-8F40F11EF7E6}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
@@ -71,6 +86,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)..\bin\$(ConfigurationName)</OutDir>
+    <IntDir>$(SolutionDir)..\obj\$(ConfigurationName)</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -141,44 +158,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="engine\asm_manager.h" />
-    <ClInclude Include="engine\content_manager.h" />
-    <ClInclude Include="engine\enemy_manager.h" />
-    <ClInclude Include="engine\enum_manager.h" />
-    <ClInclude Include="engine\font_manager.h" />
-    <ClInclude Include="engine\gamer_manager.h" />
-    <ClInclude Include="engine\global_manager.h" />
-    <ClInclude Include="engine\hack_manager.h" />
-    <ClInclude Include="engine\input_manager.h" />
-    <ClInclude Include="engine\locale_manager.h" />
-    <ClInclude Include="engine\path_manager.h" />
-    <ClInclude Include="engine\sound_manager.h" />
-    <ClInclude Include="engine\sprite_manager.h" />
-    <ClInclude Include="engine\text_manager.h" />
-    <ClInclude Include="engine\tree_manager.h" />
-    <ClInclude Include="gfx.h" />
-    <ClInclude Include="main.h" />
-    <ClInclude Include="psg.h" />
-    <ClInclude Include="screen\play_screen.h" />
-    <ClInclude Include="screen\ready_screen.h" />
-    <ClInclude Include="screen\splash_screen.h" />
-    <ClInclude Include="screen\title_screen.h" />
-    <ClInclude Include="source\info_manager.h" />
-    <ClInclude Include="source\_sms_manager.h" />
-    <ClInclude Include="source\_snd_manager.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="build.bat" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="gfx.c" />
-    <ClCompile Include="main.c" />
-    <ClCompile Include="psg.c" />
-    <ClCompile Include="source\info_manager.c" />
-    <ClCompile Include="source\_sms_manager.c" />
-    <ClCompile Include="source\_snd_manager.c" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

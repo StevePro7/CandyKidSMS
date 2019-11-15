@@ -37,7 +37,7 @@ void devkit_PSGSetMusicVolumeAttenuation( unsigned char attenuation )
 
 void devkit_PSGSFXPlay( void *sfx, unsigned char channels )
 {
-	devkit_PSGSFXPlay( sfx, channels );
+	PSGSFXPlay( sfx, channels );
 }
 void devkit_PSGSFXPlayLoop( void *sfx, unsigned char channels )
 {

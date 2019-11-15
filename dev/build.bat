@@ -35,8 +35,8 @@ sdcc -o output.ihx -mz80 --no-std-crt0 --data-loc 0xC000  ^
 ..\crt0\crt0_sms.rel main.rel ^
 ..\lib\SMSlib.lib ^
 ..\lib\PSGlib.rel ^
-source\_sms_manager.rel ^
-source\_snd_manager.rel
+angame\_sms_manager.rel ^
+angame\_snd_manager.rel
 
 if %errorlevel% NEQ 0 goto :EOF
 
