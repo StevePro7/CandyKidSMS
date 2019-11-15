@@ -53,3 +53,5 @@ if exist "*.noi" del "*.noi" > nul
 if exist "*.sym" del "*.sym" > nul
 
 C:\SEGA\Fusion\Fusion.exe output.sms
+::C:\SEGA\meka\mekaw.exe output.sms
+::java -jar C:\SEGA\Emulicious\Emulicious.jar output.sms
