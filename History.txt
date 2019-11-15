@@ -1,0 +1,29 @@
+History
+15-Nov-2019
+
+
+00.
+Pre-requisites
+http://steveproxna.blogspot.com/2017/09/devkitsms-programming-setup.html
+http://steveproxna.blogspot.com/2017/11/devkitsms-programming-sample.html
+http://steveproxna.blogspot.com/2018/03/devkitsms-programming-sample-ii.html
+http://steveproxna.blogspot.com/2019/04/devkitsms-programming-sample-iii.html
+
+Ideally, if you read these blog posts first then everything that follows in this document should make sense!
+Note: of course there may be some deviation here from the original blog posts as development process changes
+
+
+Development environment:
+Windows 10
+Visual Studio 2015
+SDCC compiler installed
+devkitSMS
+
+
+01.
+15-Nov-2019
+Create bare bones template setup
+
+IMPORTANT
+Any utilities used in build.bat to build the source code should now be found here:
+C:\Program Files\SDCC\bin
