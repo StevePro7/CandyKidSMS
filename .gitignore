@@ -1,4 +1,4 @@
-*.sms
+output.sms
 *asm/*
 *dev/.vs/*
 *dev/*db
