@@ -2,10 +2,11 @@ History
 15-Nov-2019
 
 GOAL
-Document 
+Document the process of making game from scratch for the Sega Master System [SMS] using the devkitSMS by sverx
+
 
 00.
-Pre-requisites
+PRE-REQs
 http://steveproxna.blogspot.com/2017/09/devkitsms-programming-setup.html
 http://steveproxna.blogspot.com/2017/11/devkitsms-programming-sample.html
 http://steveproxna.blogspot.com/2018/03/devkitsms-programming-sample-ii.html
@@ -15,7 +16,7 @@ Ideally, if you read these blog posts first then everything that follows in this
 Note: of course there may be some deviation here from the original blog posts as development process changes
 
 
-Development environment:
+DEVELOPMENT
 Windows 10
 Visual Studio 2015
 SDCC compiler installed
@@ -24,6 +25,11 @@ Emulators setup:
 Fusion.exe
 meka.exe
 Emulicious.bat
+
+
+DEPLOYENT
+All *.sms binary files are deployed to the Sega Master System console using the Everdrive flash cart
+http://steveproxna.blogspot.com/2017/07/sega-master-everdrive.html
 
 
 01.
@@ -36,3 +42,4 @@ C:\Program Files\SDCC\bin
 
 Summary
 At the end of this sample you should have first basic Sega Master System software that could run on real SMS hardware
+01_15-Nov-2019
