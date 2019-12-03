@@ -1,0 +1,40 @@
+Log entry02
+03-Dec-2019
+
+Have been working on code samples and slides for Retro Game Development presentation Fri, 6th Dec 2019
+so have made a ton of demos and ported a lot of previous code to devkit SMS manager style
+e.g.
+CandyKidDemoSMS
+
+
+03/12/2019
+today I got the prototype working for sprite clipping window
+I won't be using the sprite clipping window API as doesn't work how I would like
+i.e.
+mask the static tile so that CK goes behind
+instead I got code sample from sverx today after couple days correspondence
+
+SMS_setTile( tile | TILE_USE_SPRITE_PALETTE | TILE_PRIORITY );
+https://bitbucket.org/SteveProXNA/actionstuff/src/master/Personal/Presentations/_CodeAFTER/60_SpriteClippingWindow
+
+instead I use white square and draw on black background but is black because the tiles use sprite palette
+and CK goes behind because the tiles have tile priority
+this is the solution exactly what I was looking for!!
+
+
+02/11/2019
+I finally bought Tanglewood for Windows on Steam and get the Sega Genesis version "for free"
+
+
+
+22/11/2019
+SRAM
+I got the original code sample working from this code sample from sverx
+http://www.smspower.org/forums/16013-DevkitSMSSMSlibMissingRequestingFeatures#91899
+
+but I haven't managed to port to my devkit SMS manager style
+this is the line of code that I am struggling to expose
+
+struct my_savegame *savegame = ( struct my_savegame* )( &SMS_SRAM );
+specifically &SMS_SRAM
+address of the SMS_SRAM unsigned char array
