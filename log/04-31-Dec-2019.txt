@@ -1,0 +1,10 @@
+Log entry04
+31-Dec-2019
+
+25/12/2019
+Spent lots of time trying to finalize all the graphics
+Pretty much have all the sprites down including bosses
+
+Make good start on level manager just before Xmas
+Load all 100x levels with just basic trees
+as have not finalized all the tile graphics

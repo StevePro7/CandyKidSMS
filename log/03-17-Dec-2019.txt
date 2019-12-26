@@ -1,0 +1,20 @@
+Log entry03
+17-Dec-2019
+
+Trying to wrap up the year at work and finish all tasks...!
+
+
+17/12/2019
+I created new github repo for StevePro7 for CandyKidSMSgraphics
+and started experimenting with graphics esp. sprites
+
+Initially I got the original sprites.bmp and got an XNA type program to scale but there were loss of pixels so instead I just thought dump into MS Paint and resize and worked perfect i.e. resized and did not blur any pixels... yah!
+
+This evening I set about dumping tiles out of graphics load program of various sizes
+16x16
+32x32
+48x48
+64x64
+
+this was to get some estimates on tile budget
+E:\GitHub\StevePro7\CandyKidSMSgraphics
