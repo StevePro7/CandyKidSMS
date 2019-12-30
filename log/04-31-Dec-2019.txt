@@ -1,6 +1,10 @@
 Log entry04
 31-Dec-2019
 
+30/12/2019
+Trying to consolidate ALL the sprites: have all the smaller 16x16 sprites loaded but once I try to integrate the 32 and 64 size boss sprites they render different color so will have to try and "force" to use the same consistent sprite palette :(
+Must read Platform Explorer devkitSMS blog I wrote to remember how to do this e.g. export palette and reuse
+
 25/12/2019
 Spent lots of time trying to finalize all the graphics
 Pretty much have all the sprites down including bosses
@@ -8,3 +12,8 @@ Pretty much have all the sprites down including bosses
 Make good start on level manager just before Xmas
 Load all 100x levels with just basic trees
 as have not finalized all the tile graphics
+
+
+24/12/2019
+Spent awhile trying to get the stupid skull n' crossbones sprite acceptable!
+Tried very hard to find the sprite in the "More than 50 programs" by Michael Howard as pretty sure there was a cool 16x16 skull n' crossbones sprite there...!
