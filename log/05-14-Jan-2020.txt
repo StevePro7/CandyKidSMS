@@ -14,3 +14,18 @@ I also made great progress on the SRAM.  I got my devkit version working over Xm
 
 I have do ALOT of work on the command pattern.  From investigating command Mgr vs. event Mgr I have gone with Command Mgr because I think that I would like to do the undo() method to get action replay esp. when complete the level I always thought this would be a cool feature to have in the original game but never did... 
 I have started to combine recording the commands and saving them to SRAM.  I want to do this first so I can write a program that opens a save file and auto creates the arrays required for playback session so could be used for debugging...
+
+
+TODO list for tomorrow:
+TODO tomorrow
+89_commands prog
+Run the record screen to get the game save
+Then run the intro screen but read all the data back and print out
+Finally refactor so that the first 2x properties are bytes and the second 2x are ints
+Re-test to ensure that everything is OK
+Update the undo code to pass thru the arguments as this is currently TODO
+Finalize this code so I can actually write program to auto gen arrays from the game save
+and can cut this back into playback screen
+Need to actually start testing the individual commands that I will execute and undo
+Want to re-integrate that code that hides the player sprite when in the exits
+Want to separate int for args into 2x bytes to store ind. bytes side by side
