@@ -1,0 +1,16 @@
+Log entry05
+14-Jan-2020
+
+14/01/2020
+Happy New Year!
+
+Con't finalizing the graphics - the sprites were pretty much done around Christmas time but I still wanted to finalize the bg tiles - the org candy and bonus tiles were HUGE and disproportionate to the lil' Candy Kid sprite - I got the scales from the org game and redid the graphics... still not finalized e.g. death candy
+
+Updated the board from 12x12 to 14x14 to encapsulate the 2x extra rows / cols around the 10x10 maze for the exits and to help with the Candy Mama AI logic to determine which tile to target when attack
+
+I swapped the tree and candy numbers in the levels because I want to align the score points that will be stored in a contiguous array and the org layout of trees as '2' wrecks this
+
+I also made great progress on the SRAM.  I got my devkit version working over Xmas and now have started extending this to persist the board tree + exit types
+
+I have do ALOT of work on the command pattern.  From investigating command Mgr vs. event Mgr I have gone with Command Mgr because I think that I would like to do the undo() method to get action replay esp. when complete the level I always thought this would be a cool feature to have in the original game but never did... 
+I have started to combine recording the commands and saving them to SRAM.  I want to do this first so I can write a program that opens a save file and auto creates the arrays required for playback session so could be used for debugging...
