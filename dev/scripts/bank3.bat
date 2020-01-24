@@ -1,7 +1,7 @@
 @echo off
 REM echo Generate levels
 
-REM cd ..
+cd ..
 cd banks
 
 folder2c bank3 bank3 3
@@ -11,5 +11,5 @@ del *.asm > nul
 del *.lst > nul
 del *.sym > nul
 
-REM cd ..
-REM cd scripts
+cd ..
+cd scripts
