@@ -1,3 +1,7 @@
+REM gfx		Commonly used gfx	not banked
+@echo off
+
+cd ..
 cd ..
 cd gfx
 
@@ -9,5 +13,16 @@ bmp2tile.exe raw\game_tiles.png -savetiles "game_tiles (tiles).psgcompr" -noremo
 :: https://github.com/maxim-zhao/bmp2tile
 bmp2tile.exe raw\sprites.png -savetiles "sprites (tiles).psgcompr" -noremovedupes -nomirror -planar -tileoffset 0 -savepalette "sprites (palette).bin" -fullpalette  -spritepalette -exit
 
+
 cd ..
 cd dev
+folder2c ..\gfx gfx
+
+sdcc -c -mz80 --opt-code-speed --peep-file peep-rules.txt --std-c99 gfx.c
+
+del *.asm > nul
+del *.lst > nul
+del *.sym > nul
+
+cd ..
+cd scripts
