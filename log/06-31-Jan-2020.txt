@@ -1,0 +1,41 @@
+Log entry06
+31-Jan-2020
+
+18/01/2020
+Working hard on the command pattern during last week.  Had mammoth night Wed, 15th Jan with the following
+E:\GitHub\StevePro7\CandyKidSMSgraphics\GraphicsDraw\90_commandSMS\dev
+
+outputTEST	before and after I ran the same code on the SMS hardware and worked OK
+outputPLAY	ditto but instead of text I actually moved CandyKid
+
+the thing is that the version only allows for 256 frames of action [0-255] assuming all commands occur here
+So I wanted to have a way to store more so what I decided was to only have max 32 commands
+therefore I could leverage the top 3x bits of the command_type and use this as frame banks
+i.e. could have 8x frame banks
+
+I cut branh for this: BankFrames esp. just in case would not work
+I spent rest of week prototyping this and while porting the old code to this new mechanism all was going well
+esp. in F5 debug step thru code but once I wired this up and ran thru the emulator it DID NOT WORK!!
+
+WTF?
+I did some debugging Fri, 17th Jan and had to resort to the echo style print statements in game to understand what was going on
+Weird thing was when I print out data it worked i.e. the commands worked but if took print statements out it didn't... huh?
+What was going on?
+After stepping thru print statements I gathered that the input data of this function was a long [old version was an int]
+but either way NOT unsigned char
+
+Therefore, I got the command manager and change the type that stored the following as an int
+an_command = shift_bank | command_type;
+
+Now it worked OK - Phew!  For a moment I thought the whole project would have to be scrapped...!!
+The final thing that needs to be done here is to stress test to ensure all 8x frame banks work
+and if I store 256 commands and save them out to memory then all 256 commands would play back
+
+
+This weekend I integrated the boss manager sprites into the game loading them via banking
+I also ported the audio manager from Platform Explorer when was quick and painless
+although I actually need music + sound
+
+
+Also - I was checking out the banking and actually doing the maths - all the 100 levels could fit into one bank
+e.g. bank2
