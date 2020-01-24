@@ -13,7 +13,6 @@ bmp2tile.exe raw\splash.bmp -savetiles "splash (tiles).psgcompr" -removedupes -n
 
 cd ..
 folder2c bank5 bank5 5
-
 sdcc -c --no-std-crt0 -mz80 --Werror --opt-code-speed --constseg BANK5 bank5.c
 
 del *.asm > nul
