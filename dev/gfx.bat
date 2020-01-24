@@ -7,7 +7,7 @@ bmp2tile.exe raw\game_tiles.png -savetiles "game_tiles (tiles).psgcompr" -noremo
 
 :: Sprites
 :: https://github.com/maxim-zhao/bmp2tile
-bmp2tile.exe raw\sprites.bmp -savetiles "sprites (tiles).psgcompr" -noremovedupes -nomirror -planar -tileoffset 0 -savepalette "sprites (palette).bin" -fullpalette  -spritepalette -exit
+bmp2tile.exe raw\sprites.png -savetiles "sprites (tiles).psgcompr" -noremovedupes -nomirror -planar -tileoffset 0 -savepalette "sprites (palette).bin" -fullpalette  -spritepalette -exit
 
 cd ..
 cd dev
