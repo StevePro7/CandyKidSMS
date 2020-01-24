@@ -68,6 +68,27 @@
     <ClInclude Include="devkit\_snd_manager.h">
       <Filter>Header Files\devkit</Filter>
     </ClInclude>
+    <ClInclude Include="banks\bank2.h">
+      <Filter>Header Files\banks</Filter>
+    </ClInclude>
+    <ClInclude Include="banks\bank3.h">
+      <Filter>Header Files\banks</Filter>
+    </ClInclude>
+    <ClInclude Include="banks\bank4.h">
+      <Filter>Header Files\banks</Filter>
+    </ClInclude>
+    <ClInclude Include="banks\bank5.h">
+      <Filter>Header Files\banks</Filter>
+    </ClInclude>
+    <ClInclude Include="banks\bank6.h">
+      <Filter>Header Files\banks</Filter>
+    </ClInclude>
+    <ClInclude Include="gfx.h">
+      <Filter>Header Files\output</Filter>
+    </ClInclude>
+    <ClInclude Include="psg.h">
+      <Filter>Header Files\output</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
@@ -81,6 +102,27 @@
     </ClCompile>
     <ClCompile Include="devkit\_snd_manager.c">
       <Filter>Source Files\devkit</Filter>
+    </ClCompile>
+    <ClCompile Include="banks\bank2.c">
+      <Filter>Source Files\banks</Filter>
+    </ClCompile>
+    <ClCompile Include="banks\bank3.c">
+      <Filter>Source Files\banks</Filter>
+    </ClCompile>
+    <ClCompile Include="banks\bank4.c">
+      <Filter>Source Files\banks</Filter>
+    </ClCompile>
+    <ClCompile Include="banks\bank5.c">
+      <Filter>Source Files\banks</Filter>
+    </ClCompile>
+    <ClCompile Include="banks\bank6.c">
+      <Filter>Source Files\banks</Filter>
+    </ClCompile>
+    <ClCompile Include="gfx.c">
+      <Filter>Source Files\output</Filter>
+    </ClCompile>
+    <ClCompile Include="psg.c">
+      <Filter>Source Files\output</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
