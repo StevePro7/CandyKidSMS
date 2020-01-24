@@ -1,6 +1,7 @@
 #include "screen_manager.h"
 #include "global_manager.h"
 #include "enum_manager.h"
+#include "font_manager.h"
 
 static void( *load_method[ MAX_SCREEENS ] )( );
 static void( *update_method[ MAX_SCREEENS ] )( unsigned char *screen_type );
@@ -12,6 +13,8 @@ void engine_screen_manager_init( unsigned char open_screen_type )
 {
 	next_screen_type = open_screen_type;
 	curr_screen_type = screen_type_none;
+
+	engine_font_manager_draw_text( "HELLO WORLD!!", 2, 2 );
 }
 
 void engine_screen_manager_update()
