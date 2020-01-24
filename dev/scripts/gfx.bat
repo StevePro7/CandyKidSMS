@@ -17,12 +17,11 @@ bmp2tile.exe raw\sprites.png -savetiles "sprites (tiles).psgcompr" -noremovedupe
 cd ..
 cd dev
 folder2c ..\gfx gfx
-
 sdcc -c -mz80 --opt-code-speed --peep-file peep-rules.txt --std-c99 gfx.c
 
 del *.asm > nul
 del *.lst > nul
 del *.sym > nul
 
-cd ..
+::cd ..
 cd scripts
