@@ -45,4 +45,11 @@ typedef enum tag_enum_tree_type
 
 } enum_tree_type;
 
+typedef enum tag_enum_cross_type
+{
+	cross_type_open = 0,
+	cross_type_full = 1,
+
+} enum_cross_type;
+
 #endif//_ENUM_MANAGER_H_
