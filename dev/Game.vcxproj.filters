@@ -13,11 +13,11 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\angame">
-      <UniqueIdentifier>{496420a6-4db9-48ca-bccb-5fd6eb8b6d7c}</UniqueIdentifier>
+    <Filter Include="Header Files\devkit">
+      <UniqueIdentifier>{3dd6c014-9ade-419d-94b7-1f3fecfd9fd6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\angame">
-      <UniqueIdentifier>{d7bbe842-79d5-40a5-b33b-3e4dad67fff4}</UniqueIdentifier>
+    <Filter Include="Source Files\devkit">
+      <UniqueIdentifier>{49fa0b36-7c64-48b2-9f10-28b87c3006ad}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -26,31 +26,31 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="angame\_sms_manager.h">
-      <Filter>Header Files\angame</Filter>
-    </ClInclude>
-    <ClInclude Include="angame\_snd_manager.h">
-      <Filter>Header Files\angame</Filter>
-    </ClInclude>
-    <ClInclude Include="angame\info_manager.h">
-      <Filter>Header Files\angame</Filter>
-    </ClInclude>
     <ClInclude Include="main.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="devkit\_sms_manager.h">
+      <Filter>Header Files\devkit</Filter>
+    </ClInclude>
+    <ClInclude Include="devkit\_snd_manager.h">
+      <Filter>Header Files\devkit</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="angame\_sms_manager.c">
-      <Filter>Source Files\angame</Filter>
-    </ClCompile>
-    <ClCompile Include="angame\_snd_manager.c">
-      <Filter>Source Files\angame</Filter>
-    </ClCompile>
-    <ClCompile Include="angame\info_manager.c">
-      <Filter>Source Files\angame</Filter>
-    </ClCompile>
     <ClCompile Include="main.c">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="game.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="devkit\_sms_manager.c">
+      <Filter>Source Files\devkit</Filter>
+    </ClCompile>
+    <ClCompile Include="devkit\_snd_manager.c">
+      <Filter>Source Files\devkit</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
