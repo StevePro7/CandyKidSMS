@@ -9,14 +9,13 @@ set /a _started=_hours*60*60*100+_min*60*100+_sec*100+_cs
 
 :: Compile
 cd devkit
-:: sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 _sms_manager.c
-:: sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 _snd_manager.c
+::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 _sms_manager.c
+::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 _snd_manager.c
 cd ..
 
 
 :: echo Build main
 sdcc -c -mz80 --opt-code-speed --peep-file peep-rules.txt --std-c99 main.c
-
 
 
 :: Time build -END-
@@ -55,6 +54,7 @@ if exist "*.lk"  del "*.lk" > nul
 if exist "*.lst" del "*.lst" > nul
 if exist "*.noi" del "*.noi" > nul
 if exist "*.sym" del "*.sym" > nul
+
 
 :: Run
 ::java -jar C:\SEGA\Emulicious\Emulicious.jar output.sms

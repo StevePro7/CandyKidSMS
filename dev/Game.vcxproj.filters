@@ -13,11 +13,41 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\banks">
+      <UniqueIdentifier>{1349816a-fa7b-46dc-b36d-609f479c0ad5}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Header Files\devkit">
       <UniqueIdentifier>{3dd6c014-9ade-419d-94b7-1f3fecfd9fd6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\banks">
+      <UniqueIdentifier>{bc43e1e3-6afd-4bbf-805e-a85b19fbe35b}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Source Files\devkit">
       <UniqueIdentifier>{49fa0b36-7c64-48b2-9f10-28b87c3006ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine">
+      <UniqueIdentifier>{4242cc02-4337-4750-ba9c-c539fc966c10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine">
+      <UniqueIdentifier>{0b7e7c51-a4c7-4d9d-a017-4c6cba01fe8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\object">
+      <UniqueIdentifier>{cd4027ad-4af5-47ab-bf56-f75e4dadb1b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\object">
+      <UniqueIdentifier>{3b5a267f-3b92-4a97-bb93-07eda8625a3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\output">
+      <UniqueIdentifier>{418746ed-8498-4c30-9c05-847d5c449685}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\output">
+      <UniqueIdentifier>{5418c51d-29b0-4f8a-be29-874e69b0265f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\screen">
+      <UniqueIdentifier>{2ce0a400-a383-4102-82ef-da5fc1381201}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\screen">
+      <UniqueIdentifier>{28f18fe4-9a36-46ce-93e1-f443d5af3042}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
