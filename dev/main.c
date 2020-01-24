@@ -15,6 +15,7 @@ void main (void)
 	engine_content_manager_load_tiles();
 	engine_content_manager_load_sprites();
 
+	devkit_SMS_displayOn();
 	for( ;;)
 	{
 		devkit_SMS_waitForVBlank();

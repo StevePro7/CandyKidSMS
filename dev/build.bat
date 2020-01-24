@@ -40,8 +40,16 @@ echo.
 :: Link
 sdcc -o output.ihx -mz80 --no-std-crt0 --data-loc 0xC000  ^
 ..\crt0\crt0_sms.rel main.rel ^
+-Wl-b_BANK2=0x8000 ^
+-Wl-b_BANK3=0x8000 ^
+-Wl-b_BANK4=0x8000 ^
+-Wl-b_BANK5=0x8000 ^
 ..\lib\SMSlib.lib ^
 ..\lib\PSGlib.rel ^
+banks\bank2.rel ^
+banks\bank3.rel ^
+banks\bank4.rel ^
+banks\bank5.rel ^
 devkit\_sms_manager.rel ^
 devkit\_snd_manager.rel ^
 engine\asm_manager.rel ^
@@ -63,6 +71,12 @@ if exist "*.lst" del "*.lst" > nul
 if exist "*.sym" del "*.sym" > nul
 cd ..
 
+cd engine
+if exist "*.asm" del "*.asm" > nul
+if exist "*.lst" del "*.lst" > nul
+if exist "*.sym" del "*.sym" > nul
+cd ..
+
 if exist "*.asm" del "*.asm" > nul
 if exist "*.ihx" del "*.ihx" > nul
 if exist "*.lk"  del "*.lk" > nul
@@ -72,6 +86,6 @@ if exist "*.sym" del "*.sym" > nul
 
 
 :: Run
-java -jar C:\SEGA\Emulicious\Emulicious.jar output.sms
+::java -jar C:\SEGA\Emulicious\Emulicious.jar output.sms
 ::C:\SEGA\meka\mekaw.exe output.sms
-::output.sms
+output.sms
