@@ -15,7 +15,6 @@ void engine_content_manager_load_tiles()
 	// Game tiles.
 	devkit_SMS_loadPSGaidencompressedTiles( game_tiles__tiles__psgcompr, GAME_TITLE );
 	devkit_SMS_loadBGPalette( ( void * ) game_tiles__palette__bin );
-
 }
 
 void engine_content_manager_load_sprites()

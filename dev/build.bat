@@ -9,8 +9,17 @@ set /a _started=_hours*60*60*100+_min*60*100+_sec*100+_cs
 
 :: Compile
 cd devkit
-::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 _sms_manager.c
-::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 _snd_manager.c
+sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 _sms_manager.c
+sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 _snd_manager.c
+cd ..
+
+
+cd engine
+sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 asm_manager.c
+sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 content_manager.c
+sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 enum_manager.c
+sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 font_manager.c
+::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 global_manager.c
 cd ..
 
 
@@ -34,8 +43,14 @@ sdcc -o output.ihx -mz80 --no-std-crt0 --data-loc 0xC000  ^
 ..\lib\SMSlib.lib ^
 ..\lib\PSGlib.rel ^
 devkit\_sms_manager.rel ^
-devkit\_snd_manager.rel
-
+devkit\_snd_manager.rel ^
+engine\asm_manager.rel ^
+engine\content_manager.rel ^
+engine\enum_manager.rel ^
+engine\font_manager.rel ^
+engine\global_manager.rel ^
+gfx.rel ^
+psg.rel
 
 :: Execute
 ihx2sms output.ihx output.sms
