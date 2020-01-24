@@ -1,0 +1,23 @@
+XL2
+H 9 areas 2 global symbols
+M psg
+O -mz80
+S .__.ABS. Def0000
+A _CODE size 20 flags 0 addr 0
+S _sfx_accept_psg Def0000
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00
+R 00 00 00 00
+T 00 00 C5 4D D0 3B CE 48 3B C7 44 D5 3A CA 46 3B
+R 00 00 00 00
+T 0E 00 C5 4D DA 3A 09 04 00 DB 3B CA 46 DD 3A C0
+R 00 00 00 00
+T 1C 00 40 DF 38 00
+R 00 00 00 00
