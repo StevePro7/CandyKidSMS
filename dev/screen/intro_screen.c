@@ -18,7 +18,11 @@ void screen_intro_screen_load()
 	//draw_items();
 
 	engine_board_manager_init();
-	engine_board_manager_main_full();
+	
+	engine_board_manager_draw_full();
+	engine_board_manager_draw_edge();
+
+	//engine_board_manager_main_full();
 	//engine_board_manager_main_edge();
 
 	// TODO allow for SCREEN_TILE_LEFT
