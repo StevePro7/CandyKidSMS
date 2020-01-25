@@ -43,6 +43,7 @@
     <ClInclude Include="engine\global_manager.h" />
     <ClInclude Include="engine\hack_manager.h" />
     <ClInclude Include="engine\input_manager.h" />
+    <ClInclude Include="engine\level_manager.h" />
     <ClInclude Include="engine\screen_manager.h" />
     <ClInclude Include="engine\sprite_manager.h" />
     <ClInclude Include="engine\storage_manager.h" />
@@ -58,6 +59,7 @@
     <ClInclude Include="object\frame_object.h" />
     <ClInclude Include="object\gamer_object.h" />
     <ClInclude Include="object\hack_object.h" />
+    <ClInclude Include="object\level_object.h" />
     <ClInclude Include="object\savegame_object.h" />
     <ClInclude Include="object\state_object.h" />
     <ClInclude Include="psg.h" />
@@ -96,6 +98,7 @@
     <ClCompile Include="engine\global_manager.c" />
     <ClCompile Include="engine\hack_manager.c" />
     <ClCompile Include="engine\input_manager.c" />
+    <ClCompile Include="engine\level_manager.c" />
     <ClCompile Include="engine\screen_manager.c" />
     <ClCompile Include="engine\sprite_manager.c" />
     <ClCompile Include="engine\storage_manager.c" />
@@ -111,6 +114,7 @@
     <ClCompile Include="object\frame_object.c" />
     <ClCompile Include="object\gamer_object.c" />
     <ClCompile Include="object\hack_object.c" />
+    <ClCompile Include="object\level_object.c" />
     <ClCompile Include="object\savegame_object.c" />
     <ClCompile Include="object\state_object.c" />
     <ClCompile Include="psg.c" />

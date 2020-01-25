@@ -33,7 +33,6 @@ void screen_save_screen_update( unsigned char *screen_type )
 	*screen_type = screen_type_save;
 }
 
-
 static void draw_items()
 {
 	unsigned char idx;

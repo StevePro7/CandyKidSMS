@@ -1,0 +1,24 @@
+TODO
+25/01/2020
+
+Some are probable nice to haves!!
+
+
+00.
+I need to decide wholeheartedly how I am going to integrate the SCREEN_LEFT_OFFET = 2
+into all the background tiles and somehow integrate into the sprites tiles also
+
+I hate tight coupling but I think it may be best to put in the tile_manager itself
+rather than inject... it goes against best practice but "feels" right for this programming??
+I'll think about it :)
+
+
+01.
+The 8th [yellow] candy in game_tiles.png could be reused as the 1st candy in main_tiles.png
+because the first 2x candy in main_tiles are the same... this would give more variety
+
+
+02.
+Tighten up the level manager - don't need to store the value of the color of the candy I don't think
+But need some logic to calculate about the free man candy, store the value and calc where to put
+i.e. which mama is not moving and choose accordingly

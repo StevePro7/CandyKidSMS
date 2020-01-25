@@ -29,6 +29,7 @@ sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 content_m
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 hack_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 global_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 input_manager.c
+::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 level_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 screen_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 sprite_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 storage_manager.c
@@ -44,6 +45,7 @@ cd object
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 frame_object.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 gamer_object.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 hack_object.c
+sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 level_object.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 state_object.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 savegame_object.c
 cd ..
@@ -53,11 +55,11 @@ cd screen
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 splash_screen.c
 sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 intro_screen.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 title_screen.c
-::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 load_screen.c
+sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 load_screen.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 demo_screen.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 play_screen.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 record_screen.c
-sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 save_screen.c
+::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 save_screen.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 test_screen.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 func_screen.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 beat_screen.c
@@ -95,10 +97,10 @@ devkit\_snd_manager.rel ^
 engine\asm_manager.rel engine\actor_manager.rel engine\board_manager.rel engine\command_manager.rel engine\content_manager.rel ^
 engine\delay_manager.rel engine\enemy_manager.rel engine\enum_manager.rel engine\font_manager.rel ^
 engine\frame_manager.rel engine\gamer_manager.rel engine\global_manager.rel engine\hack_manager.rel engine\input_manager.rel ^
-engine\screen_manager.rel engine\sprite_manager.rel ^
+engine\level_manager.rel engine\screen_manager.rel engine\sprite_manager.rel ^
 engine\storage_manager.rel engine\tile_manager.rel ^
 object\board_object.rel object\command_object.rel object\delay_object.rel object\enemy_object.rel object\frame_object.rel ^
-object\gamer_object.rel object\hack_object.rel object\state_object.rel object\savegame_object.rel ^
+object\gamer_object.rel object\hack_object.rel object\level_object.rel object\state_object.rel object\savegame_object.rel ^
 screen\none_screen.rel screen\splash_screen.rel screen\intro_screen.rel screen\title_screen.rel screen\load_screen.rel ^
 screen\demo_screen.rel screen\play_screen.rel screen\record_screen.rel screen\save_screen.rel screen\test_screen.rel ^
 screen\func_screen.rel screen\beat_screen.rel ^
@@ -143,6 +145,6 @@ if exist "*.sym" del "*.sym" > nul
 
 
 :: Run
-java -jar C:\SEGA\Emulicious\Emulicious.jar output.sms
+::java -jar C:\SEGA\Emulicious\Emulicious.jar output.sms
 ::C:\SEGA\meka\mekaw.exe output.sms
-::output.sms
+output.sms
