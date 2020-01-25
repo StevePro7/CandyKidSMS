@@ -13,12 +13,16 @@ static void draw_items();
 
 void screen_intro_screen_load()
 {
-	engine_font_manager_draw_text( "INTRO  SCREEN..!!", 4, 2 );
+	//engine_font_manager_draw_text( "INTRO  SCREEN HELLO!!", 4, 2 );
 	//draw_items();
 
-	engine_board_manager_init();
+	//engine_board_manager_init();
+	
+	engine_board_manager_main_full();
+	engine_board_manager_main_edge();
+
 	// TODO allow for SCREEN_TILE_LEFT
-	//engine_tile_manager_main_title(4, 2);
+	engine_tile_manager_main_title( SCREEN_TILE_LEFT + 2, 2 );
 }
 
 void screen_intro_screen_update( unsigned char *screen_type )

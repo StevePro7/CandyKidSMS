@@ -56,3 +56,24 @@ void engine_board_manager_draw_edge()
 	engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + 22, 6 );
 	engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + 22, 16 );
 }
+
+void engine_board_manager_main_full()
+{
+	unsigned char type = tree_type_avoid;
+	unsigned char loop;
+
+	for( loop = 0; loop < SCREEN_TILE_WIDE - 1; loop ++ )
+	{
+		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + loop * 2, 0 );
+		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + loop * 2, ( SCREEN_TILE_HIGH - 1 ) * 2 );
+	}
+	for( loop = 1; loop < SCREEN_TILE_HIGH - 1; loop++ )
+	{
+		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + 0 * 2, loop * 2 );
+		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + ( SCREEN_TILE_WIDE - 2 ) * 2, loop * 2 );
+	}
+}
+void engine_board_manager_main_edge()
+{
+
+}

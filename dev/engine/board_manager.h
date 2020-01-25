@@ -24,4 +24,7 @@ void engine_board_manager_set_exit_type( unsigned char exit_type );
 void engine_board_manager_set_tree_type( unsigned char tree_type );
 void engine_board_manager_draw_edge();
 
+void engine_board_manager_main_full();
+void engine_board_manager_main_edge();
+
 #endif//_BOARD_MANAGER_H_

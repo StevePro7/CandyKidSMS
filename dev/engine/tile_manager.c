@@ -146,7 +146,7 @@ void engine_tile_manager_main_title( unsigned char x, unsigned char y )
 	{
 		for( i = 0; i < 26; i++ )
 		{
-			devkit_SMS_setNextTileatXY( x + i, y + j );
+			devkit_SMS_setNextTileatXY( x + i, y + ( j - 2 ) );
 			devkit_SMS_setTile( *pnt + j * 26 + i );
 		}
 	}
