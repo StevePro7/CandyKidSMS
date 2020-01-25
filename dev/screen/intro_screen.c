@@ -1,6 +1,6 @@
 #include "intro_screen.h"
 #include "..\engine\board_manager.h"
-#include "..\engine\command_manager.h"
+#include "..\engine\content_manager.h"
 #include "..\engine\enemy_manager.h"
 #include "..\engine\enum_manager.h"
 #include "..\engine\font_manager.h"
@@ -13,13 +13,13 @@ static void draw_items();
 
 void screen_intro_screen_load()
 {
+	engine_content_manager_load_title();
 	//engine_font_manager_draw_text( "INTRO  SCREEN HELLO!!", 4, 2 );
 	//draw_items();
 
-	//engine_board_manager_init();
-	
+	engine_board_manager_init();
 	engine_board_manager_main_full();
-	engine_board_manager_main_edge();
+	//engine_board_manager_main_edge();
 
 	// TODO allow for SCREEN_TILE_LEFT
 	engine_tile_manager_main_title( SCREEN_TILE_LEFT + 2, 2 );

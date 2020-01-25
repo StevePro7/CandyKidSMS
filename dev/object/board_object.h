@@ -8,6 +8,11 @@ typedef struct tag_struct_board_object
 	unsigned char save_tree_type;
 	unsigned char save_exit_type;
 	
+	unsigned char top;
+	unsigned char bottom;
+	unsigned char left;
+	unsigned char right;
+
 	unsigned char posnX[ TREE_COLS ];
 	unsigned char posnY[ TREE_ROWS ];
 
