@@ -22,3 +22,14 @@ because the first 2x candy in main_tiles are the same... this would give more va
 Tighten up the level manager - don't need to store the value of the color of the candy I don't think
 But need some logic to calculate about the free man candy, store the value and calc where to put
 i.e. which mama is not moving and choose accordingly
+
+IMPORTANT
+I need to scale out the level_object so that 100 level data is in AA and 100 level data is in BB
+rather than 50/50.. this way I could potentially have 20 worlds i.e. double the amount of worlds
+
+As a nice aside:
+I would like to have funky world names that relate to Joe Satriani album titles
+https://en.wikipedia.org/wiki/Joe_Satriani_discography
+
+There are currently 16x albums listed here but there are lots of compilation albums that could use
+prioritize the first 10 and then the second 10
