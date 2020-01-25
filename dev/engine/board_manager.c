@@ -7,7 +7,7 @@
 struct_board_object global_board_object;
 
 static void draw_side( unsigned char wide, unsigned char right );
-static void draw_gaps( unsigned char left, unsigned char right );
+static void draw_gaps( unsigned char left, unsigned char midd, unsigned char right );
 
 // Methods.
 void engine_board_manager_init()
@@ -29,8 +29,8 @@ void engine_board_manager_init()
 	}
 
 	// TODO delete as will be set before hand!!
-	bo->save_tree_type = tree_type_death;
-	bo->save_exit_type = exit_type_closed;
+	bo->save_tree_type = tree_type_avoid;
+	bo->save_exit_type = exit_type_public;
 	// TODO delete as will be set before hand!!
 
 	bo->top = 0;
@@ -59,7 +59,8 @@ void engine_board_manager_draw_full()
 }
 void engine_board_manager_draw_edge()
 {
-	draw_gaps( 6, 16 );
+	struct_board_object *bo = &global_board_object;
+	draw_gaps( 6, 16, bo->right2 );
 }
 
 void engine_board_manager_main_full()
@@ -69,7 +70,8 @@ void engine_board_manager_main_full()
 }
 void engine_board_manager_main_edge()
 {
-	draw_gaps( 8, 20 );
+	struct_board_object *bo = &global_board_object;
+	draw_gaps( 8, 20, bo->right );
 }
 
 static void draw_side( unsigned char wide, unsigned char right )
@@ -89,7 +91,7 @@ static void draw_side( unsigned char wide, unsigned char right )
 		engine_tile_manager_main_trees( type, right, bo->top + loop * 2 );
 	}
 }
-static void draw_gaps( unsigned char left, unsigned char right )
+static void draw_gaps( unsigned char left, unsigned char midd, unsigned char right )
 {
 	struct_board_object *bo = &global_board_object;
 	if( exit_type_closed == bo->save_exit_type )
@@ -98,13 +100,13 @@ static void draw_gaps( unsigned char left, unsigned char right )
 	}
 
 	engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + left, bo->top );
-	engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + right, bo->top );
+	engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + midd, bo->top );
 	engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + left, bo->bottom );
-	engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + right, bo->bottom );
+	engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + midd, bo->bottom );
 
 	// Hard code top and bottom exits as they never move!
 	engine_tile_manager_draw_blank( bo->left, 6 );
 	engine_tile_manager_draw_blank( bo->left, 16 );
-	engine_tile_manager_draw_blank( bo->right, 6 );
-	engine_tile_manager_draw_blank( bo->right, 16 );
+	engine_tile_manager_draw_blank( right, 6 );
+	engine_tile_manager_draw_blank( right, 16 );
 }
