@@ -1,0 +1,36 @@
+XL2
+H 9 areas 7 global symbols
+M save_screen
+O -mz80
+S _engine_gamer_manager_draw Ref0000
+S _engine_board_manager_init Ref0000
+S _engine_gamer_manager_init Ref0000
+S _engine_font_manager_draw_text Ref0000
+S .__.ABS. Def0000
+A _CODE size 32 flags 0 addr 0
+S _screen_save_screen_load Def0000
+S _screen_save_screen_update Def0028
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00
+R 00 00 00 00
+T 00 00 CD 00 00 21 02 02 E5 CD 00 00 21 04 01 E3
+R 00 00 00 00 02 03 01 00 02 0A 02 00
+T 0E 00 21 18 00 E5 CD 00 00 F1 F1 C9
+R 00 00 00 00 00 03 00 00 02 07 03 00
+T 18 00
+R 00 00 00 00
+T 18 00 53 41 56 45 20 53 43 52 45 45 4E 21 21 21
+R 00 00 00 00
+T 26 00 21 00
+R 00 00 00 00
+T 28 00
+R 00 00 00 00
+T 28 00 CD 00 00 C1 E1 E5 C5 36 08 C9
+R 00 00 00 00 02 03 00 00

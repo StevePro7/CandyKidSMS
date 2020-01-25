@@ -20,7 +20,7 @@ void engine_screen_manager_init( unsigned char open_screen_type )
 	next_screen_type = open_screen_type;
 	curr_screen_type = screen_type_none;
 
-	engine_font_manager_draw_text( "HELLO WORLD XYZ...!!", 2, 2 );
+	engine_font_manager_draw_text( "HELLO WORLD STEVEPRO", 2, 2 );
 
 	engine_tile_manager_draw_trees( tree_type_avoid, 4, 4 );
 	engine_tile_manager_draw_trees( tree_type_death, 6, 4 );
