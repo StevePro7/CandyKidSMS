@@ -29,7 +29,9 @@ void engine_board_manager_init()
 	}
 
 	// TODO delete as will be set before hand!!
-	bo->save_tree_type = tree_type_avoid;
+	bo->save_tree_type = tree_type_death;
+	bo->save_exit_type = exit_type_closed;
+	// TODO delete as will be set before hand!!
 
 	bo->top = 0;
 	bo->bottom = ( SCREEN_TILE_HIGH - 1 ) * 2;
@@ -55,25 +57,9 @@ void engine_board_manager_draw_full()
 	struct_board_object *bo = &global_board_object;
 	draw_side( TREE_COLS, bo->right2 );
 }
-
 void engine_board_manager_draw_edge()
 {
 	draw_gaps( 6, 16 );
-	//// top
-	//engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + 6, 0 );
-	//engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + 16, 0 );
-
-	//// bot
-	//engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + 6, 22 );
-	//engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + 16, 22 );
-
-	//// lft
-	//engine_tile_manager_draw_blank( SCREEN_TILE_LEFT, 6 );
-	//engine_tile_manager_draw_blank( SCREEN_TILE_LEFT, 16 );
-
-	//// rgt
-	//engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + 22, 6 );
-	//engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + 22, 16 );
 }
 
 void engine_board_manager_main_full()
@@ -83,22 +69,7 @@ void engine_board_manager_main_full()
 }
 void engine_board_manager_main_edge()
 {
-	struct_board_object *bo = &global_board_object;
-	//// top
-	//engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + 8, 0 );
-	//engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + 20, 0 );
-
-	// bot
-	engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + 8, 22 );
-	engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + 20, 22 );
-
-	//// lft
-	//engine_tile_manager_draw_blank( SCREEN_TILE_LEFT, 6 );
-	//engine_tile_manager_draw_blank( SCREEN_TILE_LEFT, 16 );
-
-	//// rgt
-	//engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + 22, 6 );
-	//engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + 22, 16 );
+	draw_gaps( 8, 20 );
 }
 
 static void draw_side( unsigned char wide, unsigned char right )
@@ -121,20 +92,19 @@ static void draw_side( unsigned char wide, unsigned char right )
 static void draw_gaps( unsigned char left, unsigned char right )
 {
 	struct_board_object *bo = &global_board_object;
+	if( exit_type_closed == bo->save_exit_type )
+	{
+		return;
+	}
 
 	engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + left, bo->top );
 	engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + right, bo->top );
 	engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + left, bo->bottom );
 	engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + right, bo->bottom );
 
+	// Hard code top and bottom exits as they never move!
 	engine_tile_manager_draw_blank( bo->left, 6 );
 	engine_tile_manager_draw_blank( bo->left, 16 );
 	engine_tile_manager_draw_blank( bo->right, 6 );
 	engine_tile_manager_draw_blank( bo->right, 16 );
-
-	/*engine_tile_manager_draw_blank( SCREEN_TILE_LEFT, 6 );
-	engine_tile_manager_draw_blank( SCREEN_TILE_LEFT, 16 );
-
-	engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + 22, 6 );
-	engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + 22, 16 );*/
 }
