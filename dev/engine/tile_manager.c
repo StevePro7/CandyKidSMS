@@ -2,6 +2,7 @@
 #include "enum_manager.h"
 #include "font_manager.h"
 #include "global_manager.h"
+#include "..\banks\bank5.h"
 #include "..\devkit\_sms_manager.h"
 #include "..\gfx.h"
 #include <stdlib.h>
@@ -97,6 +98,24 @@ void engine_tile_manager_draw_gamer( unsigned char x, unsigned char y )
 {
 	unsigned char offset = BASE_GAMER_OFFSET;
 	draw_tile( offset, x, y );
+}
+
+void engine_tile_manager_main_title( unsigned char x, unsigned char y )
+{
+	const unsigned int *pnt = ( const unsigned int * ) main_tiles__tilemap__bin;
+
+	unsigned char i;
+	unsigned char j;
+
+	// CANDY KID title is 26 cols * 4 rows of 8x8 tiles.
+	for( j = 2; j < 6; j++ )
+	{
+		for( i = 0; i < 26; i++ )
+		{
+			devkit_SMS_setNextTileatXY( x + i, y + j );
+			devkit_SMS_setTile( *pnt + j * 26 + i );
+		}
+	}
 }
 
 static void draw_tile( unsigned char offset, unsigned char x, unsigned char y )
