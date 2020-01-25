@@ -328,5 +328,41 @@
     <ClCompile Include="engine\actor_manager.c">
       <Filter>Source Files\engine</Filter>
     </ClCompile>
+    <ClCompile Include="screen\beat_screen.c">
+      <Filter>Source Files\screen</Filter>
+    </ClCompile>
+    <ClCompile Include="screen\demo_screen.c">
+      <Filter>Source Files\screen</Filter>
+    </ClCompile>
+    <ClCompile Include="screen\func_screen.c">
+      <Filter>Source Files\screen</Filter>
+    </ClCompile>
+    <ClCompile Include="screen\intro_screen.c">
+      <Filter>Source Files\screen</Filter>
+    </ClCompile>
+    <ClCompile Include="screen\load_screen.c">
+      <Filter>Source Files\screen</Filter>
+    </ClCompile>
+    <ClCompile Include="screen\title_screen.c">
+      <Filter>Source Files\screen</Filter>
+    </ClCompile>
+    <ClCompile Include="screen\none_screen.c">
+      <Filter>Source Files\screen</Filter>
+    </ClCompile>
+    <ClCompile Include="screen\play_screen.c">
+      <Filter>Source Files\screen</Filter>
+    </ClCompile>
+    <ClCompile Include="screen\record_screen.c">
+      <Filter>Source Files\screen</Filter>
+    </ClCompile>
+    <ClCompile Include="screen\save_screen.c">
+      <Filter>Source Files\screen</Filter>
+    </ClCompile>
+    <ClCompile Include="screen\splash_screen.c">
+      <Filter>Source Files\screen</Filter>
+    </ClCompile>
+    <ClCompile Include="screen\test_screen.c">
+      <Filter>Source Files\screen</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -60,13 +60,13 @@ void screen_save_screen_update( unsigned char *screen_type )
 //	engine_font_manager_draw_data( tree_type, 12, 12 );
 //	engine_font_manager_draw_data( exit_type, 12, 14 );
 //
-//	engine_tile_manager_draw_tree( tree_type, 10, 8 );
-//	engine_tile_manager_draw_tree( tree_type, 16, 8 );
+//	engine_tile_manager_draw_trees( tree_type, 10, 8 );
+//	engine_tile_manager_draw_trees( tree_type, 16, 8 );
 //
 //	if( exit_type_closed == exit_type )
 //	{
-//		engine_tile_manager_draw_tree( tree_type, 12, 8 );
-//		engine_tile_manager_draw_tree( tree_type, 14, 8 );
+//		engine_tile_manager_draw_trees( tree_type, 12, 8 );
+//		engine_tile_manager_draw_trees( tree_type, 14, 8 );
 //	}
 //	else
 //	{

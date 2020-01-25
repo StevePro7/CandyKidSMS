@@ -4,7 +4,6 @@
 #include "..\engine\delay_manager.h"
 #include "..\engine\enum_manager.h"
 #include "..\engine\enemy_manager.h"
-#include "..\engine\event_manager.h"
 #include "..\engine\font_manager.h"
 #include "..\engine\frame_manager.h"
 #include "..\engine\gamer_manager.h"
@@ -41,9 +40,9 @@ void screen_play_screen_load()
 		engine_storage_manager_read();
 	}
 
-	engine_tile_manager_draw_tree( tree_type_avoid, 4, 2 );	engine_tile_manager_draw_tree( tree_type_avoid, 6, 2 );	engine_tile_manager_draw_tree( tree_type_avoid, 8, 2 );
-	engine_tile_manager_draw_tree( tree_type_avoid, 10, 4 );	engine_tile_manager_draw_tree( tree_type_avoid, 10, 6 );	engine_tile_manager_draw_tree( tree_type_avoid, 8, 8 );
-	engine_tile_manager_draw_tree( tree_type_avoid, 6, 8 );
+	engine_tile_manager_draw_trees( tree_type_avoid, 4, 2 );	engine_tile_manager_draw_trees( tree_type_avoid, 6, 2 );	engine_tile_manager_draw_trees( tree_type_avoid, 8, 2 );
+	engine_tile_manager_draw_trees( tree_type_avoid, 10, 4 );	engine_tile_manager_draw_trees( tree_type_avoid, 10, 6 );	engine_tile_manager_draw_trees( tree_type_avoid, 8, 8 );
+	engine_tile_manager_draw_trees( tree_type_avoid, 6, 8 );
 
 	engine_font_manager_draw_data( test, 22, 7 );
 }

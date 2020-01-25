@@ -2,12 +2,9 @@
 #include "..\engine\board_manager.h"
 #include "..\engine\enum_manager.h"
 #include "..\engine\enemy_manager.h"
-#include "..\engine\event_manager.h"
 #include "..\engine\font_manager.h"
 #include "..\engine\gamer_manager.h"
 #include "..\engine\global_manager.h"
-#include "..\engine\mask_manager.h"
-#include "..\engine\move_manager.h"
 #include "..\engine\sprite_manager.h"
 
 void screen_intro_screen_load()

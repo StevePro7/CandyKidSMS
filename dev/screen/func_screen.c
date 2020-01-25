@@ -34,9 +34,9 @@ void screen_func_screen_load()
 		engine_storage_manager_read();
 	}
 
-	engine_tile_manager_draw_tree( tree_type_death, 4, 2 );	engine_tile_manager_draw_tree( tree_type_death, 6, 2 );	engine_tile_manager_draw_tree( tree_type_death, 8, 2 );
-	engine_tile_manager_draw_tree( tree_type_death, 10, 4 );	engine_tile_manager_draw_tree( tree_type_death, 10, 6 );	engine_tile_manager_draw_tree( tree_type_death, 8, 8 );
-	engine_tile_manager_draw_tree( tree_type_death, 6, 8 );
+	engine_tile_manager_draw_trees( tree_type_death, 4, 2 );	engine_tile_manager_draw_trees( tree_type_death, 6, 2 );	engine_tile_manager_draw_trees( tree_type_death, 8, 2 );
+	engine_tile_manager_draw_trees( tree_type_death, 10, 4 );	engine_tile_manager_draw_trees( tree_type_death, 10, 6 );	engine_tile_manager_draw_trees( tree_type_death, 8, 8 );
+	engine_tile_manager_draw_trees( tree_type_death, 6, 8 );
 
 	engine_font_manager_draw_data( test, 22, 7 );
 }
