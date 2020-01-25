@@ -1,0 +1,56 @@
+XL2
+H 9 areas 7 global symbols
+M board_manager
+O -mz80
+S _engine_tile_manager_draw_blank Ref0000
+S .__.ABS. Def0000
+A _CODE size 82 flags 0 addr 0
+S _engine_board_manager_init Def0000
+S _engine_board_manager_set_tree_type Def003A
+S _engine_board_manager_set_exit_type Def002C
+S _engine_board_manager_draw_edge Def0048
+A _DATA size 1A flags 0 addr 0
+S _global_board_object Def0000
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00
+R 00 00 01 00
+T 00 00
+R 00 00 01 00
+T 00 00
+R 00 00 00 00
+T 00 00 21 00 00 36 00 21 01 00 36 00 0E 00
+R 00 00 00 00 00 03 01 00 00 08 01 00
+T 0C 00
+R 00 00 00 00
+T 0C 00 79 07 07 07 07 E6 F0 5F 21 02 00 06 00 09
+R 00 00 00 00 00 0B 01 00
+T 1A 00 7B C6 10 77 21 0E 00 06 00 09 73 0C 79 D6
+R 00 00 00 00 00 07 01 00
+T 28 00 0C 38 E1 C9
+R 00 00 00 00
+T 2C 00
+R 00 00 00 00
+T 2C 00 21 01 00 FD 21 02 00 FD 39 FD 7E 00 77 C9
+R 00 00 00 00 00 03 01 00
+T 3A 00
+R 00 00 00 00
+T 3A 00 21 00 00 FD 21 02 00 FD 39 FD 7E 00 77 C9
+R 00 00 00 00 00 03 01 00
+T 48 00
+R 00 00 00 00
+T 48 00 21 08 00 E5 CD 00 00 21 12 00 E3 CD 00 00
+R 00 00 00 00 02 07 00 00 02 0E 00 00
+T 56 00 21 08 16 E3 CD 00 00 21 12 16 E3 CD 00 00
+R 00 00 00 00 02 07 00 00 02 0E 00 00
+T 64 00 21 02 06 E3 CD 00 00 21 02 10 E3 CD 00 00
+R 00 00 00 00 02 07 00 00 02 0E 00 00
+T 72 00 21 18 06 E3 CD 00 00 21 18 10 E3 CD 00 00
+R 00 00 00 00 02 07 00 00 02 0E 00 00
+T 80 00 F1 C9
+R 00 00 00 00

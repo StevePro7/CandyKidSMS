@@ -1,0 +1,67 @@
+XL2
+H 9 areas 8 global symbols
+M delay_manager
+O -mz80
+S .__.ABS. Def0000
+S _engine_font_manager_draw_data Ref0000
+A _CODE size 87 flags 0 addr 0
+S _engine_delay_manager_draw Def0071
+S _engine_delay_manager_init Def0000
+S _engine_delay_manager_update Def0022
+S _engine_delay_manager_updateX Def0048
+S _engine_delay_manager_load Def0009
+A _DATA size 4 flags 0 addr 0
+S _global_delay_object Def0000
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00
+R 00 00 01 00
+T 00 00
+R 00 00 01 00
+T 00 00
+R 00 00 00 00
+T 00 00 21 00 00 E5 CD 09 00 F1 C9
+R 00 00 00 00 00 07 00 00
+T 09 00
+R 00 00 00 00
+T 09 00 21 00 00 FD 21 02 00 FD 39 FD 7E 00 77 23
+R 00 00 00 00 00 03 01 00
+T 17 00 FD 7E 01 77 21 00 00 22 02 00 C9
+R 00 00 00 00 00 0A 01 00
+T 22 00
+R 00 00 00 00
+T 22 00 ED 4B 02 00 2A 00 00 79 95 78 9C 3E 00 17
+R 00 00 00 00 00 04 01 00 00 07 01 00
+T 30 00 EE 01 4F 47 B7 28 06 21 00 00 22 02 00
+R 00 00 00 00 00 0D 01 00
+T 3D 00
+R 00 00 00 00
+T 3D 00 ED 5B 02 00 13 ED 53 02 00 68 C9
+R 00 00 00 00 00 04 01 00 00 09 01 00
+T 48 00
+R 00 00 00 00
+T 48 00 ED 4B 02 00 2A 00 00 79 95 78 9C 3E 00 17
+R 00 00 00 00 00 04 01 00 00 07 01 00
+T 56 00 EE 01 5F B7 28 02 6B C9
+R 00 00 00 00
+T 5E 00
+R 00 00 00 00
+T 5E 00 0B ED 43 02 00 78 B1 20 08 ED 4B 00 00 ED
+R 00 00 00 00 00 05 01 00 00 0D 01 00
+T 6C 00 43 02 00
+R 00 00 00 00 00 03 01 00
+T 6F 00
+R 00 00 00 00
+T 6F 00 6B C9
+R 00 00 00 00
+T 71 00
+R 00 00 00 00
+T 71 00 ED 4B 02 00 11 00 00 21 1F 01 E5 D5 C5 CD
+R 00 00 00 00 00 04 01 00
+T 7F 00 00 00 21 06 00 39 F9 C9
+R 00 00 00 00 02 02 01 00

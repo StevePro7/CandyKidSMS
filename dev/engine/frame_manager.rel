@@ -1,0 +1,48 @@
+XL2
+H 9 areas 7 global symbols
+M frame_manager
+O -mz80
+S .__.ABS. Def0000
+S _engine_font_manager_draw_data Ref0000
+A _CODE size 4F flags 0 addr 0
+S _engine_frame_manager_draw Def0039
+S _engine_frame_manager_init Def0000
+S _engine_frame_manager_update Def0018
+S _engine_frame_manager_load Def000C
+A _DATA size 4 flags 0 addr 0
+S _global_frame_object Def0000
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00
+R 00 00 01 00
+T 00 00
+R 00 00 01 00
+T 00 00
+R 00 00 00 00
+T 00 00 21 00 00 22 00 00 2E 00 22 02 00 C9
+R 00 00 00 00 00 06 01 00 00 0B 01 00
+T 0C 00
+R 00 00 00 00
+T 0C 00 21 00 00 22 00 00 2E 00 22 02 00 C9
+R 00 00 00 00 00 06 01 00 00 0B 01 00
+T 18 00
+R 00 00 00 00
+T 18 00 ED 4B 00 00 03 ED 43 00 00 79 D6 FF 78 DE
+R 00 00 00 00 00 04 01 00 00 09 01 00
+T 26 00 FF 38 06 21 00 00 22 00 00
+R 00 00 00 00 00 09 01 00
+T 2F 00
+R 00 00 00 00
+T 2F 00 ED 4B 02 00 03 ED 43 02 00 C9
+R 00 00 00 00 00 04 01 00 00 09 01 00
+T 39 00
+R 00 00 00 00
+T 39 00 ED 4B 00 00 11 00 00 21 1F 00 E5 D5 C5 CD
+R 00 00 00 00 00 04 01 00
+T 47 00 00 00 21 06 00 39 F9 C9
+R 00 00 00 00 02 02 01 00

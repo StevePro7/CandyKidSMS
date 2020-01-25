@@ -19,6 +19,17 @@ void engine_content_manager_load_tiles()
 	devkit_SMS_loadBGPalette( ( void * ) game_tiles__palette__bin );
 }
 
+void engine_content_manager_load_title()
+{
+	// Font tiles.
+	devkit_SMS_loadPSGaidencompressedTiles( font_tiles__tiles__psgcompr, FONT_TILES );
+	//devkit_SMS_loadBGPalette( ( void * ) font_tiles__palette__bin );
+
+	// Game tiles.
+	devkit_SMS_loadPSGaidencompressedTiles( game_tiles__tiles__psgcompr, GAME_TITLE );
+	devkit_SMS_loadBGPalette( ( void * ) game_tiles__palette__bin );
+}
+
 void engine_content_manager_load_sprites()
 {
 	// Sprite tiles.
