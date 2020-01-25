@@ -6,71 +6,49 @@
 #include "..\engine\font_manager.h"
 #include "..\engine\gamer_manager.h"
 #include "..\engine\input_manager.h"
-#include "..\engine\storage_manager.h"
+#include "..\engine\sprite_manager.h"
 #include "..\engine\tile_manager.h"
 
 //static void draw_trees();
 
 void screen_save_screen_load()
 {
-	engine_board_manager_init();
-	engine_gamer_manager_init( KID_HOME_X, KID_HOME_Y );
+	unsigned char idx;
+	engine_font_manager_draw_text( "SAVE SCREEN!!", 4, 1 );
 
-	engine_font_manager_draw_text( "SAVE SCREEN!!!!", 4, 1 );
+	engine_tile_manager_draw_trees( tree_type_avoid, 4, 4 );
+	engine_tile_manager_draw_trees( tree_type_death, 6, 4 );
+
+	engine_tile_manager_draw_bonus( tile_type_bonusA, 1, 10, 6 );
+	engine_tile_manager_draw_bonus( tile_type_bonusB, 1, 14, 6 );
+	engine_tile_manager_draw_bonus( tile_type_bonusC, 1, 18, 6 );
+	engine_tile_manager_draw_bonus( tile_type_bonusD, 1, 22, 6 );
+
+	engine_tile_manager_draw_bonus( tile_type_bonusA, 2, 10, 8 );
+	engine_tile_manager_draw_bonus( tile_type_bonusB, 2, 14, 8 );
+	engine_tile_manager_draw_bonus( tile_type_bonusC, 2, 18, 8 );
+	engine_tile_manager_draw_bonus( tile_type_bonusD, 2, 22, 8 );
+
+	engine_tile_manager_draw_gamer( 16, 16 );
+
+	for( idx = 0; idx < MAX_BLOCK_TILES; idx++ )
+	{
+		engine_tile_manager_draw_candy( idx, idx * 2 + 2, 20 );
+	}
 }
 
 void screen_save_screen_update( unsigned char *screen_type )
 {
-	engine_gamer_manager_draw();
-	//struct_board_object *bo = &global_board_object;
-	//unsigned char input;
-	////unsigned int* frames;
+	unsigned char death = 0;
+	unsigned char input;
+	engine_sprite_manager_draw_entity( 32, 64, 256 + 96 );
 
-	//input = engine_input_manager_hold_left();
-	//if( input )
-	//{
-	//	engine_board_manager_set_exit_type( 1 - bo->save_exit_type );
-	//	draw_trees();
-	//}
-	//input = engine_input_manager_hold_right();
-	//if( input )
-	//{
-	//	engine_board_manager_set_tree_type( 1 - bo->save_tree_type );
-	//	draw_trees();
-	//}
-
-	//input = engine_input_manager_hold_fire1();
-	//if( input )
-	//{
-	//	engine_font_manager_draw_text( "SAVING....", 10, 20 );
-	//	engine_storage_manager_write();
-	//}
+	input = engine_input_manager_move_fire1();
+	if( input )
+	{
+		engine_font_manager_draw_text( "HELLO WORLD...!!", 2, 4 );
+		death = 1;
+	}
 
 	*screen_type = screen_type_save;
 }
-
-
-//static void draw_trees()
-//{
-//	struct_board_object *bo = &global_board_object;
-//
-//	unsigned char tree_type = bo->save_tree_type;
-//	unsigned char exit_type = bo->save_exit_type;
-//
-//	engine_font_manager_draw_data( tree_type, 12, 12 );
-//	engine_font_manager_draw_data( exit_type, 12, 14 );
-//
-//	engine_tile_manager_draw_trees( tree_type, 10, 8 );
-//	engine_tile_manager_draw_trees( tree_type, 16, 8 );
-//
-//	if( exit_type_closed == exit_type )
-//	{
-//		engine_tile_manager_draw_trees( tree_type, 12, 8 );
-//		engine_tile_manager_draw_trees( tree_type, 14, 8 );
-//	}
-//	else
-//	{
-//		engine_tile_manager_draw_blank( 12, 8 );
-//		engine_tile_manager_draw_blank( 14, 8 );
-//	}
-//}
