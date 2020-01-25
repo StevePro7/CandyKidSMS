@@ -22,7 +22,7 @@ void screen_intro_screen_load()
 	//engine_board_manager_main_edge();
 
 	// TODO allow for SCREEN_TILE_LEFT
-	engine_tile_manager_main_title( SCREEN_TILE_LEFT + 2, 2 );
+	//engine_tile_manager_main_title( SCREEN_TILE_LEFT + 2, 2 );
 }
 
 void screen_intro_screen_update( unsigned char *screen_type )
