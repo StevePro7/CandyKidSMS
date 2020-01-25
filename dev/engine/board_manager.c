@@ -74,6 +74,24 @@ void engine_board_manager_main_edge()
 	draw_gaps( 8, 20, bo->right );
 }
 
+// TODO - delete!!
+void engine_board_manager_debugger()
+{
+	struct_board_object *bo = &global_board_object;
+	unsigned char type = bo->save_tree_type;
+
+	unsigned char spot[] = { 1, 2, 4, 7, 9, 10 };
+	unsigned char loop;
+	for( loop = 0; loop < 6; loop++ )
+	{
+		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + spot[ loop ] * 2, 0 );
+		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + spot[ loop ] * 2, 22 );
+
+		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT, spot[ loop ] * 2 );
+		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + 22, spot[ loop ] * 2 );
+	}
+}
+
 static void draw_side( unsigned char wide, unsigned char right )
 {
 	struct_board_object *bo = &global_board_object;

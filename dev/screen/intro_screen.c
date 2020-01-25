@@ -17,13 +17,15 @@ void screen_intro_screen_load()
 
 	engine_board_manager_init();
 	
-	engine_board_manager_draw_full();
-	engine_board_manager_draw_edge();
+	//engine_board_manager_draw_full();
+	//engine_board_manager_draw_edge();
 
 	//engine_board_manager_main_full();
 	//engine_board_manager_main_edge();
 
 	//engine_tile_manager_main_title( 2, 2 );
+
+	engine_board_manager_debugger();
 }
 
 void screen_intro_screen_update( unsigned char *screen_type )

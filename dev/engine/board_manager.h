@@ -25,8 +25,10 @@ void engine_board_manager_set_tree_type( unsigned char tree_type );
 
 void engine_board_manager_draw_full();
 void engine_board_manager_draw_edge();
-
 void engine_board_manager_main_full();
 void engine_board_manager_main_edge();
+
+// TODO - delete!!
+void engine_board_manager_debugger();
 
 #endif//_BOARD_MANAGER_H_
