@@ -9,12 +9,34 @@
 #include "..\engine\sprite_manager.h"
 #include "..\engine\tile_manager.h"
 
-//static void draw_trees();
+static void draw_items();
 
 void screen_save_screen_load()
 {
-	unsigned char idx;
 	engine_font_manager_draw_text( "SAVE SCREEN!!", 4, 1 );
+	draw_items();
+}
+
+void screen_save_screen_update( unsigned char *screen_type )
+{
+	unsigned char death = 0;
+	unsigned char input;
+	engine_sprite_manager_draw_entity( 32, 64, 256 + 96 );
+
+	input = engine_input_manager_move_fire1();
+	if( input )
+	{
+		engine_font_manager_draw_text( "HELLO WORLD...!!", 2, 4 );
+		death = 1;
+	}
+
+	*screen_type = screen_type_save;
+}
+
+
+static void draw_items()
+{
+	unsigned char idx;
 
 	engine_tile_manager_draw_trees( tree_type_avoid, 4, 4 );
 	engine_tile_manager_draw_trees( tree_type_death, 6, 4 );
@@ -35,20 +57,4 @@ void screen_save_screen_load()
 	{
 		engine_tile_manager_draw_candy( idx, idx * 2 + 2, 20 );
 	}
-}
-
-void screen_save_screen_update( unsigned char *screen_type )
-{
-	unsigned char death = 0;
-	unsigned char input;
-	engine_sprite_manager_draw_entity( 32, 64, 256 + 96 );
-
-	input = engine_input_manager_move_fire1();
-	if( input )
-	{
-		engine_font_manager_draw_text( "HELLO WORLD...!!", 2, 4 );
-		death = 1;
-	}
-
-	*screen_type = screen_type_save;
 }
