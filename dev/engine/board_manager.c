@@ -17,10 +17,7 @@ void engine_board_manager_init()
 	unsigned char data;
 	unsigned char left = SCREEN_TILE_LEFT * TILE_HALF;
 
-	bo->save_tree_type = tree_type_avoid;
-	//bo->save_exit_type = exit_type_closed;
-	bo->save_exit_type = exit_type_public;
-
+	// TODO correct these positions!
 	for( loop = 0; loop < TREE_ROWS; loop++ )
 	{
 		data = loop * TILE_SIZE;
@@ -33,11 +30,11 @@ void engine_board_manager_init()
 	bo->save_exit_type = exit_type_public;
 	// TODO delete as will be set before hand!!
 
-	bo->top = 0;
-	bo->bottom = ( SCREEN_TILE_HIGH - 1 ) * 2;
-	bo->left = SCREEN_TILE_LEFT;
-	bo->right = SCREEN_TILE_LEFT + ( SCREEN_TILE_WIDE - 2 ) * 2;
-	bo->right2 = SCREEN_TILE_LEFT + ( TREE_COLS - 1 ) * 2;
+	bo->top		= 0;
+	bo->bottom	= ( SCREEN_TILE_HIGH - 1 ) * 2;
+	bo->left	= SCREEN_TILE_LEFT;
+	bo->right	= SCREEN_TILE_LEFT + ( SCREEN_TILE_WIDE - 2 ) * 2;
+	bo->right2	= SCREEN_TILE_LEFT + ( TREE_COLS - 1 ) * 2;
 }
 
 void engine_board_manager_set_exit_type( unsigned char exit_type )
@@ -91,6 +88,7 @@ void engine_board_manager_debugger()
 		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + 22, spot[ loop ] * 2 );
 	}
 }
+// TODO - delete!!
 
 static void draw_side( unsigned char wide, unsigned char right )
 {
@@ -112,11 +110,24 @@ static void draw_side( unsigned char wide, unsigned char right )
 static void draw_gaps( unsigned char left, unsigned char midd, unsigned char right )
 {
 	struct_board_object *bo = &global_board_object;
+	unsigned char type = bo->save_tree_type;
 	if( exit_type_closed == bo->save_exit_type )
 	{
+		engine_tile_manager_main_trees(  type,SCREEN_TILE_LEFT + left, bo->top );
+		engine_tile_manager_main_trees(  type,SCREEN_TILE_LEFT + midd, bo->top );
+		engine_tile_manager_main_trees(  type,SCREEN_TILE_LEFT + left, bo->bottom );
+		engine_tile_manager_main_trees(  type,SCREEN_TILE_LEFT + midd, bo->bottom );
+
+		// Hard code top and bottom exits as they never move!
+		engine_tile_manager_main_trees(  type,bo->left, 6 );
+		engine_tile_manager_main_trees(  type,bo->left, 16 );
+		engine_tile_manager_main_trees(  type,right, 6 );
+		engine_tile_manager_main_trees(  type,right, 16 );
+
 		return;
 	}
 
+	// Otherwise "draw" exits as blank tiles.
 	engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + left, bo->top );
 	engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + midd, bo->top );
 	engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + left, bo->bottom );

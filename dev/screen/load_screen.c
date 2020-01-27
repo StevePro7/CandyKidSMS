@@ -1,4 +1,5 @@
 #include "load_screen.h"
+#include "..\engine\board_manager.h"
 #include "..\engine\enum_manager.h"
 #include "..\engine\font_manager.h"
 #include "..\engine\hack_manager.h"
@@ -12,10 +13,16 @@ void screen_load_screen_load()
 {
 	struct_hack_object *ho = &global_hack_object;
 
-	engine_font_manager_draw_text( "LOAD SCREEN!!", 4, 1 );
+	//engine_font_manager_draw_text( "LOAD SCREEN!!", 4, 1 );
+
+	engine_board_manager_init();
+	//engine_board_manager_draw_full();
+	//engine_board_manager_draw_edge();
+	engine_board_manager_debugger();
 
 	engine_level_manager_init_board();
 	engine_level_manager_init_exits();
+
 	engine_level_manager_load_level( ho->hack_world, ho->hack_round );
 	engine_level_manager_draw_level();
 
