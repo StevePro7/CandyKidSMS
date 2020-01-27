@@ -14,8 +14,8 @@ typedef struct tag_struct_board_object
 	unsigned char right;
 	unsigned char right2;
 
-	unsigned char posnX[ TREE_COLS ];
-	unsigned char posnY[ TREE_ROWS ];
+	unsigned char posnX[ MAZE_COLS ];
+	unsigned char posnY[ MAZE_ROWS ];
 
 } struct_board_object;
 

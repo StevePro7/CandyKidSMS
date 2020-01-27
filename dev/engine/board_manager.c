@@ -16,11 +16,13 @@ void engine_board_manager_init()
 	unsigned char loop;
 	unsigned char data;
 	unsigned char left = SCREEN_TILE_LEFT * TILE_HALF;
+	signed char offset;
 
 	// TODO correct these positions!
-	for( loop = 0; loop < TREE_ROWS; loop++ )
+	for( loop = 0; loop < MAZE_ROWS; loop++ )
 	{
-		data = loop * TILE_SIZE;
+		offset = loop - 1;
+		data = offset * TILE_SIZE;
 		bo->posnX[ loop ] = data + left;
 		bo->posnY[ loop ] = data;
 	}
