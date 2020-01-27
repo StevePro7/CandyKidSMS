@@ -19,4 +19,10 @@ typedef struct tag_struct_board_object
 
 } struct_board_object;
 
+extern const unsigned char board_exitX[];
+extern const unsigned char board_exitY[];
+
+extern const unsigned char board_homeX[];
+extern const unsigned char board_homeY[];
+
 #endif//_BOARD_OBJECT_H_

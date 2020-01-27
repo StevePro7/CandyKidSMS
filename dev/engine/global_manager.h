@@ -33,6 +33,8 @@
 #define SCREEN_TILE_HIGH		12
 #define SCREEN_TILE_LEFT		2
 
+#define MAX_EXITS_PUBLIC		8
+
 #define MAX_MOVES_COUNT			10	//1000
 #define MAX_SPEED_COUNT			1	//100
 

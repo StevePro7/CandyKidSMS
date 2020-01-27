@@ -41,8 +41,8 @@ typedef enum tag_enum_lifecycle_type
 typedef enum tag_enum_tile_type
 {
 	tile_type_blank = 0,
-	tile_type_candy = 1,
-	tile_type_trees = 2,
+	tile_type_trees = 1,
+	tile_type_candy = 2,
 	tile_type_bonusA = 3,
 	tile_type_bonusB = 4,
 	tile_type_bonusC = 5,

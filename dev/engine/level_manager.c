@@ -1,5 +1,5 @@
 #include "level_manager.h"
-
+#include "board_manager.h"
 #include "global_manager.h"
 #include "enum_manager.h"
 #include "font_manager.h"
@@ -18,7 +18,7 @@ struct_level_object global_level_object;
 static void load_level( const unsigned char *data, const unsigned char bank, const unsigned char size );
 static void draw_tiles( unsigned char x, unsigned char y );
 
-void engine_level_manager_init_level()
+void engine_level_manager_init_board()
 {
 	struct_level_object *lo = &global_level_object;
 	unsigned char idx, row, col;
@@ -55,6 +55,39 @@ void engine_level_manager_init_level()
 		idx = (row + 1) * MAZE_COLS + ( MAZE_COLS - 2 );
 		lo->drawtiles_array[ idx ] = tile_type_trees;
 		lo->collision_array[ idx ] = coll_type_block;
+	}
+}
+
+void engine_level_manager_init_exits()
+{
+	struct_board_object *bo = &global_board_object;
+	struct_level_object *lo = &global_level_object;
+	unsigned char loop;
+	unsigned char tmpX;
+	unsigned char tmpY;
+	unsigned char idx = 0;
+
+	unsigned char tile_type;
+	unsigned char coll_type;
+	if( exit_type_public != bo->save_exit_type )
+	{
+		tile_type = tile_type_trees;
+		coll_type = coll_type_block;
+	}
+	else
+	{
+		tile_type = tile_type_blank;
+		coll_type = coll_type_empty;
+	}
+
+	for( loop = 0; loop < MAX_EXITS_PUBLIC; loop++ )
+	{
+		tmpX = board_exitX[ loop ];
+		tmpY = board_exitY[ loop ];
+
+		idx = tmpY * MAZE_ROWS + tmpX;
+		lo->drawtiles_array[ idx ] = tile_type;
+		lo->collision_array[ idx ] = coll_type;
 	}
 }
 
