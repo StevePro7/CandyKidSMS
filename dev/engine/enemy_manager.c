@@ -56,7 +56,7 @@ void engine_enemy_manager_init( unsigned char *homeX, unsigned char *homeY )
 void engine_enemy_manager_load()
 {
 	// TODO hardcoded - inject!
-	struct_enemy_object *eo = &global_enemy_objects[ mama_type_pro ];
+	struct_enemy_object *eo = &global_enemy_objects[ actor_type_pro ];
 	eo->posnX = 144;
 	eo->posnY = 144;
 	eo->tileX = 9;
@@ -65,7 +65,7 @@ void engine_enemy_manager_load()
 
 void engine_enemy_manager_update()
 {
-	struct_enemy_object *eo = &global_enemy_objects[ mama_type_pro ];
+	struct_enemy_object *eo = &global_enemy_objects[ actor_type_pro ];
 	if( lifecycle_type_idle == eo->lifecycle )
 	{
 		return;
@@ -132,7 +132,7 @@ void engine_enemy_manager_update()
 		{
 			eo->frame = 1 - eo->frame;
 			eo->delta = 0;
-			calcd_frame( mama_type_pro );
+			calcd_frame( actor_type_pro );
 		}
 
 	}
@@ -140,7 +140,7 @@ void engine_enemy_manager_update()
 
 void engine_enemy_manager_move( unsigned char index, unsigned char direction )
 {
-	struct_enemy_object *eo = &global_enemy_objects[ mama_type_pro ];
+	struct_enemy_object *eo = &global_enemy_objects[ actor_type_pro ];
 	eo->direction = direction;
 	eo->lifecycle = lifecycle_type_move;
 	eo->frame = 1;

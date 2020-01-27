@@ -7,7 +7,7 @@
 extern struct_gamer_object global_gamer_object;
 
 // Methods.
-void engine_gamer_manager_init( unsigned char homeX, unsigned char homeY );
+void engine_gamer_manager_init();
 void engine_gamer_manager_update();
 void engine_gamer_manager_draw();
 void engine_gamer_manager_text();

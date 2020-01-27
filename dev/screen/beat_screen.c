@@ -37,7 +37,7 @@ void screen_beat_screen_load()
 	}
 
 	engine_board_manager_init();
-	engine_gamer_manager_init( KID_HOME_X, KID_HOME_Y );
+	engine_gamer_manager_init();
 
 	engine_command_manager_init();
 	engine_command_manager_load( frames, commands, args );

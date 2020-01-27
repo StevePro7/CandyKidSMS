@@ -71,13 +71,22 @@ typedef enum tag_enum_tree_type
 
 } enum_tree_type;
 
-typedef enum tag_enum_mama_type
-{
-	mama_type_pro = 0,
-	mama_type_adi = 1,
-	mama_type_suz = 2,
+//typedef enum tag_enum_actor_type
+//{
+//	actor_type_pro = 0,
+//	actor_type_adi = 1,
+//	actor_type_suz = 2,
+//
+//} enum_actor_type;
 
-} enum_mama_type;
+typedef enum tag_enum_actor_type
+{
+	actor_type_pro = 0,
+	actor_type_adi = 1,
+	actor_type_suz = 2,
+	actor_type_kid = 3,
+
+} enum_actor_type;
 
 typedef enum tag_enum_command_type
 {

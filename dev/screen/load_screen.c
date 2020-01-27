@@ -3,6 +3,7 @@
 #include "..\engine\enum_manager.h"
 #include "..\engine\font_manager.h"
 #include "..\engine\hack_manager.h"
+#include "..\engine\gamer_manager.h"
 #include "..\engine\global_manager.h"
 #include "..\engine\input_manager.h"
 #include "..\engine\level_manager.h"
@@ -16,6 +17,8 @@ void screen_load_screen_load()
 	//engine_font_manager_draw_text( "LOAD SCREEN!!", 4, 1 );
 
 	engine_board_manager_init();
+	engine_gamer_manager_init();
+
 	//engine_board_manager_draw_full();
 	//engine_board_manager_draw_edge();
 	engine_board_manager_debugger();
@@ -36,6 +39,8 @@ void screen_load_screen_update( unsigned char *screen_type )
 	unsigned char input;
 	unsigned char check;
 	check = 0;
+
+	engine_gamer_manager_draw();
 
 	input = engine_input_manager_hold_left();
 	if( input )

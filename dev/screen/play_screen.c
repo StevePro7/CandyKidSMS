@@ -24,7 +24,7 @@ void screen_play_screen_load()
 	unsigned char test;
 
 	engine_board_manager_init();
-	engine_gamer_manager_init( KID_HOME_X, KID_HOME_Y );
+	engine_gamer_manager_init();
 
 	engine_command_manager_init();
 	engine_delay_manager_load( 5 );
