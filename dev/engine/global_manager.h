@@ -7,7 +7,8 @@
 
 #define INVALID_INDEX			-1
 
-#define TOT_WORLDS				10
+// Have capacity for 20 worlds i.e. 200 levels
+#define TOT_WORLDS				20
 #define MAX_WORLDS				10
 #define MAX_ROUNDS				10
 
