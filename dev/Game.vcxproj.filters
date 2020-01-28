@@ -22,9 +22,6 @@
     <Filter Include="Source Files\banks">
       <UniqueIdentifier>{bc43e1e3-6afd-4bbf-805e-a85b19fbe35b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\devkit">
-      <UniqueIdentifier>{49fa0b36-7c64-48b2-9f10-28b87c3006ad}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\engine">
       <UniqueIdentifier>{4242cc02-4337-4750-ba9c-c539fc966c10}</UniqueIdentifier>
     </Filter>
@@ -48,6 +45,9 @@
     </Filter>
     <Filter Include="Header Files\screen">
       <UniqueIdentifier>{28f18fe4-9a36-46ce-93e1-f443d5af3042}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\banks\devkit">
+      <UniqueIdentifier>{49fa0b36-7c64-48b2-9f10-28b87c3006ad}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -224,10 +224,10 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="devkit\_sms_manager.c">
-      <Filter>Source Files\devkit</Filter>
+      <Filter>Source Files\banks\devkit</Filter>
     </ClCompile>
     <ClCompile Include="devkit\_snd_manager.c">
-      <Filter>Source Files\devkit</Filter>
+      <Filter>Source Files\banks\devkit</Filter>
     </ClCompile>
     <ClCompile Include="banks\bank2.c">
       <Filter>Source Files\banks</Filter>

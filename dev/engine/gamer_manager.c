@@ -6,7 +6,7 @@
 #include "input_manager.h"
 #include "sprite_manager.h"
 
-#define SPRITE_TILES_KID	256 + 96
+#define SPRITE_TILES_GAMER	256 + 96
 
 // Global variable.
 struct_gamer_object global_gamer_object;
@@ -19,7 +19,7 @@ void engine_gamer_manager_init()
 	struct_gamer_object *go = &global_gamer_object;
 
 	// Kid images.
-	unsigned char images[] = { 0, 2, 4, 12 };
+	unsigned char images[ NUM_ENTITY_IMAGE * NUM_ENTITY_FRAME ] = { 0, 2, 4, 12 };
 	unsigned char homeX;
 	unsigned char homeY;
 
@@ -185,7 +185,7 @@ unsigned char engine_gamer_manager_direction()
 static void calcd_frame()
 {
 	struct_gamer_object *go = &global_gamer_object;
-	go->calcd = SPRITE_TILES_KID + go->images[ go->image ][ go->frame ];
+	go->calcd = SPRITE_TILES_GAMER + go->images[ go->image ][ go->frame ];
 }
 static void calcd_spots()
 {

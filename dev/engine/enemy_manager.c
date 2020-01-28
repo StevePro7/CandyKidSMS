@@ -5,7 +5,7 @@
 #include "global_manager.h"
 #include "sprite_manager.h"
 
-#define SPRITE_TILES_PRO	256 + 48
+#define SPRITE_TILES_ENEMY	256 + 48
 
 // Global variables.
 struct_enemy_object global_enemy_objects[ MAX_ENEMIES ];
@@ -14,7 +14,7 @@ static void calcd_frame( unsigned char index );
 static void calcd_spots( unsigned char index );
 
 // Methods.
-void engine_enemy_manager_init( unsigned char *homeX, unsigned char *homeY )
+void engine_enemy_manager_init()
 {
 	// Pro images.
 	//unsigned char images[] = { 0, 2, 4, 12 };
@@ -23,16 +23,33 @@ void engine_enemy_manager_init( unsigned char *homeX, unsigned char *homeY )
 	// Suz images.
 	//unsigned char images[] = { 28, 36, 38, 40 };
 
-
 	struct_enemy_object *eo;
+
+	unsigned char images[ NUM_ENTITY_IMAGE * NUM_ENTITY_FRAME * MAX_ENEMIES ] =
+	{
+		0, 2, 4, 12,
+		14, 16, 24, 26,
+		28, 36, 38, 40,
+	};
+
+	unsigned char image;
+	unsigned char frame;
+	unsigned char homeX;
+	unsigned char homeY;
+
+
 	unsigned char idx;
 	for( idx = 0; idx < MAX_ENEMIES; idx++ )
 	{
 		eo = &global_enemy_objects[ idx ];
-		eo->homeX = homeX[ idx ];
-		eo->homeY = homeY[ idx ];
-		eo->tileX = homeX[ idx ];
-		eo->tileY = homeY[ idx ];
+
+		homeX = board_homeX[ idx ];
+		homeY = board_homeY[ idx ];
+
+		eo->homeX = homeX;
+		eo->homeY = homeY;
+		eo->tileX = homeX;
+		eo->tileY = homeY;
 		//eo->posnX = 0;
 		//eo->posnY = 0;
 		eo->tileX = 0;
@@ -48,6 +65,21 @@ void engine_enemy_manager_init( unsigned char *homeX, unsigned char *homeY )
 
 		eo->image = 0;
 		eo->frame = 0;
+
+		frame = idx * NUM_ENTITY_IMAGE * NUM_ENTITY_FRAME + 0;
+
+		image = images[ frame + 0 ];
+		eo->images[ 0 ][ 0 ] = image;
+
+		image = images[ frame + 1 ];
+		eo->images[ 0 ][ 1 ] = image;
+
+		image = images[ frame + 2 ];
+		eo->images[ 1 ][ 0 ] = image;
+
+		image = images[ frame + 3 ];
+		eo->images[ 1 ][ 1 ] = image;
+
 		calcd_frame( idx );
 		calcd_spots( idx );
 	}
@@ -163,7 +195,8 @@ void engine_enemy_manager_draw()
 static void calcd_frame( unsigned char index )
 {
 	struct_enemy_object *eo = &global_enemy_objects[ index ];
-	eo->calcd = SPRITE_TILES_PRO + eo->image * 8 + eo->frame * 4;
+	//eo->calcd = SPRITE_TILES_ENEMY + eo->image * 8 + eo->frame * 4;
+	eo->calcd = SPRITE_TILES_ENEMY + eo->images[ eo->image ][ eo->frame ];
 }
 static void calcd_spots( unsigned char index )
 {

@@ -45,4 +45,7 @@
 #define MAX_CMD_TYPE			32
 #define MAX_COMMANDS			256	// 255
 
+#define NUM_ENTITY_IMAGE		2
+#define NUM_ENTITY_FRAME		2
+
 #endif//_GLOBAL_MANAGER_H_

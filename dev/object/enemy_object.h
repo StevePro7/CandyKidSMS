@@ -1,6 +1,8 @@
 #ifndef _ENEMY_OBJECT_H_
 #define _ENEMY_OBJECT_H_
 
+#include "..\engine\global_manager.h"
+
 typedef struct tag_struct_enemy_object
 {
 	unsigned char posnX;
@@ -19,6 +21,7 @@ typedef struct tag_struct_enemy_object
 	unsigned int image;
 	unsigned char frame;
 	unsigned int calcd;
+	unsigned char images[ NUM_ENTITY_IMAGE ][ NUM_ENTITY_FRAME ];
 
 } struct_enemy_object;
 

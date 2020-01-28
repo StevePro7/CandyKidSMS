@@ -1,5 +1,6 @@
 #include "load_screen.h"
 #include "..\engine\board_manager.h"
+#include "..\engine\enemy_manager.h"
 #include "..\engine\enum_manager.h"
 #include "..\engine\font_manager.h"
 #include "..\engine\hack_manager.h"
@@ -18,6 +19,7 @@ void screen_load_screen_load()
 
 	engine_board_manager_init();
 	engine_gamer_manager_init();
+	engine_enemy_manager_init();
 
 	//engine_board_manager_draw_full();
 	//engine_board_manager_draw_edge();

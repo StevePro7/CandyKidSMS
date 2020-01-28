@@ -8,7 +8,7 @@
 extern struct_enemy_object global_enemy_objects[ MAX_ENEMIES ];
 
 // Methods.
-void engine_enemy_manager_init( unsigned char *homeX, unsigned char *homeY );
+void engine_enemy_manager_init();
 void engine_enemy_manager_load();
 void engine_enemy_manager_update();
 void engine_enemy_manager_draw();

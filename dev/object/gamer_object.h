@@ -1,6 +1,8 @@
 #ifndef _GAMER_OBJECT_H_
 #define _GAMER_OBJECT_H_
 
+#include "..\engine\global_manager.h"
+
 typedef struct tag_struct_gamer_object
 {
 	int posnX;
@@ -17,7 +19,7 @@ typedef struct tag_struct_gamer_object
 	unsigned int image;
 	unsigned char frame;
 	unsigned int calcd;
-	unsigned char images[ 2 ][ 2 ];
+	unsigned char images[ NUM_ENTITY_IMAGE ][ NUM_ENTITY_FRAME ];
 
 } struct_gamer_object;
 
