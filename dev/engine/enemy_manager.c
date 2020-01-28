@@ -50,10 +50,6 @@ void engine_enemy_manager_init()
 		eo->homeY = homeY;
 		eo->tileX = homeX;
 		eo->tileY = homeY;
-		//eo->posnX = 0;
-		//eo->posnY = 0;
-		eo->tileX = 0;
-		eo->tileY = 0;
 		eo->delay = 10;		// TODO hardcoded - inject!
 		eo->timer = 0;
 		eo->delta = 0;
@@ -185,7 +181,7 @@ void engine_enemy_manager_draw()
 	unsigned char idx;
 	//for( idx = 0; idx < MAX_ENEMIES; idx++ )
 	//TODO revert to draw all enemies
-	for( idx = 0; idx < 1; idx++ )
+	for( idx = 0; idx < MAX_ENEMIES; idx++ )
 	{
 		eo = &global_enemy_objects[ idx ];
 		engine_sprite_manager_draw_entity( eo->posnX, eo->posnY, eo->calcd );

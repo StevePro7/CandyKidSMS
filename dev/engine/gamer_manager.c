@@ -31,7 +31,7 @@ void engine_gamer_manager_init()
 	go->tileY = homeY;
 	go->delta = 0;
 	go->total = 0;
-	go->speed = 1;
+	go->speed = 0;
 
 	go->direction = direction_type_none;
 	go->lifecycle = lifecycle_type_idle;
