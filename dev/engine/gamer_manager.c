@@ -46,8 +46,9 @@ void engine_gamer_manager_init()
 	calcd_frame();
 	calcd_spots();
 
-	engine_font_manager_draw_data( go->posnX, 30, 2 );
-	engine_font_manager_draw_data( go->posnY, 30, 3 );
+	//TODO delete
+	//engine_font_manager_draw_data( go->posnX, 30, 2 );
+	//engine_font_manager_draw_data( go->posnY, 30, 3 );
 }
 
 void engine_gamer_manager_update()
