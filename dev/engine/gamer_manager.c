@@ -188,7 +188,8 @@ unsigned char engine_gamer_manager_direction()
 	engine_font_manager_draw_data( go->posnX, 20, 7 );
 	engine_font_manager_draw_data( go->posnY, 20, 8 );
 
-	return direction_type_upxx;
+	//return direction_type_upxx;
+	return direction_type_left;
 	//return direction;
 }
 

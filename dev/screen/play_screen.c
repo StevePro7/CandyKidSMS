@@ -98,8 +98,8 @@ void screen_play_screen_update( unsigned char *screen_type )
 	gamer_direction = engine_gamer_manager_direction();
 	if( direction_type_none != gamer_direction )
 	{
-		engine_font_manager_draw_text( "UP", 10, 15 );
-		go->posnY--;
+		engine_font_manager_draw_text( "LEFT", 10, 15 );
+		go->posnX--;
 	}
 
 	first_time = 0;
