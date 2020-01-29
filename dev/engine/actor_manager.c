@@ -21,8 +21,8 @@ void engine_actor_manager_exec_pro_mover( unsigned int args )
 }
 void engine_actor_manager_exec_adi_mover( unsigned int args )
 {
-	//engine_font_manager_draw_text( "EXEC MOVE", 2, 14 );
-	//engine_font_manager_draw_data( args, 17, 14 );
+	engine_font_manager_draw_text( "EXEC MOVE", 2, 14 );
+	engine_font_manager_draw_data( args, 17, 14 );
 	//engine_gamer_manager_move( args );
 }
 void engine_actor_manager_exec_suz_mover( unsigned int args )

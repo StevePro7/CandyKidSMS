@@ -87,6 +87,12 @@ void screen_play_screen_update( unsigned char *screen_type )
 			engine_font_manager_draw_data( frame, 17, 17 );
 			engine_command_manager_add( frame, command_type_kid_mover, direction_type_rght );
 		}
+		/*gamer_direction = engine_gamer_manager_direction();
+		if( direction_type_none != gamer_direction )
+		{
+			engine_font_manager_draw_data( gamer_direction, 10, 15 );
+			engine_command_manager_add( frame, command_type_kid_mover, gamer_direction );
+		}*/
 	}
 	else if( direction_type_none != go->direction && lifecycle_type_move == go->lifecycle )
 	{

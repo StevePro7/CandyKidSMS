@@ -168,8 +168,7 @@ unsigned char engine_gamer_manager_direction()
 
 	unsigned char input;
 
-	//input = engine_input_manager_move_up();
-	input = engine_input_manager_hold_up();
+	input = engine_input_manager_move_up();
 	if( input )
 	{
 		direction = direction_type_upxx;
@@ -177,7 +176,6 @@ unsigned char engine_gamer_manager_direction()
 	else
 	{
 		input = engine_input_manager_move_down();
-		//input = engine_input_manager_hold_down();
 		if( input )
 		{
 			direction = direction_type_down;
@@ -185,7 +183,6 @@ unsigned char engine_gamer_manager_direction()
 		else
 		{
 			input = engine_input_manager_move_left();
-			//input = engine_input_manager_hold_left();
 			if( input )
 			{
 				direction = direction_type_left;
@@ -193,7 +190,6 @@ unsigned char engine_gamer_manager_direction()
 			else
 			{
 				input = engine_input_manager_move_right();
-				//input = engine_input_manager_hold_right();
 				if( input )
 				{
 					direction = direction_type_rght;
@@ -201,9 +197,6 @@ unsigned char engine_gamer_manager_direction()
 			}
 		}
 	}
-
-	//engine_font_manager_draw_data( go->posnX, 20, 7 );
-	engine_font_manager_draw_data( direction, 12, 18 );
 
 	return direction;
 }
