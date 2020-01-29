@@ -7,6 +7,7 @@
 #include "..\engine\font_manager.h"
 #include "..\engine\frame_manager.h"
 #include "..\engine\gamer_manager.h"
+#include "..\engine\level_manager.h"
 #include "..\engine\storage_manager.h"
 #include "..\engine\sprite_manager.h"
 #include "..\engine\tile_manager.h"
@@ -21,30 +22,25 @@ static unsigned char first_time;
 
 void screen_play_screen_load()
 {
-	unsigned char test;
+	engine_command_manager_init();
+	engine_frame_manager_init();
+	engine_delay_manager_load( 10 );
 
 	engine_board_manager_init();
 	engine_gamer_manager_init();
+	engine_enemy_manager_init();
 
-	engine_command_manager_init();
-	engine_delay_manager_load( 5 );
-
-	engine_font_manager_draw_text( "PLAY SCREEN!!!!", 4, 0 );
 	engine_frame_manager_draw();
 	engine_delay_manager_draw();
+
+	engine_board_manager_debugger();
+	engine_level_manager_init_board();
+	engine_level_manager_init_exits();
+
+	engine_level_manager_load_level( 0, 0 );
+	engine_level_manager_draw_level();
+
 	first_time = 1;
-
-	test = engine_storage_manager_available();
-	if( test )
-	{
-		engine_storage_manager_read();
-	}
-
-	engine_tile_manager_draw_trees( tree_type_avoid, 4, 2 );	engine_tile_manager_draw_trees( tree_type_avoid, 6, 2 );	engine_tile_manager_draw_trees( tree_type_avoid, 8, 2 );
-	engine_tile_manager_draw_trees( tree_type_avoid, 10, 4 );	engine_tile_manager_draw_trees( tree_type_avoid, 10, 6 );	engine_tile_manager_draw_trees( tree_type_avoid, 8, 8 );
-	engine_tile_manager_draw_trees( tree_type_avoid, 6, 8 );
-
-	engine_font_manager_draw_data( test, 22, 7 );
 }
 
 void screen_play_screen_update( unsigned char *screen_type )
@@ -54,12 +50,13 @@ void screen_play_screen_update( unsigned char *screen_type )
 	unsigned char gamer_direction = direction_type_none;
 
 	unsigned char proceed;
-	unsigned char input[ 5 ];
+	//unsigned char input;
 	unsigned int frame;
 	frame = fo->frame_count;
 
 	// Draw sprites first.
 	engine_gamer_manager_draw();
+	engine_enemy_manager_draw();
 
 	engine_frame_manager_draw();
 	engine_delay_manager_draw();
@@ -79,60 +76,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 	// Continue...
 	frame = fo->frame_count;
 
-	// Move gamer.
-	if( direction_type_none == go->direction && lifecycle_type_idle == go->lifecycle )
-	{
-		input[ 0 ] = 4 == frame;
-		if( input[ 0 ] )
-		{
-			//engine_gamer_manager_move( direction_type_rght );
-			engine_command_manager_add( frame, command_type_move, direction_type_rght );
-		}
-		input[ 1 ] = 24 == frame;
-		if( input[ 1 ] )
-		{
-			engine_command_manager_add( frame, command_type_move, direction_type_down );
-		}
-		input[ 2 ] = 64 == frame;
-		if( input[ 2 ] )
-		{
-			engine_command_manager_add( frame, command_type_move, direction_type_left );
-		}
-	}
-	else if( direction_type_none != go->direction && lifecycle_type_move == go->lifecycle )
-	{
-		//  warning 110: conditional flow changed by optimizer: so said EVELYN the modified DOG
-		engine_gamer_manager_update();
-	}
-	if( direction_type_none != go->direction && lifecycle_type_idle == go->lifecycle )
-	{
-		// Check collision.
-		engine_gamer_manager_stop();
-	}
-
-	// Finish
-	input[ 3 ] = 100 == frame;
-	if( input[ 3 ] )
-	{
-		engine_command_manager_add( frame, command_type_session, 0 );
-	}
-
-	// Execute all commands for this frame.
-	engine_command_manager_execute( frame );
-
-	if( input[ 3 ] )
-	{
-		engine_frame_manager_draw();
-
-		engine_font_manager_draw_text( "SAVING", 20, 18 );
-		engine_command_manager_save();
-		engine_storage_manager_write();
-		engine_font_manager_draw_text( "SAVED!!!!", 20, 19 );
-
-		//*screen_type = screen_type_test;
-		*screen_type = screen_type_intro;
-		return;
-	}
+	
 
 	first_time = 0;
 	*screen_type = screen_type_play;

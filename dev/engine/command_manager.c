@@ -88,19 +88,11 @@ unsigned char engine_command_manager_type( unsigned int frame, unsigned char com
 
 void engine_command_manager_add( unsigned int frame, unsigned char command_type, unsigned int args )
 {
-	unsigned char frame_bank;
-	unsigned char frame_main;
-	unsigned char shift_bank;
-
 	// IMPORTANT if an_command is an unsigned char then this new code will fail!
 	unsigned int an_command;
+	an_command = engine_command_manager_type( frame, command_type );
 
-	frame_bank = frame / MAX_BYTE_SIZE;
-	frame_main = frame % MAX_BYTE_SIZE;
-	shift_bank = frame_bank << FRAME_BANK_SHIFT;
-	an_command = shift_bank | command_type;
-
-	new_frame[ add_index ] = frame_main;
+	new_frame[ add_index ] = frame % MAX_BYTE_SIZE; ;// frame_main;
 	new_command[ add_index ] = an_command;
 	new_args[ add_index ] = args;
 	add_index++;
