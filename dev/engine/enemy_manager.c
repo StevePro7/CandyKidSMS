@@ -40,7 +40,7 @@ void engine_enemy_manager_init()
 		eo->homeY = homeY;
 		eo->tileX = homeX;
 		eo->tileY = homeY;
-		eo->delay = 10;		// TODO hardcoded - inject!
+		eo->delay = 8;		// TODO hardcoded - inject!
 		eo->timer = 0;
 		eo->delta = 0;
 		eo->total = 0;
@@ -90,75 +90,71 @@ void engine_enemy_manager_load()
 void engine_enemy_manager_update()
 {
 	struct_enemy_object *eo = &global_enemy_objects[ actor_type_pro ];
-	if( lifecycle_type_idle == eo->lifecycle )
+	if( lifecycle_type_move != eo->lifecycle )
 	{
 		return;
 	}
 
-	if( lifecycle_type_move == eo->lifecycle )
+	eo->timer++;
+	if( eo->timer < eo->delay )
 	{
-		eo->timer++;
-		if( eo->timer <= eo->delay )
-		{
-			return;
-		}
+		return;
+	}
 
-		eo->timer = 0;
-		eo->delta += eo->speed;
-		eo->total += eo->speed;
+	eo->timer = 0;
+	eo->delta += eo->speed;
+	eo->total += eo->speed;
 
+	if( direction_type_upxx == eo->direction )
+	{
+		eo->posnY -= eo->speed;
+	}
+	/*else if( direction_type_down == eo->direction )
+	{
+		eo->posnY += eo->speed;
+	}
+	else if( direction_type_left == eo->direction )
+	{
+		eo->posnX -= eo->speed;
+	}
+	else if( direction_type_rght == eo->direction )
+	{
+		eo->posnX += eo->speed;
+	}*/
+
+	if( eo->total >= TILE_SIZE )
+	{
 		if( direction_type_upxx == eo->direction )
 		{
-			eo->posnY -= eo->speed;
+			eo->tileY--;
 		}
 		/*else if( direction_type_down == eo->direction )
 		{
-			eo->posnY += eo->speed;
+			eo->tileY++;
 		}
 		else if( direction_type_left == eo->direction )
 		{
-			eo->posnX -= eo->speed;
+			eo->tileX--;
 		}
 		else if( direction_type_rght == eo->direction )
 		{
-			eo->posnX += eo->speed;
+			eo->tileX++;
 		}*/
 
-		if( eo->total >= TILE_SIZE )
-		{
-			if( direction_type_upxx == eo->direction )
-			{
-				eo->tileY--;
-			}
-			/*else if( direction_type_down == eo->direction )
-			{
-				eo->tileY++;
-			}
-			else if( direction_type_left == eo->direction )
-			{
-				eo->tileX--;
-			}
-			else if( direction_type_rght == eo->direction )
-			{
-				eo->tileX++;
-			}*/
+		eo->posnX = eo->tileX * TILE_SIZE;
+		eo->posnY = eo->tileY * TILE_SIZE;
 
-			eo->posnX = eo->tileX * TILE_SIZE;
-			eo->posnY = eo->tileY * TILE_SIZE;
+		eo->direction = direction_type_none;
+		eo->lifecycle = lifecycle_type_idle;
+		eo->delta = 0;
+		eo->total = 0;
+	}
 
-			eo->direction = direction_type_none;
-			eo->lifecycle = lifecycle_type_idle;
-			eo->delta = 0;
-			eo->total = 0;
-		}
-
-		if( eo->delta > TILE_HALF )
-		{
-			eo->frame = 1 - eo->frame;
-			eo->delta = 0;
-			calcd_frame( actor_type_pro );
-		}
-
+	if( eo->delta > TILE_HALF )
+	{
+		eo->frame = 1 - eo->frame;
+		eo->delta = 0;
+		calcd_frame( actor_type_pro );
 	}
 }
 

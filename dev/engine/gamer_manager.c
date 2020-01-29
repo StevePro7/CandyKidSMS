@@ -29,9 +29,13 @@ void engine_gamer_manager_init()
 	go->homeY = homeY;
 	go->tileX = homeX;
 	go->tileY = homeY;
+	// Delay:	1, 2, 4, 8
+	go->delay = 1;
+	go->timer = 0;
 	go->delta = 0;
 	go->total = 0;
-	go->speed = 0;
+	go->speed = 1;
+	// Speed:	1, 2, 4, 8
 
 	go->direction = direction_type_none;
 	go->lifecycle = lifecycle_type_idle;
@@ -54,6 +58,18 @@ void engine_gamer_manager_init()
 void engine_gamer_manager_update()
 {
 	struct_gamer_object *go = &global_gamer_object;
+	if( lifecycle_type_move != go->lifecycle )
+	{
+		return;
+	}
+
+	go->timer++;
+	if( go->timer < go->delay )
+	{
+		return;
+	}
+
+	go->timer = 0;
 	go->delta += go->speed;
 	go->total += go->speed;
 
@@ -151,6 +167,7 @@ unsigned char engine_gamer_manager_direction()
 	unsigned char direction = direction_type_none;
 
 	unsigned char input;
+
 	//input = engine_input_manager_move_up();
 	input = engine_input_manager_hold_up();
 	if( input )
@@ -159,24 +176,24 @@ unsigned char engine_gamer_manager_direction()
 	}
 	else
 	{
-		//input = engine_input_manager_move_down();
-		input = engine_input_manager_hold_down();
+		input = engine_input_manager_move_down();
+		//input = engine_input_manager_hold_down();
 		if( input )
 		{
 			direction = direction_type_down;
 		}
 		else
 		{
-			//input = engine_input_manager_move_left();
-			input = engine_input_manager_hold_left();
+			input = engine_input_manager_move_left();
+			//input = engine_input_manager_hold_left();
 			if( input )
 			{
 				direction = direction_type_left;
 			}
 			else
 			{
-				//input = engine_input_manager_move_right();
-				input = engine_input_manager_hold_right();
+				input = engine_input_manager_move_right();
+				//input = engine_input_manager_hold_right();
 				if( input )
 				{
 					direction = direction_type_rght;
@@ -185,12 +202,10 @@ unsigned char engine_gamer_manager_direction()
 		}
 	}
 
-	engine_font_manager_draw_data( go->posnX, 20, 7 );
-	engine_font_manager_draw_data( go->posnY, 20, 8 );
+	//engine_font_manager_draw_data( go->posnX, 20, 7 );
+	engine_font_manager_draw_data( direction, 12, 18 );
 
-	//return direction_type_upxx;
-	return direction_type_left;
-	//return direction;
+	return direction;
 }
 
 static void calcd_frame()

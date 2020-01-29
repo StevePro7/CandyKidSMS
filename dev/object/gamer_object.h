@@ -11,6 +11,8 @@ typedef struct tag_struct_gamer_object
 	unsigned char homeY;
 	unsigned char tileX;
 	unsigned char tileY;
+	unsigned char delay;
+	unsigned char timer;
 	unsigned char delta;
 	unsigned char total;
 	unsigned char speed;

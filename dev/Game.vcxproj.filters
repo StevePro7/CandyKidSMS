@@ -185,9 +185,6 @@
     <ClInclude Include="object\enemy_object.h">
       <Filter>Header Files\object</Filter>
     </ClInclude>
-    <ClInclude Include="object\event_object.h">
-      <Filter>Header Files\object</Filter>
-    </ClInclude>
     <ClInclude Include="object\frame_object.h">
       <Filter>Header Files\object</Filter>
     </ClInclude>
@@ -308,9 +305,6 @@
       <Filter>Source Files\object</Filter>
     </ClCompile>
     <ClCompile Include="object\enemy_object.c">
-      <Filter>Source Files\object</Filter>
-    </ClCompile>
-    <ClCompile Include="object\event_object.c">
       <Filter>Source Files\object</Filter>
     </ClCompile>
     <ClCompile Include="object\frame_object.c">

@@ -24,7 +24,7 @@ void screen_play_screen_load()
 {
 	engine_command_manager_init();
 	engine_frame_manager_init();
-	engine_delay_manager_load( 60 );
+	engine_delay_manager_load( 0 );
 
 	engine_board_manager_init();
 	engine_gamer_manager_init();
@@ -59,7 +59,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 
 	// Draw sprites first.
 	engine_gamer_manager_draw();
-	engine_enemy_manager_draw();
+	//engine_enemy_manager_draw();
 
 	engine_frame_manager_draw();
 	engine_delay_manager_draw();
@@ -80,30 +80,36 @@ void screen_play_screen_update( unsigned char *screen_type )
 	frame = fo->frame_count;
 
 	// Move gamer.
-	//if( direction_type_none == go->direction && lifecycle_type_idle == go->lifecycle )
-	//{
-
-	//}
-	//else if( direction_type_none != go->direction && lifecycle_type_move == go->lifecycle )
-	//{
-	//	//  warning 110: conditional flow changed by optimizer: so said EVELYN the modified DOG
-	//	engine_gamer_manager_update();
-	//}
-	//if( direction_type_none != go->direction && lifecycle_type_idle == go->lifecycle )
-	//{
-	//	// Check collision.
-	//	engine_gamer_manager_stop();
-	//}
+	if( direction_type_none == go->direction && lifecycle_type_idle == go->lifecycle )
+	{
+		if( 0 == frame )
+		{
+			engine_font_manager_draw_data( frame, 17, 17 );
+			engine_command_manager_add( frame, command_type_kid_mover, direction_type_rght );
+		}
+	}
+	else if( direction_type_none != go->direction && lifecycle_type_move == go->lifecycle )
+	{
+		//  warning 110: conditional flow changed by optimizer: so said EVELYN the modified DOG
+		engine_gamer_manager_update();
+	}
+	if( direction_type_none != go->direction && lifecycle_type_idle == go->lifecycle )
+	{
+		// Check collision.
+		engine_font_manager_draw_data( frame, 17, 18 );
+		engine_gamer_manager_stop();
+	}
 
 	// Execute all commands for this frame.
-	//engine_command_manager_execute( frame );
+	engine_command_manager_execute( frame );
 
-	gamer_direction = engine_gamer_manager_direction();
+
+	/*gamer_direction = engine_gamer_manager_direction();
 	if( direction_type_none != gamer_direction )
 	{
-		engine_font_manager_draw_text( "LEFT", 10, 15 );
-		go->posnX--;
-	}
+		engine_font_manager_draw_text( "RIGHT", 10, 15 );
+		go->posnX++;
+	}*/
 
 	first_time = 0;
 	*screen_type = screen_type_play;

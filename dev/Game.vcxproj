@@ -55,7 +55,6 @@
     <ClInclude Include="object\command_object.h" />
     <ClInclude Include="object\delay_object.h" />
     <ClInclude Include="object\enemy_object.h" />
-    <ClInclude Include="object\event_object.h" />
     <ClInclude Include="object\frame_object.h" />
     <ClInclude Include="object\gamer_object.h" />
     <ClInclude Include="object\hack_object.h" />
@@ -110,7 +109,6 @@
     <ClCompile Include="object\command_object.c" />
     <ClCompile Include="object\delay_object.c" />
     <ClCompile Include="object\enemy_object.c" />
-    <ClCompile Include="object\event_object.c" />
     <ClCompile Include="object\frame_object.c" />
     <ClCompile Include="object\gamer_object.c" />
     <ClCompile Include="object\hack_object.c" />
