@@ -34,6 +34,9 @@ void screen_play_screen_load()
 	engine_delay_manager_draw();
 
 	engine_board_manager_debugger();
+	engine_board_manager_debugger();
+	engine_board_manager_side_tile();
+
 	engine_level_manager_init_board();
 	engine_level_manager_init_exits();
 

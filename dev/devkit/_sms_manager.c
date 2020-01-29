@@ -91,6 +91,10 @@ void devkit_SMS_setTile( const unsigned char tile )
 {
 	SMS_setTile( tile );
 }
+void devkit_SMS_setTilePriority( const unsigned char tile )
+{
+	SMS_setTile( tile | TILE_PRIORITY | TILE_USE_SPRITE_PALETTE );
+}
 
 void devkit_SMS_addSprite( unsigned char x, unsigned char y, int tile )
 {

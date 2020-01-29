@@ -133,6 +133,16 @@ void engine_tile_manager_draw_gamer( unsigned char x, unsigned char y )
 	draw_tile( offset, x, y );
 }
 
+void engine_tile_manager_draw_sides( unsigned char x, unsigned char y )
+{
+	const unsigned char *pnt = font_tiles__tilemap__bin;
+
+	devkit_SMS_setNextTileatXY( x + 0, y + 0 );	devkit_SMS_setTilePriority( *pnt );
+	devkit_SMS_setNextTileatXY( x + 1, y + 0 );	devkit_SMS_setTilePriority( *pnt );
+	devkit_SMS_setNextTileatXY( x + 0, y + 1 );	devkit_SMS_setTilePriority( *pnt );
+	devkit_SMS_setNextTileatXY( x + 1, y + 1 ); devkit_SMS_setTilePriority( *pnt );
+}
+
 // Methods used for this main title screen.
 void engine_tile_manager_main_title( unsigned char x, unsigned char y )
 {

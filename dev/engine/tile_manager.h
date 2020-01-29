@@ -12,6 +12,7 @@ void engine_tile_manager_draw_candy( unsigned char type, unsigned char x, unsign
 void engine_tile_manager_draw_bonus( unsigned char type, unsigned char multiplier, unsigned char x, unsigned char y );
 void engine_tile_manager_draw_death( unsigned char type, unsigned char x, unsigned char y );
 void engine_tile_manager_draw_gamer( unsigned char x, unsigned char y );
+void engine_tile_manager_draw_sides( unsigned char x, unsigned char y );
 
 void engine_tile_manager_main_title( unsigned char x, unsigned char y );
 void engine_tile_manager_main_trees( unsigned char type, unsigned char x, unsigned char y );

@@ -55,7 +55,7 @@ void engine_board_manager_draw_full()
 	struct_board_object *bo = &global_board_object;
 	draw_side( TREE_COLS, bo->right2 );
 }
-void engine_board_manager_draw_edge()
+void engine_board_manager_draw_exit()
 {
 	struct_board_object *bo = &global_board_object;
 	draw_gaps( 6, 16, bo->right2 );
@@ -66,10 +66,17 @@ void engine_board_manager_main_full()
 	struct_board_object *bo = &global_board_object;
 	draw_side( SCREEN_TILE_WIDE - 1, bo->right );
 }
-void engine_board_manager_main_edge()
+void engine_board_manager_main_exit()
 {
 	struct_board_object *bo = &global_board_object;
 	draw_gaps( 8, 20, bo->right );
+}
+
+// This is the function that draws opaque tile to hide Kid when moving thru exit.
+void engine_board_manager_side_tile()
+{
+	//engine_tile_manager_main_trees( 1, 0, 6 );
+	engine_tile_manager_draw_sides( 0, 6 );
 }
 
 // TODO - delete!!
