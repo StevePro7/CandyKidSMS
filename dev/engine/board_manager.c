@@ -14,11 +14,10 @@ void engine_board_manager_init()
 {
 	struct_board_object *bo = &global_board_object;
 	unsigned char loop;
-	unsigned char data;
 	unsigned char left = SCREEN_TILE_LEFT * TILE_HALF;
+	int data;
 	signed char offset;
 
-	// TODO correct these positions!
 	for( loop = 0; loop < MAZE_ROWS; loop++ )
 	{
 		offset = loop - 1;

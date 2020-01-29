@@ -9,8 +9,8 @@ typedef struct tag_struct_enemy_object
 	unsigned char posnY;
 	unsigned char homeX;
 	unsigned char homeY;
-	signed char tileX;
-	signed char tileY;
+	unsigned char tileX;
+	unsigned char tileY;
 	unsigned char delay;
 	unsigned char timer;
 	unsigned char delta;

@@ -7,23 +7,23 @@ S _engine_font_manager_draw_text Ref0000
 S .__.ABS. Def0000
 S _engine_font_manager_draw_data Ref0000
 A _CODE size 282 flags 0 addr 0
-S _engine_actor_manager_undo_bank4 Def01AB
-S _engine_actor_manager_undo_speed Def0257
-S _engine_actor_manager_undo_bank5 Def01D6
-S _engine_actor_manager_undo_bank6 Def0201
-S _engine_actor_manager_undo_bank7 Def022C
-S _engine_actor_manager_exec_fire Def0001
-S _engine_actor_manager_undo_fire Def012A
-S _engine_actor_manager_exec_move Def0051
-S _engine_actor_manager_exec_jump Def0029
+S _engine_actor_manager_exec_pro_mover Def0029
+S _engine_actor_manager_exec_adi_speed Def00D8
+S _engine_actor_manager_undo_suz_speed Def0257
+S _engine_actor_manager_exec_kid_speed Def0086
+S _engine_actor_manager_undo_pro_mover Def0155
+S _engine_actor_manager_exec_suz_mover Def005D
+S _engine_actor_manager_undo_adi_speed Def022C
+S _engine_actor_manager_exec_adi_mover Def0051
+S _engine_actor_manager_undo_kid_speed Def01D6
+S _engine_actor_manager_undo_suz_mover Def01AB
 S _engine_actor_manager_update Def0000
-S _engine_actor_manager_undo_move Def0180
-S _engine_actor_manager_undo_jump Def0155
-S _engine_actor_manager_exec_bank4 Def005D
-S _engine_actor_manager_exec_speed Def0101
-S _engine_actor_manager_exec_bank5 Def0086
-S _engine_actor_manager_exec_bank6 Def00AF
-S _engine_actor_manager_exec_bank7 Def00D8
+S _engine_actor_manager_exec_kid_mover Def0001
+S _engine_actor_manager_exec_pro_speed Def00AF
+S _engine_actor_manager_undo_adi_mover Def0180
+S _engine_actor_manager_undo_kid_mover Def012A
+S _engine_actor_manager_undo_pro_speed Def0201
+S _engine_actor_manager_exec_suz_speed Def0101
 A _DATA size 0 flags 0 addr 0
 A _INITIALIZED size 0 flags 0 addr 0
 A _DABS size 0 flags 8 addr 0
