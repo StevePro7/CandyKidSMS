@@ -9,8 +9,8 @@
 
 struct_command_object global_command_object;
 
-static void( *execute[ MAX_CMD_TYPE ] )( unsigned int index );
-static void( *undo[ MAX_CMD_TYPE ] )( unsigned int index );
+static void( *execute[ MAX_CMD_TYPE ] )( unsigned int args );
+static void( *undo[ MAX_CMD_TYPE ] )( unsigned int args );
 
 //static unsigned char frame_index;
 static unsigned char command_index;
@@ -22,10 +22,10 @@ static unsigned int new_frame[ MAX_COMMANDS ];
 static unsigned int new_command[ MAX_COMMANDS ];
 static unsigned int new_args[ MAX_COMMANDS ];
 
-static void empty_exec_command( unsigned int index );
-static void empty_undo_command( unsigned int index );
-static void session_exec_command( unsigned int index );
-static void session_undo_command( unsigned int index );
+static void exec_command_all_empty( unsigned int args );
+static void undo_command_all_empty( unsigned int args );
+static void exec_command_end_gamer( unsigned int args );
+static void undo_command_end_gamer( unsigned int args );
 
 // Public methods.
 void engine_command_manager_init()
@@ -39,28 +39,29 @@ void engine_command_manager_init()
 	}
 
 	// IMPORTANT execute + undo must be same order!!
-	execute[ command_type_empty ] = empty_exec_command;
-	execute[ command_type_fire ] = engine_actor_manager_exec_fire;
-	execute[ command_type_jump ] = engine_actor_manager_exec_jump;
-	execute[ command_type_move ] = engine_actor_manager_exec_move;
-	execute[ command_type_bank4 ] = engine_actor_manager_exec_bank4;
-	execute[ command_type_bank5 ] = engine_actor_manager_exec_bank5;
-	execute[ command_type_bank6 ] = engine_actor_manager_exec_bank6;
-	execute[ command_type_bank7 ] = engine_actor_manager_exec_bank7;
-	execute[ command_type_speed ] = engine_actor_manager_exec_speed;
+	execute[ command_type_all_empty ] = exec_command_all_empty;
+	execute[ command_type_kid_mover ] = engine_actor_manager_exec_kid_mover;
+	execute[ command_type_pro_mover ] = engine_actor_manager_exec_pro_mover;
+	execute[ command_type_adi_mover ] = engine_actor_manager_exec_adi_mover;
+	execute[ command_type_suz_mover ] = engine_actor_manager_exec_suz_mover;
 
-	execute[ command_type_session ] = session_exec_command;
+	execute[ command_type_kid_speed ] = engine_actor_manager_exec_kid_speed;
+	execute[ command_type_pro_speed ] = engine_actor_manager_exec_pro_speed;
+	execute[ command_type_adi_speed ] = engine_actor_manager_exec_adi_speed;
+	execute[ command_type_suz_speed ] = engine_actor_manager_exec_suz_speed;
+	execute[ command_type_end_gamer ] = exec_command_end_gamer;
 
-	undo[ command_type_empty ] = empty_undo_command;
-	undo[ command_type_fire ] = engine_actor_manager_undo_fire;
-	undo[ command_type_jump ] = engine_actor_manager_undo_jump;
-	undo[ command_type_move ] = engine_actor_manager_undo_move;
-	undo[ command_type_bank4 ] = engine_actor_manager_undo_bank4;
-	undo[ command_type_bank5 ] = engine_actor_manager_undo_bank5;
-	undo[ command_type_bank6 ] = engine_actor_manager_undo_bank6;
-	undo[ command_type_bank7 ] = engine_actor_manager_undo_bank7;
-	undo[ command_type_speed ] = engine_actor_manager_undo_speed;
-	undo[ command_type_session ] = session_undo_command;
+	undo[ command_type_all_empty ] = undo_command_all_empty;
+	undo[ command_type_kid_mover ] = engine_actor_manager_undo_kid_mover;
+	undo[ command_type_pro_mover ] = engine_actor_manager_undo_pro_mover;
+	undo[ command_type_adi_mover ] = engine_actor_manager_undo_adi_mover;
+	undo[ command_type_suz_mover ] = engine_actor_manager_undo_suz_mover;
+
+	undo[ command_type_kid_speed ] = engine_actor_manager_undo_kid_speed;
+	undo[ command_type_pro_speed ] = engine_actor_manager_undo_pro_speed;
+	undo[ command_type_adi_speed ] = engine_actor_manager_undo_adi_speed;
+	undo[ command_type_suz_speed ] = engine_actor_manager_undo_suz_speed;
+	undo[ command_type_end_gamer ] = undo_command_end_gamer;
 
 	//frame_index = 0;
 	command_index = 0;
@@ -133,7 +134,7 @@ void engine_command_manager_execute( unsigned int frame )
 		command_main = new_command[ command_index ];
 		command = command_main & FRAME_MASK_SHIFT;
 
-		if( command_type_empty == command )
+		if( command_type_all_empty == command )
 		{
 			break;
 		}
@@ -197,7 +198,7 @@ void engine_command_manager_undo( unsigned int frame )
 		command_main = new_command[ command_index ];
 		command = command_main & FRAME_MASK_SHIFT;
 
-		if( command_type_empty == command )
+		if( command_type_all_empty == command )
 		{
 			break;
 		}
@@ -275,19 +276,19 @@ unsigned int engine_command_manager_align_undo()
 	return undo_frame;
 }
 
-static void empty_exec_command( unsigned int index )
+static void exec_command_all_empty( unsigned int args )
 {
-	index = 0;
+	args = 0;
 }
-static void empty_undo_command( unsigned int index )
+static void undo_command_all_empty( unsigned int args )
 {
-	index = 0;
+	args = 0;
 }
-static void session_exec_command( unsigned int index )
+static void exec_command_end_gamer( unsigned int args )
 {
-	index = 0;
+	args = 0;
 }
-static void session_undo_command( unsigned int index )
+static void undo_command_end_gamer( unsigned int args )
 {
-	index = 0;
+	args = 0;
 }

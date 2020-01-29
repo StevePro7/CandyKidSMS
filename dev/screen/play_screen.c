@@ -76,7 +76,24 @@ void screen_play_screen_update( unsigned char *screen_type )
 	// Continue...
 	frame = fo->frame_count;
 
-	
+	// Move gamer.
+	if( direction_type_none == go->direction && lifecycle_type_idle == go->lifecycle )
+	{
+
+	}
+	else if( direction_type_none != go->direction && lifecycle_type_move == go->lifecycle )
+	{
+		//  warning 110: conditional flow changed by optimizer: so said EVELYN the modified DOG
+		engine_gamer_manager_update();
+	}
+	if( direction_type_none != go->direction && lifecycle_type_idle == go->lifecycle )
+	{
+		// Check collision.
+		engine_gamer_manager_stop();
+	}
+
+	// Execute all commands for this frame.
+	engine_command_manager_execute( frame );
 
 	first_time = 0;
 	*screen_type = screen_type_play;
