@@ -3,6 +3,8 @@
 #include "global_manager.h"
 #include "tile_manager.h"
 
+#define TOP_EXIT_Y		6
+#define BOT_EXIT_Y		16
 // Global variable.
 struct_board_object global_board_object;
 
@@ -58,7 +60,7 @@ void engine_board_manager_draw_full()
 void engine_board_manager_draw_exit()
 {
 	struct_board_object *bo = &global_board_object;
-	draw_gaps( 6, 16, bo->right2 );
+	draw_gaps( TOP_EXIT_Y, BOT_EXIT_Y, bo->right2 );
 }
 
 void engine_board_manager_main_full()
@@ -72,11 +74,14 @@ void engine_board_manager_main_exit()
 	draw_gaps( 8, 20, bo->right );
 }
 
-// This is the function that draws opaque tile to hide Kid when moving thru exit.
+// This is the function that draws opaque tile to hide Kid when moving thru exit!
 void engine_board_manager_side_tile()
 {
-	//engine_tile_manager_main_trees( 1, 0, 6 );
-	engine_tile_manager_draw_sides( 0, 6 );
+	engine_tile_manager_draw_sides( SCREEN_TILE_LEFT - 2, TOP_EXIT_Y );
+	engine_tile_manager_draw_sides( SCREEN_TILE_LEFT - 2, BOT_EXIT_Y );
+
+	engine_tile_manager_draw_sides( TREE_COLS * 2 + SCREEN_TILE_LEFT, BOT_EXIT_Y );
+	engine_tile_manager_draw_sides( TREE_COLS * 2 + SCREEN_TILE_LEFT, TOP_EXIT_Y );
 }
 
 // TODO - delete!!
@@ -87,7 +92,7 @@ void engine_board_manager_debugger()
 
 	unsigned char spot[] = { 1, 2, 4, 7, 9, 10 };
 	unsigned char loop;
-	for( loop = 0; loop < 2; loop++ )
+	for( loop = 0; loop < 6; loop++ )
 	{
 		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + spot[ loop ] * 2, 0 );
 		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + spot[ loop ] * 2, 22 );
@@ -142,8 +147,8 @@ static void draw_gaps( unsigned char left, unsigned char midd, unsigned char rig
 	engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + midd, bo->bottom );
 
 	// Hard code top and bottom exits as they never move!
-	engine_tile_manager_draw_blank( bo->left, 6 );
-	engine_tile_manager_draw_blank( bo->left, 16 );
-	engine_tile_manager_draw_blank( right, 6 );
-	engine_tile_manager_draw_blank( right, 16 );
+	engine_tile_manager_draw_blank( bo->left, TOP_EXIT_Y );
+	engine_tile_manager_draw_blank( bo->left, BOT_EXIT_Y );
+	engine_tile_manager_draw_blank( right, TOP_EXIT_Y );
+	engine_tile_manager_draw_blank( right, BOT_EXIT_Y );
 }
