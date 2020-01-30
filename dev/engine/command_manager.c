@@ -4,28 +4,28 @@
 #include "font_manager.h"
 #include "global_manager.h"
 
+// TODO clean up as won't be necc.
 #define FRAME_BANK_SHIFT	5
 #define FRAME_MASK_SHIFT	0x1F;
 
 struct_command_object global_command_object;
 
-static void( *execute[ MAX_CMD_TYPE ] )( unsigned int args );
-static void( *undo[ MAX_CMD_TYPE ] )( unsigned int args );
+static void( *execute[ MAX_CMD_TYPE ] )( unsigned char args );
+static void( *undo[ MAX_CMD_TYPE ] )( unsigned char args );
 
-//static unsigned char frame_index;
 static unsigned char command_index;
 static unsigned char add_index;
 static unsigned char exec_index;
 static unsigned char undo_index;
 
 static unsigned int new_frame[ MAX_COMMANDS ];
-static unsigned int new_command[ MAX_COMMANDS ];
-static unsigned int new_args[ MAX_COMMANDS ];
+static unsigned char new_command[ MAX_COMMANDS ];
+static unsigned char new_args[ MAX_COMMANDS ];
 
-static void exec_command_all_empty( unsigned int args );
-static void undo_command_all_empty( unsigned int args );
-static void exec_command_end_gamer( unsigned int args );
-static void undo_command_end_gamer( unsigned int args );
+static void exec_command_all_empty( unsigned char args );
+static void undo_command_all_empty( unsigned char args );
+static void exec_command_end_gamer( unsigned char args );
+static void undo_command_end_gamer( unsigned char args );
 
 // Public methods.
 void engine_command_manager_init()
@@ -34,7 +34,7 @@ void engine_command_manager_init()
 	for( idx = 0; idx < MAX_COMMANDS; idx++ )
 	{
 		new_frame[ idx ] = 0;
-		new_command[ idx ] = 0;
+		new_command[ idx ] = ( unsigned char ) INVALID_INDEX;
 		new_args[ idx ] = 0;
 	}
 
@@ -63,7 +63,6 @@ void engine_command_manager_init()
 	undo[ command_type_suz_speed ] = engine_actor_manager_undo_suz_speed;
 	undo[ command_type_end_gamer ] = undo_command_end_gamer;
 
-	//frame_index = 0;
 	command_index = 0;
 	add_index = 0;
 	exec_index = 0;
@@ -87,74 +86,58 @@ unsigned char engine_command_manager_type( unsigned int frame, unsigned char com
 	return an_command;
 }
 
-void engine_command_manager_add( unsigned int frame, unsigned char command_type, unsigned int args )
+void engine_command_manager_add( unsigned int frame, unsigned char command_type, unsigned char args )
 {
-	// IMPORTANT if an_command is an unsigned char then this new code will fail!
-	unsigned int an_command;
-	an_command = engine_command_manager_type( frame, command_type );
-
-	new_frame[ add_index ] = frame % MAX_BYTE_SIZE; ;// frame_main;
-	new_command[ add_index ] = an_command;
+	new_frame[ add_index ] = frame;
+	new_command[ add_index ] = command_type;
 	new_args[ add_index ] = args;
 	add_index++;
+
+	// The index will wrap from 255 to 0 naturally.
+	//if( add_index >= ( MAX_COMMANDS - 1 ) )
+	//{
+	//	add_index = 0
+	//}
 }
 
 void engine_command_manager_execute( unsigned int frame )
 {
-	unsigned char frame_bank;
-	unsigned char frame_main;
-	unsigned char check_main;
-	unsigned char shift_bank;
-
-	unsigned char command_main;
+	unsigned int check;
 	unsigned char command;
 	unsigned int args;
 
-	frame_main = frame % MAX_BYTE_SIZE;
-	check_main = new_frame[ exec_index ];
-
 	// If we are not on the correct frame to execute then simply return.
-	if( frame_main != check_main )
+	check = new_frame[ exec_index ];
+	if( frame != check )
 	{
 		return;
 	}
 
-	frame_bank = frame / MAX_BYTE_SIZE;
-	command_main = new_command[ exec_index ];
-	shift_bank = command_main >> FRAME_BANK_SHIFT;
-	if( frame_bank != shift_bank )
-	{
-		return;
-	}
-
-	//engine_font_manager_draw_data( new_command[ 0 ], 15, 11 );
 	while( 1 )
 	{
 		command_index = exec_index;
-		command_main = new_command[ command_index ];
-		command = command_main & FRAME_MASK_SHIFT;
-
-		if( command_type_all_empty == command )
-		{
-			break;
-		}
+		command = new_command[ command_index ];
 
 		args = new_args[ command_index ];
 		execute[ command ]( args );
 
-		// TODO edge case if greater than the length of the array...
+		// The index will wrap from 255 to 0 naturally.
 		exec_index++;
-		check_main = new_frame[ exec_index ];
+		//if( exec_index >= ( MAX_COMMANDS - 1 ) )
+		//{
+		//	exec_index = 0
+		//}
+
+		check = new_frame[ exec_index ];
 
 		// If we are not on the correct frame to execute then simply return.
-		if( frame_main != check_main )
+		if( frame != check )
 		{
 			break;
 		}
 
-		command_main = new_command[ exec_index ];
-		shift_bank = command_main >> FRAME_BANK_SHIFT;
-		if( frame_bank != shift_bank )
+		command = new_command[ exec_index ];
+		if( ( unsigned char ) INVALID_INDEX == command )
 		{
 			break;
 		}
@@ -234,7 +217,7 @@ void engine_command_manager_undo( unsigned int frame )
 	command_index = undo_index;
 }
 
-void engine_command_manager_load( unsigned char* frames, unsigned char* commands, unsigned int* args )
+void engine_command_manager_load( unsigned int* frames, unsigned char* commands, unsigned char* args )
 {
 	unsigned int idx;
 
@@ -276,19 +259,19 @@ unsigned int engine_command_manager_align_undo()
 	return undo_frame;
 }
 
-static void exec_command_all_empty( unsigned int args )
+static void exec_command_all_empty( unsigned char args )
 {
 	args = 0;
 }
-static void undo_command_all_empty( unsigned int args )
+static void undo_command_all_empty( unsigned char args )
 {
 	args = 0;
 }
-static void exec_command_end_gamer( unsigned int args )
+static void exec_command_end_gamer( unsigned char args )
 {
 	args = 0;
 }
-static void undo_command_end_gamer( unsigned int args )
+static void undo_command_end_gamer( unsigned char args )
 {
 	args = 0;
 }

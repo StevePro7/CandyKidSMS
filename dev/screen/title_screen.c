@@ -11,9 +11,9 @@ static unsigned char first_time;
 
 void screen_title_screen_load()
 {
-	unsigned char frames[ MAX_COMMANDS ] = { 2, 2, 4, 8 };// , 0, 0, 0, 0
+	unsigned int frames[ MAX_COMMANDS ] = { 2, 2, 4, 8 };// , 0, 0, 0, 0
 	unsigned char commands[ MAX_COMMANDS ] = { 1, 2, 3,  63 };// , 0, 0, 0, 0
-	unsigned int args[ MAX_COMMANDS ] = { 2048, 1048, 19 };// , 0, 0, 0, 0, 0
+	unsigned char args[ MAX_COMMANDS ] = { 24, 56, 19 };// , 0, 0, 0, 0, 0
 
 	engine_font_manager_draw_text( "TITLE SCREEN!!!", 4, 0 );
 

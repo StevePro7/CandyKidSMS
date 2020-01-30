@@ -15,9 +15,10 @@ void screen_beat_screen_load()
 	unsigned char idx;
 	unsigned char max = 32;
 	unsigned int frame;
-	unsigned char frames[ MAX_COMMANDS ];
+
+	unsigned int frames[ MAX_COMMANDS ];
 	unsigned char commands[ MAX_COMMANDS ];
-	unsigned int args[ MAX_COMMANDS ] =
+	unsigned char args[ MAX_COMMANDS ] =
 	{
 		direction_type_rght, direction_type_rght, direction_type_rght, direction_type_rght,
 		direction_type_down, direction_type_down, direction_type_down, direction_type_down,

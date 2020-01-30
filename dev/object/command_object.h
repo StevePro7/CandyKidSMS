@@ -5,9 +5,9 @@
 
 typedef struct tag_struct_command_object
 {
-	unsigned char frames[ MAX_COMMANDS ];
+	unsigned int frames[ MAX_COMMANDS ];
 	unsigned char commands[ MAX_COMMANDS ];
-	unsigned int args[ MAX_COMMANDS ];
+	unsigned char args[ MAX_COMMANDS ];
 
 } struct_command_object;
 
