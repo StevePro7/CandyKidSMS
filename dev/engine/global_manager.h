@@ -40,7 +40,7 @@
 #define MAX_SPEED_COUNT			1	//100
 
 #define SPRITE_TILES			256
-#define MAX_BLOCK_TILES			13
+#define MAX_BLOCK_TILES			12
 
 #define MAX_BYTE_SIZE			256
 #define MAX_CMD_TYPE			32

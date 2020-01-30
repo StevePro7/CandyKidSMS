@@ -8,6 +8,7 @@
 #include <stdlib.h>
 
 #define BASE_TILES_OFFSET	26
+#define BASE_BLOCK_OFFSET	12
 #define BASE_CANDY_OFFSET	52
 #define BASE_DEATH_OFFSET	22
 #define BASE_GAMER_OFFSET	20
@@ -16,6 +17,7 @@
 #define MAIN_GAMER_OFFSET	24
 
 static void draw_tile( unsigned char offset, unsigned char x, unsigned char y );
+static void draw_tile_priority( unsigned char offset, unsigned char x, unsigned char y );
 static void main_tile( unsigned char offset, unsigned char x, unsigned char y );
 
 void engine_tile_manager_load_tile( unsigned char *tile_type, unsigned char tile_data )
@@ -135,12 +137,8 @@ void engine_tile_manager_draw_gamer( unsigned char x, unsigned char y )
 
 void engine_tile_manager_draw_sides( unsigned char x, unsigned char y )
 {
-	const unsigned char *pnt = font_tiles__tilemap__bin;
-
-	devkit_SMS_setNextTileatXY( x + 0, y + 0 );	devkit_SMS_setTilePriority( *pnt );
-	devkit_SMS_setNextTileatXY( x + 1, y + 0 );	devkit_SMS_setTilePriority( *pnt );
-	devkit_SMS_setNextTileatXY( x + 0, y + 1 );	devkit_SMS_setTilePriority( *pnt );
-	devkit_SMS_setNextTileatXY( x + 1, y + 1 ); devkit_SMS_setTilePriority( *pnt );
+	unsigned char offset = BASE_BLOCK_OFFSET * 2 + BASE_CANDY_OFFSET;
+	draw_tile_priority( offset, x, y );
 }
 
 // Methods used for this main title screen.
@@ -191,6 +189,17 @@ static void draw_tile( unsigned char offset, unsigned char x, unsigned char y )
 	devkit_SMS_setNextTileatXY( x + 0, y + 1 );	devkit_SMS_setTile( *pnt + offset + BASE_TILES_OFFSET + 0 );
 	devkit_SMS_setNextTileatXY( x + 1, y + 1 );	devkit_SMS_setTile( *pnt + offset + BASE_TILES_OFFSET + 1 );
 }
+
+static void draw_tile_priority( unsigned char offset, unsigned char x, unsigned char y )
+{
+	const unsigned char *pnt = game_tiles__tilemap__bin;
+
+	devkit_SMS_setNextTileatXY( x + 0, y + 0 );	devkit_SMS_setTilePriority( *pnt + offset + 0 );
+	devkit_SMS_setNextTileatXY( x + 1, y + 0 );	devkit_SMS_setTilePriority( *pnt + offset + 1 );
+	devkit_SMS_setNextTileatXY( x + 0, y + 1 );	devkit_SMS_setTilePriority( *pnt + offset + BASE_TILES_OFFSET + 0 );
+	devkit_SMS_setNextTileatXY( x + 1, y + 1 );	devkit_SMS_setTilePriority( *pnt + offset + BASE_TILES_OFFSET + 1 );
+}
+
 static void main_tile( unsigned char offset, unsigned char x, unsigned char y )
 {
 	const unsigned char *pnt = main_tiles__tilemap__bin;

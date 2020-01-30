@@ -10,18 +10,27 @@
 #include "..\engine\tile_manager.h"
 
 static void draw_items();
+static unsigned char x;
 
 void screen_save_screen_load()
 {
-	engine_font_manager_draw_text( "SAVE SCREEN!!", 4, 1 );
+	engine_font_manager_draw_text( "SAVE SCREEN...!!", 4, 1 );
 	draw_items();
+
+	x = 128;
 }
 
 void screen_save_screen_update( unsigned char *screen_type )
 {
 	unsigned char death = 0;
 	unsigned char input;
-	engine_sprite_manager_draw_entity( 32, 64, 256 + 96 );
+	engine_sprite_manager_draw_entity( x, 144, 256 + 96 );
+
+	input = engine_input_manager_hold_right();
+	if( input )
+	{
+		x++;
+	}
 
 	input = engine_input_manager_move_fire1();
 	if( input )
@@ -56,4 +65,6 @@ static void draw_items()
 	{
 		engine_tile_manager_draw_candy( idx, idx * 2 + 2, 20 );
 	}
+
+	engine_tile_manager_draw_sides( 18, 18 );
 }
