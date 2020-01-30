@@ -1,54 +1,65 @@
 #include "intro_screen.h"
 #include "..\engine\board_manager.h"
-#include "..\engine\content_manager.h"
+#include "..\engine\command_manager.h"
+//#include "..\engine\content_manager.h"
+#include "..\engine\delay_manager.h"
 #include "..\engine\enemy_manager.h"
 #include "..\engine\enum_manager.h"
 #include "..\engine\font_manager.h"
+#include "..\engine\frame_manager.h"
 #include "..\engine\gamer_manager.h"
 #include "..\engine\input_manager.h"
 #include "..\engine\sprite_manager.h"
 #include "..\engine\tile_manager.h"
 
-//static void draw_items();
+static unsigned char first_time;
+static unsigned int undo_frame;
 
 void screen_intro_screen_load()
 {
-	engine_content_manager_load_title();
-
-	engine_board_manager_init();
-	
-	//engine_board_manager_draw_full();
-	//engine_board_manager_draw_edge();
-
-	//engine_board_manager_main_full();
-	//engine_board_manager_main_edge();
-
+	// draw Candy Kid title
+	//engine_content_manager_load_title();
 	//engine_tile_manager_main_title( 2, 2 );
 
-	engine_board_manager_debugger();
+	//engine_board_manager_debugger();
+
+	unsigned int frames[ MAX_COMMANDS ] = { 768, 1049, 1400, 1729, 2001, 3000 };
+	unsigned char commands[ MAX_COMMANDS ];
+	unsigned char args[ MAX_COMMANDS ];
+
+	unsigned char loop;
+	for( loop = 6; loop < 253; loop++ )
+	{
+		frames[ loop ] = loop;
+		commands[ loop ] = 9;
+		args[ loop ] = loop;
+	}
+
+	frames[ 0 ] = 768; frames[ 1 ] = 1049; frames[ 2 ] = 1400; frames[ 3 ] = 1729; frames[ 4 ] = 2001; frames[ 5 ] = 3000;
+	frames[ 253 ] = 254; frames[ 254 ] = 300; 	frames[ 255 ] = 604;
+	
+	commands[ 0 ] = 3; 	commands[ 1 ] = 4; 	commands[ 2 ] = 5; 	commands[ 3 ] = 6; 	commands[ 4 ] = 7; 	commands[ 5 ] = 31;
+	commands[ 253 ] = 2;  commands[ 254 ] = 1;  commands[ 255 ] = 2;
+
+	args[ 0 ] = 30; args[ 1 ] = 40; args[ 2 ] = 50; args[ 3 ] = 60; args[ 4 ] = 70; args[ 5 ] = 4;
+	args[ 253 ] = 5; args[ 254 ] = 10; args[ 255 ] = 20;
+
+	engine_command_manager_load( frames, commands, args );
+
+
+	engine_delay_manager_load( 10 );
+
+	engine_font_manager_draw_text( "INTRO SCREEN!!", 4, 0 );
+	engine_frame_manager_load();
+	engine_frame_manager_draw();
+	engine_delay_manager_draw();
+
+	undo_frame = engine_command_manager_align_undo();
+	engine_font_manager_draw_data( undo_frame, 31, 2 );
+	first_time = 1;
 }
 
 void screen_intro_screen_update( unsigned char *screen_type )
 {
 	*screen_type = screen_type_intro;
 }
-
-//static void draw_items()
-//{
-//	engine_tile_manager_main_trees( tree_type_avoid, 4, 4 );
-//	engine_tile_manager_main_trees( tree_type_death, 6, 4 );
-//
-//	engine_tile_manager_main_bonus( tile_type_bonusA, 10, 6 );
-//	engine_tile_manager_main_bonus( tile_type_bonusB, 14, 6 );
-//	engine_tile_manager_main_bonus( tile_type_bonusC, 18, 6 );
-//	engine_tile_manager_main_bonus( tile_type_bonusD, 22, 6 );
-//
-//	engine_tile_manager_main_candy( 0, 4, 18 );
-//	engine_tile_manager_main_candy( 1, 6, 18 );
-//	engine_tile_manager_main_candy( 2, 8, 18 );
-//	engine_tile_manager_main_candy( 3, 10, 18 );
-//	engine_tile_manager_main_candy( 4, 12, 18 );
-//	engine_tile_manager_main_candy( 5, 14, 18 );
-//
-//	engine_tile_manager_main_gamer( 16, 16 );
-//}

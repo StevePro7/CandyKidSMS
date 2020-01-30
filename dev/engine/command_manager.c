@@ -244,8 +244,20 @@ void engine_command_manager_save()
 
 unsigned int engine_command_manager_align_undo()
 {
-	unsigned int undo_frame;
-	unsigned char frame_main;
+	unsigned char command;
+	unsigned char loop;
+
+	undo_index = 0;
+	for( loop = 0; loop < MAX_COMMANDS; loop++ )
+	{
+		command = new_command[ loop ];
+		if( command_type_end_gamer == command )
+		{
+			undo_index = loop;
+			break;
+		}
+	}
+	/*unsigned char frame_main;
 	unsigned char command_main;
 	unsigned char shift_bank;
 
@@ -255,8 +267,8 @@ unsigned int engine_command_manager_align_undo()
 	shift_bank = command_main >> FRAME_BANK_SHIFT;
 
 	undo_frame = shift_bank * MAX_BYTE_SIZE;
-	undo_frame += frame_main;
-	return undo_frame;
+	undo_frame += frame_main;*/
+	return undo_index;
 }
 
 static void exec_command_all_empty( unsigned char args )
