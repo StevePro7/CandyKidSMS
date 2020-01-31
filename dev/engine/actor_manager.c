@@ -10,9 +10,10 @@ void engine_actor_manager_update()
 // Execute commands.
 void engine_actor_manager_exec_kid_mover( unsigned char args )
 {
-	//engine_font_manager_draw_text( "EXEC FIRE", 2, 12 );
-	//engine_font_manager_draw_data( args, 17, 12 );
-	engine_gamer_manager_move( args );
+	engine_font_manager_draw_text( "EXEC FIRE", 2, 12 );
+	engine_font_manager_draw_data( args, 17, 12 );
+	//TODO revert
+	//engine_gamer_manager_move( args );
 }
 void engine_actor_manager_exec_pro_mover( unsigned char args )
 {

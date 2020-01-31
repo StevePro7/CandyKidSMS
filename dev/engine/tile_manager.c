@@ -138,8 +138,8 @@ void engine_tile_manager_draw_gamer( unsigned char x, unsigned char y )
 void engine_tile_manager_draw_sides( unsigned char x, unsigned char y )
 {
 	unsigned char offset = BASE_BLOCK_OFFSET * 2 + BASE_CANDY_OFFSET;
-	//draw_tile_priority( offset, x, y );
-	draw_tile( offset, x, y );
+	draw_tile_priority( offset, x, y );
+	//draw_tile( offset, x, y );
 }
 
 // Methods used for this main title screen.

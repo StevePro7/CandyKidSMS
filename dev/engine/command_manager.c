@@ -30,13 +30,21 @@ static void undo_command_end_gamer( unsigned char args );
 // Public methods.
 void engine_command_manager_init()
 {
-	unsigned int idx;
+	//unsigned int idx;
+	unsigned char idx;
 	for( idx = 0; idx < MAX_COMMANDS; idx++ )
 	{
 		new_frame[ idx ] = 0;
-		new_command[ idx ] = ( unsigned char ) INVALID_INDEX;
+		//new_command[ idx ] = ( unsigned char ) INVALID_INDEX;
+		new_command[ idx ] = 0;
 		new_args[ idx ] = 0;
 	}
+
+	engine_font_manager_draw_data( new_frame[ 0 ], 20, 15 );
+	engine_font_manager_draw_data( new_frame[ 1 ], 20, 16 );
+	//engine_font_manager_draw_data( new_frame[ 2 ], 20, 17 );
+	//engine_font_manager_draw_data( new_frame[ MAX_COMMANDS - 1 ], 20, 18 );
+
 
 	// IMPORTANT execute + undo must be same order!!
 	execute[ command_type_all_empty ] = exec_command_all_empty;
@@ -115,32 +123,59 @@ void engine_command_manager_execute( unsigned int frame )
 
 	while( 1 )
 	{
+		if( exec_index >= add_index )
+		{
+			break;
+		}
+
 		command_index = exec_index;
 		command = new_command[ command_index ];
 
 		args = new_args[ command_index ];
 		execute[ command ]( args );
 
+		engine_font_manager_draw_data( add_index, 10, 18 );
+		engine_font_manager_draw_data( exec_index, 20, 18 );
+		
+		
+
+		//engine_font_manager_draw_data( new_frame[ 1 ], 30, 18 );
+
+		//check = new_frame[ exec_index ];
+		//engine_font_manager_draw_data( check, 20, 19 );
+		//engine_font_manager_draw_data( exec_index, 10, 19 );
+		
+
 		// The index will wrap from 255 to 0 naturally.
 		exec_index++;
+
+		engine_font_manager_draw_data( add_index, 10, 19 );
+		engine_font_manager_draw_data( exec_index, 20, 19 );
+
 		//if( exec_index >= ( MAX_COMMANDS - 1 ) )
 		//{
 		//	exec_index = 0
 		//}
 
-		check = new_frame[ exec_index ];
+		//engine_font_manager_draw_data( exec_index, 20, 20 );
 
-		// If we are not on the correct frame to execute then simply return.
-		if( frame != check )
-		{
-			break;
-		}
+		//check = new_frame[ exec_index ];
+		//
+		//engine_font_manager_draw_data( exec_index, 10, 20 );
+		//engine_font_manager_draw_data( new_frame[ exec_index + 0 ], 20, 19 );
+		//engine_font_manager_draw_data( new_frame[ exec_index + 0 ], 30, 19 );
 
-		command = new_command[ exec_index ];
-		if( ( unsigned char ) INVALID_INDEX == command )
-		{
-			break;
-		}
+		//// If we are not on the correct frame to execute then simply return.
+		//if( frame != check )
+		//{
+		//	break;
+		//}
+
+		//command = new_command[ exec_index ];
+		//if( ( unsigned char ) INVALID_INDEX == command )
+		//{
+		//	break;
+		//}
 	}
 
 	// Execute all commands this frame thus increment frame index.
@@ -219,8 +254,8 @@ void engine_command_manager_undo( unsigned int frame )
 
 void engine_command_manager_load( unsigned int* frames, unsigned char* commands, unsigned char* args )
 {
-	unsigned int idx;
-
+	//unsigned int idx;
+	unsigned char idx;
 	for( idx = 0; idx < MAX_COMMANDS; idx++ )
 	{
 		new_frame[ idx ] = frames[ idx ];
@@ -232,8 +267,8 @@ void engine_command_manager_load( unsigned int* frames, unsigned char* commands,
 void engine_command_manager_save()
 {
 	struct_command_object *co = &global_command_object;
-	unsigned int idx;
-
+	//unsigned int idx;
+	unsigned char idx;
 	for( idx = 0; idx < MAX_COMMANDS; idx++ )
 	{
 		co->frames[ idx ] = new_frame[ idx ];
@@ -245,15 +280,16 @@ void engine_command_manager_save()
 unsigned int engine_command_manager_align_undo()
 {
 	unsigned char command;
-	unsigned char loop;
+	//unsigned int idx;
+	unsigned char idx;
 
 	undo_index = 0;
-	for( loop = 0; loop < MAX_COMMANDS; loop++ )
+	for( idx = 0; idx < MAX_COMMANDS; idx++ )
 	{
-		command = new_command[ loop ];
+		command = new_command[ idx ];
 		if( command_type_end_gamer == command )
 		{
-			undo_index = loop;
+			undo_index = idx;
 			break;
 		}
 	}

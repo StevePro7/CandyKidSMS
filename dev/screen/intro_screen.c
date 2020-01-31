@@ -35,9 +35,9 @@ void screen_intro_screen_load()
 		args[ loop ] = loop;
 	}
 
-	frames[ 0 ] = 768; frames[ 1 ] = 1049; frames[ 2 ] = 1400; frames[ 3 ] = 1729; frames[ 4 ] = 2001; frames[ 5 ] = 3000;
+	/*frames[ 0 ] = 768; frames[ 1 ] = 1049; frames[ 2 ] = 1400; frames[ 3 ] = 1729; frames[ 4 ] = 2001; frames[ 5 ] = 3000;
 	frames[ 253 ] = 254; frames[ 254 ] = 300; 	frames[ 255 ] = 604;
-	
+
 	commands[ 0 ] = 3; 	commands[ 1 ] = 4; 	commands[ 2 ] = 5; 	commands[ 3 ] = 6; 	commands[ 4 ] = 7; 	commands[ 5 ] = 31;
 	commands[ 253 ] = 2;  commands[ 254 ] = 1;  commands[ 255 ] = 2;
 
@@ -55,7 +55,7 @@ void screen_intro_screen_load()
 	engine_delay_manager_draw();
 
 	undo_frame = engine_command_manager_align_undo();
-	engine_font_manager_draw_data( undo_frame, 31, 2 );
+	engine_font_manager_draw_data( undo_frame, 31, 2 );*/
 	first_time = 1;
 }
 

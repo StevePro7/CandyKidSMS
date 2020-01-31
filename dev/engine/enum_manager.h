@@ -71,14 +71,6 @@ typedef enum tag_enum_tree_type
 
 } enum_tree_type;
 
-//typedef enum tag_enum_actor_type
-//{
-//	actor_type_pro = 0,
-//	actor_type_adi = 1,
-//	actor_type_suz = 2,
-//
-//} enum_actor_type;
-
 typedef enum tag_enum_actor_type
 {
 	actor_type_pro = 0,
