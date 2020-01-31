@@ -16,7 +16,7 @@ void screen_record_screen_load()
 
 	engine_command_manager_init();
 	engine_frame_manager_init();
-	engine_delay_manager_load( 40 );
+	engine_delay_manager_load( 0 );
 
 	engine_font_manager_draw_text( "RECORD SCREEN!!", 4, 0 );
 	engine_frame_manager_draw();
@@ -63,7 +63,7 @@ void screen_record_screen_update( unsigned char *screen_type )
 	}
 
 	frame = fo->frame_count;
-	/*if( frame < 248 )
+	/*if( frame < 254 )
 	{
 		engine_command_manager_add( frame, my_command, 256 + frame );
 		my_command++;
@@ -72,14 +72,14 @@ void screen_record_screen_update( unsigned char *screen_type )
 			my_command = 1;
 		}
 	}*/
-	input[ 0 ] = 2 == frame;
+	input[ 0 ] = 280 == frame;
 	if( input[ 0 ] )
 	{
 	//	//engine_command_manager_add( frame, command_type_all_empty, 5 );
 		engine_command_manager_add( frame, command_type_pro_mover, 05 );
 		engine_command_manager_add( frame, command_type_kid_mover, 10 );
 	}
-	input[ 1 ] = 300 == frame;
+	input[ 1 ] = 290 == frame;
 	if( input[1] )
 	{
 		engine_command_manager_add( frame, command_type_kid_mover, 10 );
@@ -116,10 +116,10 @@ void screen_record_screen_update( unsigned char *screen_type )
 	//	engine_command_manager_add( frame, command_type_adi_speed, 70 );
 	//}
 
-	input[ 8 ] = 2047 == frame;
+	input[ 8 ] = 9 == frame;
 	if( input[ 8 ] )
 	{
-		engine_command_manager_add( frame, command_type_end_gamer, 4 );
+		engine_command_manager_add( frame, command_type_end_gamer, 7 );
 	}
 
 
@@ -136,8 +136,8 @@ void screen_record_screen_update( unsigned char *screen_type )
 		engine_storage_manager_write();
 		engine_font_manager_draw_text( "SAVED!!!!", 20, 19 );
 
-		*screen_type = screen_type_test;
-		//*screen_type = screen_type_intro;
+		//*screen_type = screen_type_test;
+		*screen_type = screen_type_intro;
 		return;
 	}
 

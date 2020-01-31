@@ -30,8 +30,8 @@ static void undo_command_end_gamer( unsigned char args );
 // Public methods.
 void engine_command_manager_init()
 {
-	//unsigned int idx;
-	unsigned char idx;
+	unsigned int idx;
+	//unsigned char idx;
 	for( idx = 0; idx < MAX_COMMANDS; idx++ )
 	{
 		new_frame[ idx ] = 0;
@@ -116,26 +116,21 @@ void engine_command_manager_execute( unsigned int frame )
 
 	// If we are not on the correct frame to execute then simply return.
 	check = new_frame[ exec_index ];
-	if( frame != check )
+	if( ( frame != check ) || ( add_index == exec_index ) )
 	{
 		return;
 	}
 
 	while( 1 )
 	{
-		if( exec_index >= add_index )
-		{
-			break;
-		}
-
 		command_index = exec_index;
 		command = new_command[ command_index ];
 
 		args = new_args[ command_index ];
 		execute[ command ]( args );
 
-		engine_font_manager_draw_data( add_index, 10, 18 );
-		engine_font_manager_draw_data( exec_index, 20, 18 );
+		engine_font_manager_draw_data( add_index, 10, 20 );
+		engine_font_manager_draw_data( exec_index, 20, 20 );
 		
 		
 
@@ -149,8 +144,15 @@ void engine_command_manager_execute( unsigned int frame )
 		// The index will wrap from 255 to 0 naturally.
 		exec_index++;
 
-		engine_font_manager_draw_data( add_index, 10, 19 );
-		engine_font_manager_draw_data( exec_index, 20, 19 );
+
+		engine_font_manager_draw_data( add_index, 10, 21 );
+		engine_font_manager_draw_data( exec_index, 20, 21 );
+
+		// Execute all commands for this frame so break.
+		if( add_index == exec_index )
+		{
+			break;
+		}
 
 		//if( exec_index >= ( MAX_COMMANDS - 1 ) )
 		//{
@@ -254,8 +256,8 @@ void engine_command_manager_undo( unsigned int frame )
 
 void engine_command_manager_load( unsigned int* frames, unsigned char* commands, unsigned char* args )
 {
-	//unsigned int idx;
-	unsigned char idx;
+	unsigned int idx;
+	//unsigned char idx;
 	for( idx = 0; idx < MAX_COMMANDS; idx++ )
 	{
 		new_frame[ idx ] = frames[ idx ];
@@ -267,8 +269,8 @@ void engine_command_manager_load( unsigned int* frames, unsigned char* commands,
 void engine_command_manager_save()
 {
 	struct_command_object *co = &global_command_object;
-	//unsigned int idx;
-	unsigned char idx;
+	unsigned int idx;
+	//unsigned char idx;
 	for( idx = 0; idx < MAX_COMMANDS; idx++ )
 	{
 		co->frames[ idx ] = new_frame[ idx ];
@@ -280,8 +282,8 @@ void engine_command_manager_save()
 unsigned int engine_command_manager_align_undo()
 {
 	unsigned char command;
-	//unsigned int idx;
-	unsigned char idx;
+	unsigned int idx;
+	//unsigned char idx;
 
 	undo_index = 0;
 	for( idx = 0; idx < MAX_COMMANDS; idx++ )

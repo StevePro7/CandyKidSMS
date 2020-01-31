@@ -44,7 +44,7 @@
 
 #define MAX_BYTE_SIZE			256
 #define MAX_CMD_TYPE			32
-#define MAX_COMMANDS			50
+#define MAX_COMMANDS			256
 
 #define NUM_ENTITY_IMAGE		2
 #define NUM_ENTITY_FRAME		2

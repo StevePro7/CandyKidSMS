@@ -35,6 +35,8 @@ void screen_intro_screen_load()
 		args[ loop ] = loop;
 	}
 
+	engine_font_manager_draw_text( "INTRO SCREEN!!", 4, 0 );
+
 	/*frames[ 0 ] = 768; frames[ 1 ] = 1049; frames[ 2 ] = 1400; frames[ 3 ] = 1729; frames[ 4 ] = 2001; frames[ 5 ] = 3000;
 	frames[ 253 ] = 254; frames[ 254 ] = 300; 	frames[ 255 ] = 604;
 
@@ -49,7 +51,7 @@ void screen_intro_screen_load()
 
 	engine_delay_manager_load( 10 );
 
-	engine_font_manager_draw_text( "INTRO SCREEN!!", 4, 0 );
+	
 	engine_frame_manager_load();
 	engine_frame_manager_draw();
 	engine_delay_manager_draw();

@@ -59,17 +59,17 @@ void engine_storage_manager_write()
 	savegame->save_level_no = 8;//level_no;
 	for( idx = 0; idx < 8; idx++ )
 	{
-		savegame->save_padding[ idx ] = idx + 1;
+		savegame->save_padding[ idx ] = idx + 2;
 	}
 
 	// Commands.
-	for( idx = 0; idx < MAX_COMMANDS; idx++ )
+	for( idx = 0; idx < 8; idx++ )
 	{
 		savegame->frames[ idx ] = co->frames[ idx ];
 		savegame->commands[ idx ] = co->commands[ idx ];
 		savegame->args[ idx ] = co->args[ idx ];
 	}
 
-	savegame->terminal = 0xFD;
+	savegame->terminal = 0xF7;
 	devkit_SMS_disableSRAM();
 }

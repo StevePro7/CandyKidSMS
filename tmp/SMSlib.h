@@ -65,7 +65,7 @@ void SMS_setSpriteMode (unsigned char mode) {} //__z88dk_fastcall;
 #define SMS_disableSRAM()       //SRAM_bank_to_be_mapped_on_slot2=0x00
 
 /* SRAM access is as easy as accessing an array of char */
-/*__at (0x8000)*/unsigned char SMS_SRAM[10];
+/*__at (0x8000)*/unsigned char SMS_SRAM[ 256 ];
 
 /* wait until next VBlank starts */
 void SMS_waitForVBlank (void) {}
