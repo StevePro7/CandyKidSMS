@@ -1,6 +1,15 @@
 # CandyKidSMS
 Candy Kid for the Sega Master System
 
+01/02/2020
+Here is the out outline for SRAM
+0000
+0010	frames		256 * 2 bytes	512
+0210	commands	256 * 1 bytes	256
+0310	args		256 * 1 bytes	256
+0410	F7
+
+
 29/01/2020
 Here is the link to the "SpriteClippingWindow"
 C:\Bitbucket\SteveProXNA\actionstuff\Personal\Presentations\_CodeAFTER\60_SpriteClippingWindow\dev

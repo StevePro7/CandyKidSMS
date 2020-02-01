@@ -63,13 +63,13 @@ void engine_storage_manager_write()
 	}
 
 	// Commands.
-	for( idx = 0; idx < 8; idx++ )
+	for( idx = 0; idx < MAX_COMMANDS; idx++ )
 	{
 		savegame->frames[ idx ] = co->frames[ idx ];
 		savegame->commands[ idx ] = co->commands[ idx ];
 		savegame->args[ idx ] = co->args[ idx ];
 	}
 
-	savegame->terminal = 0xF7;
+	savegame->terminal = 0xFD;
 	devkit_SMS_disableSRAM();
 }
