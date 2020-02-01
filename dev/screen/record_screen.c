@@ -16,7 +16,7 @@ void screen_record_screen_load()
 
 	engine_command_manager_init();
 	engine_frame_manager_init();
-	engine_delay_manager_load( 30 );
+	engine_delay_manager_load( 0 );
 
 	engine_font_manager_draw_text( "RECORD SCREEN!!", 4, 0 );
 	engine_frame_manager_draw();
@@ -131,10 +131,10 @@ void screen_record_screen_update( unsigned char *screen_type )
 	{
 		engine_frame_manager_draw();
 
-		engine_font_manager_draw_text( "SAVING", 20, 18 );
+		engine_font_manager_draw_text( "SAVING", 20, 17 );
 		engine_command_manager_save();
 		engine_storage_manager_write();
-		engine_font_manager_draw_text( "SAVED!!!!", 20, 19 );
+		engine_font_manager_draw_text( "SAVED!!!!", 20, 18 );
 
 		*screen_type = screen_type_test;
 		//*screen_type = screen_type_intro;
