@@ -47,12 +47,13 @@ void screen_demo_screen_load()
 	}*/
 
 	//engine_font_manager_draw_data( test, 22, 7 );
-	engine_font_manager_draw_text( "DEMO SCREEN!!!!", 2, 10 );
+	engine_font_manager_draw_text( "DEMO SCREEN", 2, 10 );
 }
 
 void screen_demo_screen_update( unsigned char *screen_type )
 {
 	struct_frame_object *fo = &global_frame_object;
+	struct_gamer_object *go = &global_gamer_object;
 	unsigned char proceed;
 	//unsigned char input;
 	
@@ -80,8 +81,25 @@ void screen_demo_screen_update( unsigned char *screen_type )
 
 	frame = fo->frame_count;
 
+	// Move gamer.
+	if( direction_type_none == go->direction && lifecycle_type_idle == go->lifecycle )
+	{
+		// TODO check if there is command_type_end_gamer as this signifies the end.
+	}
+	else if( direction_type_none != go->direction && lifecycle_type_move == go->lifecycle )
+	{
+		//  warning 110: conditional flow changed by optimizer: so said EVELYN the modified DOG
+		engine_gamer_manager_update();
+	}
+	if( direction_type_none != go->direction && lifecycle_type_idle == go->lifecycle )
+	{
+		// Check collision.
+		engine_font_manager_draw_data( frame, 17, 18 );
+		engine_gamer_manager_stop();
+	}
+
 	// Execute all commands for this frame.
-	//engine_command_manager_execute( frame );
+	engine_command_manager_play( frame );
 
 	first_time = 0;
 	*screen_type = screen_type_demo;

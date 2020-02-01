@@ -35,8 +35,6 @@ void screen_intro_screen_load()
 		args[ loop ] = loop;
 	}*/
 
-	engine_font_manager_draw_text( "INTRO SCREEN!!", 4, 0 );
-
 	/*frames[ 0 ] = 768; frames[ 1 ] = 1049; frames[ 2 ] = 1400; frames[ 3 ] = 1729; frames[ 4 ] = 2001; frames[ 5 ] = 3000;
 	frames[ 253 ] = 254; frames[ 254 ] = 300; 	frames[ 255 ] = 604;
 
@@ -58,10 +56,25 @@ void screen_intro_screen_load()
 
 	undo_frame = engine_command_manager_align_undo();
 	engine_font_manager_draw_data( undo_frame, 31, 2 );*/
+
+	engine_font_manager_draw_text( "INTR SCREEN", 2, 10 );
 	first_time = 1;
 }
 
 void screen_intro_screen_update( unsigned char *screen_type )
 {
+	unsigned char input;
+
+	// Draw sprites first.
+	engine_gamer_manager_draw();
+	engine_enemy_manager_draw();
+
+	input = engine_input_manager_hold_fire1();
+	if( input )
+	{
+		*screen_type = screen_type_demo;
+		return;
+	}
+
 	*screen_type = screen_type_intro;
 }

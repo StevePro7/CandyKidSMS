@@ -31,8 +31,8 @@ void screen_play_screen_load()
 	engine_gamer_manager_init();
 	engine_enemy_manager_init();
 
-	//engine_frame_manager_draw();
-	//engine_delay_manager_draw();
+	engine_frame_manager_draw();
+	engine_delay_manager_draw();
 
 	engine_board_manager_debugger();
 	engine_board_manager_debugger();
@@ -43,6 +43,8 @@ void screen_play_screen_load()
 
 	engine_level_manager_load_level( 0, 0 );
 	engine_level_manager_draw_level();
+
+	engine_font_manager_draw_text( "PLAY SCREEN!", 2, 10 );
 
 	first_time = 1;
 	frame_spot = 0;
@@ -63,8 +65,8 @@ void screen_play_screen_update( unsigned char *screen_type )
 	engine_gamer_manager_draw();
 	//engine_enemy_manager_draw();
 
-	//engine_frame_manager_draw();
-	//engine_delay_manager_draw();
+	engine_frame_manager_draw();
+	engine_delay_manager_draw();
 	if( !first_time )
 	{
 		proceed = engine_delay_manager_update();
@@ -84,12 +86,16 @@ void screen_play_screen_update( unsigned char *screen_type )
 	// Move gamer.
 	if( direction_type_none == go->direction && lifecycle_type_idle == go->lifecycle )
 	{
-		/*if( 0 == frame )
+		if( 0 == frame || 20 == frame )
 		{
 			engine_font_manager_draw_data( frame, 17, 17 );
 			engine_command_manager_add( frame, command_type_kid_mover, direction_type_rght );
-		}*/
-		gamer_direction = engine_gamer_manager_direction();
+		}
+		if( 40 == frame )
+		{
+			engine_command_manager_add( frame, command_type_end_gamer, 15 );
+		}
+		/*gamer_direction = engine_gamer_manager_direction();
 		if( direction_type_none != gamer_direction )
 		{
 			engine_font_manager_draw_data( gamer_direction, 10, 15 );
@@ -97,7 +103,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 			engine_font_manager_draw_data( frame, 17, 17 );
 
 			engine_command_manager_add( frame, command_type_kid_mover, gamer_direction );
-		}
+		}*/
 	}
 	else if( direction_type_none != go->direction && lifecycle_type_move == go->lifecycle )
 	{
@@ -123,5 +129,15 @@ void screen_play_screen_update( unsigned char *screen_type )
 	}*/
 
 	first_time = 0;
+	if( 40 == frame )
+	{
+		engine_frame_manager_draw();
+		engine_delay_manager_draw();
+
+		//*screen_type = screen_type_intro;
+		*screen_type = screen_type_demo;
+		return;
+	}
+
 	*screen_type = screen_type_play;
 }

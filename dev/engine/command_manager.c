@@ -17,6 +17,7 @@ static unsigned char command_index;
 static unsigned char add_index;
 static unsigned char exec_index;
 static unsigned char undo_index;
+static unsigned char play_index;
 
 static unsigned int new_frame[ MAX_COMMANDS ];
 static unsigned char new_command[ MAX_COMMANDS ];
@@ -75,6 +76,7 @@ void engine_command_manager_init()
 	add_index = 0;
 	exec_index = 0;
 	undo_index = 0;
+	play_index = 0;
 }
 
 unsigned char engine_command_manager_type( unsigned int frame, unsigned char command_type )
@@ -186,6 +188,43 @@ void engine_command_manager_undo( unsigned int frame )
 		engine_font_manager_draw_data( new_frame[ undo_index ], 20, 20 );
 
 		check = new_frame[ undo_index ];
+		if( ( frame != check ) )
+		{
+			break;
+		}
+	}
+}
+
+void engine_command_manager_play( unsigned int frame )
+{
+	unsigned int check;
+	unsigned char command;
+	unsigned int args;
+
+	// If we are not on the correct frame to execute then simply return.
+	check = new_frame[ play_index ];
+	if( ( frame != check ) )
+	{
+		return;
+	}
+
+	while( 1 )
+	{
+		command = new_command[ play_index ];
+		args = new_args[ play_index ];
+		execute[ command ]( args );
+
+		engine_font_manager_draw_data( play_index, 10, 20 );
+		engine_font_manager_draw_data( new_frame[ play_index ], 20, 20 );
+
+		// The index will wrap from 255 to 0 naturally.
+		play_index++;
+
+		engine_font_manager_draw_data( play_index, 10, 21 );
+		engine_font_manager_draw_data( new_frame[ play_index ], 20, 21 );
+
+		// Execute all commands for this frame so break.
+		check = new_frame[ play_index ];
 		if( ( frame != check ) )
 		{
 			break;
