@@ -1,6 +1,20 @@
 TODO
-25/01/2020
+01/02/2020
 
+It seems that I have the 3x command arrays twice:
+01.	local static variables
+02.	command object
+
+Surely, I could combine and halve the amount of memory used here?
+Also, would it be possible to double or quadruple MAX_COMMANDS?
+and still have enough memory to store all this data rather than wrap
+
+Undo command currently stops at index 0 and starts where command = 31
+it should start at index before command 31 and wrap all 256 commands as necc til hits 31 to stop
+
+
+
+25/01/2020
 Some are probable nice to haves!!
 
 
