@@ -1,4 +1,6 @@
 #include "actor_manager.h"
+#include "enemy_manager.h"
+#include "enum_manager.h"
 #include "font_manager.h"
 #include "gamer_manager.h"
 
@@ -17,8 +19,10 @@ void engine_actor_manager_exec_kid_mover( unsigned char args )
 }
 void engine_actor_manager_exec_pro_mover( unsigned char args )
 {
-	engine_font_manager_draw_text( "EXEC JUMP", 2, 13 );
-	engine_font_manager_draw_data( args, 17, 13 );
+	//engine_font_manager_draw_text( "EXEC JUMP", 2, 13 );
+	//engine_font_manager_draw_data( args, 17, 13 );
+
+	engine_enemy_manager_move( actor_type_pro, args );
 }
 void engine_actor_manager_exec_adi_mover( unsigned char args )
 {

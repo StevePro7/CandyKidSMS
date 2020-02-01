@@ -93,7 +93,7 @@ void engine_gamer_manager_update()
 		go->posnX += go->speed;
 	}
 
-	// Update lifecycle
+	// Update lifecycle.
 	if( go->total >= TILE_SIZE )
 	{
 		if( direction_type_upxx == go->direction )
@@ -118,12 +118,6 @@ void engine_gamer_manager_update()
 		go->lifecycle = lifecycle_type_idle;
 		go->delta = 0;
 		go->total = 0;
-
-		//TODO delete
-		engine_font_manager_draw_data( go->tileX, 20, 2 );
-		engine_font_manager_draw_data( go->tileY, 20, 3 );
-		engine_font_manager_draw_data( go->posnX, 20, 5 );
-		engine_font_manager_draw_data( go->posnY, 20, 6 );
 	}
 
 	// Swap frame half way.
@@ -133,14 +127,6 @@ void engine_gamer_manager_update()
 		go->delta = 0;
 		calcd_frame();
 	}
-}
-
-void engine_gamer_manager_stop()
-{
-	struct_gamer_object *go = &global_gamer_object;
-	go->direction = direction_type_none;
-	go->frame = 0;
-	calcd_frame();
 }
 
 void engine_gamer_manager_draw()
@@ -163,6 +149,14 @@ void engine_gamer_manager_move( unsigned char direction )
 	go->direction = direction;
 	go->lifecycle = lifecycle_type_move;
 	go->frame = 1;
+	calcd_frame();
+}
+
+void engine_gamer_manager_stop()
+{
+	struct_gamer_object *go = &global_gamer_object;
+	go->direction = direction_type_none;
+	go->frame = 0;
 	calcd_frame();
 }
 

@@ -10,8 +10,8 @@
 // Global variables.
 struct_enemy_object global_enemy_objects[ MAX_ENEMIES ];
 
-static void calcd_frame( unsigned char index );
-static void calcd_spots( unsigned char index );
+static void calcd_frame( unsigned char enemy );
+static void calcd_spots( unsigned char enemy );
 
 // Methods.
 void engine_enemy_manager_init()
@@ -77,19 +77,19 @@ void engine_enemy_manager_init()
 	}
 }
 
-void engine_enemy_manager_load()
-{
-	// TODO hardcoded - inject!
-	struct_enemy_object *eo = &global_enemy_objects[ actor_type_pro ];
-	eo->posnX = 144;
-	eo->posnY = 144;
-	eo->tileX = 9;
-	eo->tileY = 9;
-}
+//void engine_enemy_manager_load()
+//{
+//	// TODO hardcoded - inject!
+//	struct_enemy_object *eo = &global_enemy_objects[ actor_type_pro ];
+//	eo->posnX = 144;
+//	eo->posnY = 144;
+//	eo->tileX = 9;
+//	eo->tileY = 9;
+//}
 
-void engine_enemy_manager_update()
+void engine_enemy_manager_update( unsigned char enemy )
 {
-	struct_enemy_object *eo = &global_enemy_objects[ actor_type_pro ];
+	struct_enemy_object *eo = &global_enemy_objects[ enemy ];
 	if( lifecycle_type_move != eo->lifecycle )
 	{
 		return;
@@ -105,6 +105,7 @@ void engine_enemy_manager_update()
 	eo->delta += eo->speed;
 	eo->total += eo->speed;
 
+	// Update position.
 	if( direction_type_upxx == eo->direction )
 	{
 		eo->posnY -= eo->speed;
@@ -122,6 +123,7 @@ void engine_enemy_manager_update()
 		eo->posnX += eo->speed;
 	}*/
 
+	// Update lifecycle.
 	if( eo->total >= TILE_SIZE )
 	{
 		if( direction_type_upxx == eo->direction )
@@ -141,10 +143,8 @@ void engine_enemy_manager_update()
 			eo->tileX++;
 		}*/
 
-		eo->posnX = eo->tileX * TILE_SIZE;
-		eo->posnY = eo->tileY * TILE_SIZE;
+		calcd_spots( enemy );
 
-		eo->direction = direction_type_none;
 		eo->lifecycle = lifecycle_type_idle;
 		eo->delta = 0;
 		eo->total = 0;
@@ -154,41 +154,49 @@ void engine_enemy_manager_update()
 	{
 		eo->frame = 1 - eo->frame;
 		eo->delta = 0;
-		calcd_frame( actor_type_pro );
+		calcd_frame( enemy );
 	}
-}
-
-void engine_enemy_manager_move( unsigned char index, unsigned char direction )
-{
-	struct_enemy_object *eo = &global_enemy_objects[ actor_type_pro ];
-	eo->direction = direction;
-	eo->lifecycle = lifecycle_type_move;
-	eo->frame = 1;
-	calcd_frame( index );
 }
 
 void engine_enemy_manager_draw()
 {
 	struct_enemy_object *eo;
-	unsigned char idx;
+	unsigned char enemy;
 	//for( idx = 0; idx < MAX_ENEMIES; idx++ )
 	//TODO revert to draw all enemies
-	for( idx = 0; idx < MAX_ENEMIES; idx++ )
+	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
 	{
-		eo = &global_enemy_objects[ idx ];
+		eo = &global_enemy_objects[ enemy ];
 		engine_sprite_manager_draw_entity( eo->posnX, eo->posnY, eo->calcd );
 	}
 }
 
-static void calcd_frame( unsigned char index )
+void engine_enemy_manager_move( unsigned char enemy, unsigned char direction )
 {
-	struct_enemy_object *eo = &global_enemy_objects[ index ];
+	struct_enemy_object *eo = &global_enemy_objects[ enemy ];
+	eo->direction = direction;
+	eo->lifecycle = lifecycle_type_move;
+	eo->frame = 1;
+	calcd_frame( enemy );
+}
+
+void engine_enemy_manager_stop( unsigned char enemy )
+{
+	struct_enemy_object *eo = &global_enemy_objects[ enemy ];
+	eo->direction = direction_type_none;
+	eo->frame = 0;
+	calcd_frame( enemy );
+}
+
+static void calcd_frame( unsigned char enemy )
+{
+	struct_enemy_object *eo = &global_enemy_objects[ enemy ];
 	//eo->calcd = SPRITE_TILES_ENEMY + eo->image * 8 + eo->frame * 4;
 	eo->calcd = SPRITE_TILES_ENEMY + eo->images[ eo->image ][ eo->frame ];
 }
-static void calcd_spots( unsigned char index )
+static void calcd_spots( unsigned char enemy )
 {
-	struct_enemy_object *eo = &global_enemy_objects[ index ];
+	struct_enemy_object *eo = &global_enemy_objects[ enemy ];
 	struct_board_object *bo = &global_board_object;
 	eo->posnX = bo->posnX[ eo->tileX ];
 	eo->posnY = bo->posnY[ eo->tileY ];

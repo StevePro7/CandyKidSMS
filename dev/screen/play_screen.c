@@ -55,10 +55,12 @@ void screen_play_screen_update( unsigned char *screen_type )
 {
 	struct_frame_object *fo = &global_frame_object;
 	struct_gamer_object *go = &global_gamer_object;
+	struct_enemy_object *eo;
 	unsigned char gamer_direction = direction_type_none;
 
 	unsigned char proceed;
-	unsigned char input;
+	//unsigned char input;
+	unsigned char enemy;
 	unsigned int frame;
 	frame = fo->frame_count;
 
@@ -88,34 +90,34 @@ void screen_play_screen_update( unsigned char *screen_type )
 	// Move gamer.
 	if( direction_type_none == go->direction && lifecycle_type_idle == go->lifecycle )
 	{
-		/*if( 0 == frame || 20 == frame )
+		if( 0 == frame )
 		{
-			engine_font_manager_draw_data( frame, 17, 17 );
-			engine_command_manager_add( frame, command_type_kid_mover, direction_type_rght );
+			//engine_font_manager_draw_data( frame, 17, 17 );
+			//engine_command_manager_add( frame, command_type_kid_mover, direction_type_rght );
 		}
-		if( 40 == frame )
+		/*if( 40 == frame )
 		{
 			engine_command_manager_add( frame, command_type_end_gamer, 15 );
 		}*/
-		input = engine_input_manager_hold_fire1();
-		if( input )
-		{
-			engine_font_manager_draw_text( "END!", 17, 14 );
-			engine_command_manager_add( frame, command_type_end_gamer, 15 );
-			frame_spot = 1;
-		}
-		else
-		{
-			gamer_direction = engine_gamer_manager_direction();
-			if( direction_type_none != gamer_direction )
-			{
-				engine_font_manager_draw_data( gamer_direction, 10, 15 );
-				//engine_font_manager_draw_data( frame_spot++, 27, 15 );
-				engine_font_manager_draw_data( frame, 17, 17 );
+		//input = engine_input_manager_hold_fire1();
+		//if( input )
+		//{
+		//	engine_font_manager_draw_text( "END!", 17, 14 );
+		//	engine_command_manager_add( frame, command_type_end_gamer, 15 );
+		//	frame_spot = 1;
+		//}
+		//else
+		//{
+		//	gamer_direction = engine_gamer_manager_direction();
+		//	if( direction_type_none != gamer_direction )
+		//	{
+		//		engine_font_manager_draw_data( gamer_direction, 10, 15 );
+		//		//engine_font_manager_draw_data( frame_spot++, 27, 15 );
+		//		engine_font_manager_draw_data( frame, 17, 17 );
 
-				engine_command_manager_add( frame, command_type_kid_mover, gamer_direction );
-			}
-		}
+		//		engine_command_manager_add( frame, command_type_kid_mover, gamer_direction );
+		//	}
+		//}
 	}
 	else if( direction_type_none != go->direction && lifecycle_type_move == go->lifecycle )
 	{
@@ -128,6 +130,36 @@ void screen_play_screen_update( unsigned char *screen_type )
 		engine_font_manager_draw_data( frame, 17, 18 );
 		engine_gamer_manager_stop();
 	}
+
+
+	// Move enemy.
+	enemy = actor_type_pro;
+	//for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
+	{
+		eo = &global_enemy_objects[ enemy ];
+		if( direction_type_none == eo->direction && lifecycle_type_idle == eo->lifecycle )
+		{
+			if( 0 == frame )
+			{
+				engine_font_manager_draw_data( frame, 17, 17 );
+				// TODO map enemy to command 
+				//unsigned char command_type = engine_enemy_manager_get_mover( enemy );
+				engine_command_manager_add( frame, command_type_pro_mover, direction_type_upxx );
+			}
+		}
+		else if( direction_type_none != eo->direction && lifecycle_type_move == eo->lifecycle )
+		{
+			//  warning 110: conditional flow changed by optimizer: so said EVELYN the modified DOG
+			engine_enemy_manager_update( enemy );
+		}
+		if( direction_type_none != eo->direction && lifecycle_type_idle == eo->lifecycle )
+		{
+			// Check collision.
+			engine_font_manager_draw_data( frame, 17, 18 );
+			engine_enemy_manager_stop( enemy );
+		}
+	}
+
 
 	// Execute all commands for this frame.
 	engine_command_manager_execute( frame );
