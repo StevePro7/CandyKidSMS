@@ -92,8 +92,8 @@ void screen_play_screen_update( unsigned char *screen_type )
 	{
 		if( 0 == frame )
 		{
-			//engine_font_manager_draw_data( frame, 17, 17 );
-			//engine_command_manager_add( frame, command_type_kid_mover, direction_type_rght );
+			engine_font_manager_draw_data( frame, 17, 17 );
+			engine_command_manager_add( frame, command_type_kid_mover, direction_type_rght );
 		}
 		/*if( 40 == frame )
 		{
@@ -155,8 +155,11 @@ void screen_play_screen_update( unsigned char *screen_type )
 		if( direction_type_none != eo->direction && lifecycle_type_idle == eo->lifecycle )
 		{
 			// Check collision.
-			engine_font_manager_draw_data( frame, 17, 18 );
+			//engine_font_manager_draw_data( frame, 17, 18 );
 			engine_enemy_manager_stop( enemy );
+
+			engine_command_manager_add( frame, command_type_end_gamer, 0 );
+			frame_spot = 1;
 		}
 	}
 
@@ -178,10 +181,10 @@ void screen_play_screen_update( unsigned char *screen_type )
 		engine_frame_manager_draw();
 		engine_delay_manager_draw();
 
-		engine_font_manager_draw_text( "SAVING", 20, 17 );
+		engine_font_manager_draw_text( "SAVING", 20, 12 );
 		engine_command_manager_save();
 		engine_storage_manager_write();
-		engine_font_manager_draw_text( "SAVED!!!!", 20, 18 );
+		engine_font_manager_draw_text( "SAVED!!!!", 20, 13 );
 
 		*screen_type = screen_type_intro;
 		//*screen_type = screen_type_demo;

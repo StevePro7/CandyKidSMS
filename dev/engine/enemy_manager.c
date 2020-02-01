@@ -40,7 +40,7 @@ void engine_enemy_manager_init()
 		eo->homeY = homeY;
 		eo->tileX = homeX;
 		eo->tileY = homeY;
-		eo->delay = 8;		// TODO hardcoded - inject!
+		eo->delay = 2;		// TODO hardcoded - inject!
 		eo->timer = 0;
 		eo->delta = 0;
 		eo->total = 0;
@@ -110,7 +110,7 @@ void engine_enemy_manager_update( unsigned char enemy )
 	{
 		eo->posnY -= eo->speed;
 	}
-	/*else if( direction_type_down == eo->direction )
+	else if( direction_type_down == eo->direction )
 	{
 		eo->posnY += eo->speed;
 	}
@@ -121,7 +121,7 @@ void engine_enemy_manager_update( unsigned char enemy )
 	else if( direction_type_rght == eo->direction )
 	{
 		eo->posnX += eo->speed;
-	}*/
+	}
 
 	// Update lifecycle.
 	if( eo->total >= TILE_SIZE )
@@ -130,7 +130,7 @@ void engine_enemy_manager_update( unsigned char enemy )
 		{
 			eo->tileY--;
 		}
-		/*else if( direction_type_down == eo->direction )
+		else if( direction_type_down == eo->direction )
 		{
 			eo->tileY++;
 		}
@@ -141,7 +141,7 @@ void engine_enemy_manager_update( unsigned char enemy )
 		else if( direction_type_rght == eo->direction )
 		{
 			eo->tileX++;
-		}*/
+		}
 
 		calcd_spots( enemy );
 

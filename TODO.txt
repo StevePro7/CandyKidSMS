@@ -1,6 +1,26 @@
 TODO
 01/02/2020
 
+Refactor command pattern to store 2x nibbles in 1x byte
+http://www.cplusplus.com/forum/beginner/211713
+
+unsigned char nibble1 = 0xF;
+unsigned char nibble2 = 0x5;
+unsigned char byte = nibble1 | (nibble2 << 4);	0x5F
+
+Do I read the data back as
+unsigned char byte = 0x5F;
+unsigned char nibble1 = 
+unsigned char nibble2;
+
+https://bytes.com/topic/c/answers/784487-converting-byte-nibble-converted-nibble-bytes
+bottom_nibble = byte & 0x0f;
+top_nibble    = (byte >> 4) & 0x0f;
+
+Or use ByteNibbles
+https://stackoverflow.com/questions/3110306/reading-writing-nibbles-without-bit-fields-in-c-c
+
+
 It seems that I have the 3x command arrays twice:
 01.	local static variables
 02.	command object
