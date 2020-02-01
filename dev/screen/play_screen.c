@@ -19,6 +19,7 @@
 #endif
 
 static unsigned char first_time;
+static unsigned char frame_spot;
 
 void screen_play_screen_load()
 {
@@ -44,6 +45,7 @@ void screen_play_screen_load()
 	engine_level_manager_draw_level();
 
 	first_time = 1;
+	frame_spot = 0;
 }
 
 void screen_play_screen_update( unsigned char *screen_type )
@@ -91,6 +93,9 @@ void screen_play_screen_update( unsigned char *screen_type )
 		if( direction_type_none != gamer_direction )
 		{
 			engine_font_manager_draw_data( gamer_direction, 10, 15 );
+			engine_font_manager_draw_data( frame_spot++, 27, 15 );
+			engine_font_manager_draw_data( frame, 17, 17 );
+
 			engine_command_manager_add( frame, command_type_kid_mover, gamer_direction );
 		}
 	}
