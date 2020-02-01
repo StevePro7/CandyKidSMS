@@ -41,8 +41,8 @@ void engine_command_manager_init()
 		new_args[ idx ] = 0;
 	}
 
-	engine_font_manager_draw_data( new_frame[ 0 ], 20, 15 );
-	engine_font_manager_draw_data( new_frame[ 1 ], 20, 16 );
+	//engine_font_manager_draw_data( new_frame[ 0 ], 20, 15 );
+	//engine_font_manager_draw_data( new_frame[ 1 ], 20, 16 );
 	//engine_font_manager_draw_data( new_frame[ 2 ], 20, 17 );
 	//engine_font_manager_draw_data( new_frame[ MAX_COMMANDS - 1 ], 20, 18 );
 
