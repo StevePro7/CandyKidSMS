@@ -9,6 +9,13 @@ Here is the out outline for SRAM
 0310	args		256 * 1 bytes	256
 0410	F7
 
+If I open the save files in HxD then they do seem to refresh after re-save
+
+
+E:\GitHub\StevePro7\CandyKidSMS\dev
+C:\SEGA\meka\Saves
+E:\Fusion
+
 
 29/01/2020
 Here is the link to the "SpriteClippingWindow"
