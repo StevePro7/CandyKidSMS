@@ -17,7 +17,8 @@ void main (void)
 	engine_content_manager_load_sprites();
 
 	//open_screen_type = screen_type_load;
-	open_screen_type = screen_type_play;
+	open_screen_type = screen_type_demo;
+	//open_screen_type = screen_type_play;
 	//open_screen_type = screen_type_save;
 	//open_screen_type = screen_type_intro;
 	//open_screen_type = screen_type_record;

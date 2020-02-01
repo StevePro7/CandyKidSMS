@@ -1,35 +1,53 @@
 #include "demo_screen.h"
+#include "..\engine\board_manager.h"
 #include "..\engine\command_manager.h"
 #include "..\engine\delay_manager.h"
+#include "..\engine\enemy_manager.h"
 #include "..\engine\enum_manager.h"
 #include "..\engine\font_manager.h"
 #include "..\engine\frame_manager.h"
 #include "..\engine\gamer_manager.h"
 #include "..\engine\input_manager.h"
+#include "..\engine\level_manager.h"
 #include "..\engine\storage_manager.h"
 
 static unsigned char first_time;
 
 void screen_demo_screen_load()
 {
-	unsigned char test;
+	//unsigned char test;
 
-	engine_command_manager_init();
+	//engine_command_manager_init();
 	engine_delay_manager_load( 0 );
 	engine_frame_manager_init();
 
-	engine_font_manager_draw_text( "DEMO SCREEN!!!!!!", 2, 0 );
+	engine_board_manager_init();
+	engine_gamer_manager_init();
+	engine_enemy_manager_init();
+
+	
 	engine_frame_manager_draw();
 	engine_delay_manager_draw();
+
+	engine_board_manager_debugger();
+	engine_board_manager_debugger();
+	engine_board_manager_side_tile();
+
+	engine_level_manager_init_board();
+	engine_level_manager_init_exits();
+
+	engine_level_manager_load_level( 0, 0 );
+	engine_level_manager_draw_level();
 	first_time = 1;
 
-	test = engine_storage_manager_available();
+	/*test = engine_storage_manager_available();
 	if( test )
 	{
 		engine_storage_manager_read();
-	}
+	}*/
 
-	engine_font_manager_draw_data( test, 22, 7 );
+	//engine_font_manager_draw_data( test, 22, 7 );
+	engine_font_manager_draw_text( "DEMO SCREEN!!!!", 2, 10 );
 }
 
 void screen_demo_screen_update( unsigned char *screen_type )
@@ -37,8 +55,14 @@ void screen_demo_screen_update( unsigned char *screen_type )
 	struct_frame_object *fo = &global_frame_object;
 	unsigned char proceed;
 	//unsigned char input;
-	unsigned int frame = fo->frame_count;
 	
+	unsigned int frame;
+	frame = fo->frame_count;
+	
+	// Draw sprites first.
+	engine_gamer_manager_draw();
+	engine_enemy_manager_draw();
+
 	engine_frame_manager_draw();
 	engine_delay_manager_draw();
 	if( !first_time )
@@ -57,7 +81,7 @@ void screen_demo_screen_update( unsigned char *screen_type )
 	frame = fo->frame_count;
 
 	// Execute all commands for this frame.
-	engine_command_manager_execute( frame );
+	//engine_command_manager_execute( frame );
 
 	first_time = 0;
 	*screen_type = screen_type_demo;
