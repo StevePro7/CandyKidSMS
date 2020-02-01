@@ -23,7 +23,7 @@ void screen_intro_screen_load()
 
 	//engine_board_manager_debugger();
 
-	unsigned int frames[ MAX_COMMANDS ] = { 768, 1049, 1400, 1729, 2001, 3000 };
+	/*unsigned int frames[ MAX_COMMANDS ] = { 768, 1049, 1400, 1729, 2001, 3000 };
 	unsigned char commands[ MAX_COMMANDS ];
 	unsigned char args[ MAX_COMMANDS ];
 
@@ -33,7 +33,7 @@ void screen_intro_screen_load()
 		frames[ loop ] = loop;
 		commands[ loop ] = 9;
 		args[ loop ] = loop;
-	}
+	}*/
 
 	engine_font_manager_draw_text( "INTRO SCREEN!!", 4, 0 );
 

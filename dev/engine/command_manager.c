@@ -186,6 +186,45 @@ void engine_command_manager_execute( unsigned int frame )
 
 void engine_command_manager_undo( unsigned int frame )
 {
+	unsigned int check;
+	unsigned char command;
+	unsigned int args;
+
+	// If we are not on the correct frame to execute then simply return.
+	check = new_frame[ undo_index ];
+	if( ( frame != check ) )
+	{
+		return;
+	}
+
+	while( 1 )
+	{
+		command_index = undo_index;
+		command = new_command[ command_index ];
+
+		args = new_args[ command_index ];
+		undo[ command ]( args );
+
+		// Decrement undo index and break if at the end...
+		if( undo_index > 0 )
+		{
+			undo_index--;
+		}
+		if( 0 == command_index && 0 == undo_index )
+		{
+			break;
+		}
+
+		check = new_frame[ undo_index ];
+		if( ( frame != check ) )
+		{
+			break;
+		}
+	}
+}
+
+void engine_command_manager_undoX( unsigned int frame )
+{
 	unsigned char frame_bank;
 	unsigned char frame_main;
 	unsigned char check_main;
@@ -281,17 +320,19 @@ void engine_command_manager_save()
 
 unsigned int engine_command_manager_align_undo()
 {
+	unsigned char undo_frame;
 	unsigned char command;
 	unsigned int idx;
 	//unsigned char idx;
 
-	undo_index = 0;
+	undo_frame = 0;
 	for( idx = 0; idx < MAX_COMMANDS; idx++ )
 	{
 		command = new_command[ idx ];
 		if( command_type_end_gamer == command )
 		{
 			undo_index = idx;
+			undo_frame = new_frame[ idx ];
 			break;
 		}
 	}
@@ -306,7 +347,7 @@ unsigned int engine_command_manager_align_undo()
 
 	undo_frame = shift_bank * MAX_BYTE_SIZE;
 	undo_frame += frame_main;*/
-	return undo_index;
+	return undo_frame;
 }
 
 static void exec_command_all_empty( unsigned char args )

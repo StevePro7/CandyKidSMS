@@ -13,7 +13,7 @@ static unsigned int undo_frame;
 
 void screen_test_screen_load()
 {
-	engine_delay_manager_load( 0 );
+	engine_delay_manager_load( 60 );
 
 	engine_font_manager_draw_text( "TESTER SCREEN!!", 4, 0 );
 	engine_frame_manager_load();
