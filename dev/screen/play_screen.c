@@ -146,6 +146,11 @@ void screen_play_screen_update( unsigned char *screen_type )
 		engine_frame_manager_draw();
 		engine_delay_manager_draw();
 
+		engine_font_manager_draw_text( "SAVING", 20, 17 );
+		engine_command_manager_save();
+		engine_storage_manager_write();
+		engine_font_manager_draw_text( "SAVED!!!!", 20, 18 );
+
 		*screen_type = screen_type_intro;
 		//*screen_type = screen_type_demo;
 		return;

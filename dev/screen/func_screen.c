@@ -3,10 +3,12 @@
 #include "..\engine\command_manager.h"
 #include "..\engine\delay_manager.h"
 #include "..\engine\enum_manager.h"
+#include "..\engine\enemy_manager.h"
 #include "..\engine\font_manager.h"
 #include "..\engine\frame_manager.h"
 #include "..\engine\gamer_manager.h"
 #include "..\engine\input_manager.h"
+#include "..\engine\level_manager.h"
 #include "..\engine\storage_manager.h"
 #include "..\engine\tile_manager.h"
 
@@ -20,23 +22,40 @@ void screen_func_screen_load()
 	engine_gamer_manager_init();
 
 	engine_command_manager_init();
-	engine_delay_manager_load( 10 );
+	engine_delay_manager_load( 0 );
 	engine_frame_manager_init();
 
-	engine_font_manager_draw_text( "FUNCTN SCREEN!!", 4, 0 );
+	engine_board_manager_init();
+	engine_gamer_manager_init();
+	engine_enemy_manager_init();
+
 	engine_frame_manager_draw();
 	engine_delay_manager_draw();
+
+	engine_board_manager_debugger();
+	engine_board_manager_debugger();
+	engine_board_manager_side_tile();
+
+	engine_level_manager_init_board();
+	engine_level_manager_init_exits();
+
+	engine_level_manager_load_level( 0, 0 );
+	engine_level_manager_draw_level();
 	first_time = 1;
 
+	engine_font_manager_draw_text( "FUNC SCREEN!!", 4, 10 );
+	first_time = 1;
+
+	// IMPORTANT - if test = 0 then will infinite loop as no commands to play
 	test = engine_storage_manager_available();
 	if( test )
 	{
 		engine_storage_manager_read();
 	}
 
-	engine_tile_manager_draw_trees( tree_type_death, 4, 2 );	engine_tile_manager_draw_trees( tree_type_death, 6, 2 );	engine_tile_manager_draw_trees( tree_type_death, 8, 2 );
+	/*engine_tile_manager_draw_trees( tree_type_death, 4, 2 );	engine_tile_manager_draw_trees( tree_type_death, 6, 2 );	engine_tile_manager_draw_trees( tree_type_death, 8, 2 );
 	engine_tile_manager_draw_trees( tree_type_death, 10, 4 );	engine_tile_manager_draw_trees( tree_type_death, 10, 6 );	engine_tile_manager_draw_trees( tree_type_death, 8, 8 );
-	engine_tile_manager_draw_trees( tree_type_death, 6, 8 );
+	engine_tile_manager_draw_trees( tree_type_death, 6, 8 );*/
 
 	engine_font_manager_draw_data( test, 22, 7 );
 }
@@ -46,11 +65,12 @@ void screen_func_screen_update( unsigned char *screen_type )
 	struct_frame_object *fo = &global_frame_object;
 	struct_gamer_object *go = &global_gamer_object;
 	unsigned char proceed;
-	unsigned char input;
+	//unsigned char input;
 	unsigned int frame = fo->frame_count;
 
 	// Draw sprites first.
 	engine_gamer_manager_draw();
+	engine_enemy_manager_draw();
 
 	engine_frame_manager_draw();
 	engine_delay_manager_draw();
@@ -73,7 +93,7 @@ void screen_func_screen_update( unsigned char *screen_type )
 	// Move gamer.
 	if( direction_type_none == go->direction && lifecycle_type_idle == go->lifecycle )
 	{
-		
+		// TODO check if there is command_type_end_gamer as this signifies the end.
 	}
 	else if( direction_type_none != go->direction && lifecycle_type_move == go->lifecycle )
 	{
@@ -83,24 +103,12 @@ void screen_func_screen_update( unsigned char *screen_type )
 	if( direction_type_none != go->direction && lifecycle_type_idle == go->lifecycle )
 	{
 		// Check collision.
+		engine_font_manager_draw_data( frame, 17, 18 );
 		engine_gamer_manager_stop();
 	}
 
 	// Execute all commands for this frame.
-	engine_command_manager_execute( frame );
-
-	// Finish
-	input = 100 == frame;
-	if( input )
-	{
-		engine_frame_manager_draw();
-
-		engine_font_manager_draw_text( "ENDING", 20, 18 );
-		engine_font_manager_draw_text( "ENDED!!!!", 20, 19 );
-
-		*screen_type = screen_type_intro;
-		return;
-	}
+	engine_command_manager_play( frame );
 
 	first_time = 0;
 	*screen_type = screen_type_func;

@@ -22,6 +22,7 @@ void main (void)
 	//open_screen_type = screen_type_save;
 	//open_screen_type = screen_type_intro;
 	//open_screen_type = screen_type_record;
+	//open_screen_type = screen_type_func;
 
 	engine_hack_manager_init();
 	engine_hack_manager_invert();

@@ -25,7 +25,6 @@ void screen_demo_screen_load()
 	engine_gamer_manager_init();
 	engine_enemy_manager_init();
 
-	
 	engine_frame_manager_draw();
 	engine_delay_manager_draw();
 
