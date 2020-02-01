@@ -5,7 +5,7 @@ O -mz80
 S _engine_gamer_manager_draw Ref0000
 S _engine_font_manager_draw_text Ref0000
 S _engine_enemy_manager_draw Ref0000
-S _engine_input_manager_hold_fire1 Ref0000
+S _engine_input_manager_hold_fire2 Ref0000
 S .__.ABS. Def0000
 A _CODE size 37 flags 0 addr 0
 S _screen_intro_screen_load Def0000

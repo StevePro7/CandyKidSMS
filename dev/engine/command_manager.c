@@ -216,12 +216,14 @@ void engine_command_manager_play( unsigned int frame )
 
 		engine_font_manager_draw_data( play_index, 10, 20 );
 		engine_font_manager_draw_data( new_frame[ play_index ], 20, 20 );
+		engine_font_manager_draw_data( new_command[ play_index ], 30, 20 );
 
 		// The index will wrap from 255 to 0 naturally.
 		play_index++;
 
 		engine_font_manager_draw_data( play_index, 10, 21 );
 		engine_font_manager_draw_data( new_frame[ play_index ], 20, 21 );
+		engine_font_manager_draw_data( new_command[ play_index ], 30, 21 );
 
 		// Execute all commands for this frame so break.
 		check = new_frame[ play_index ];

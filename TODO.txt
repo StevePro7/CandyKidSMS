@@ -13,6 +13,9 @@ Undo command currently stops at index 0 and starts where command = 31
 it should start at index before command 31 and wrap all 256 commands as necc til hits 31 to stop
 
 
+I *think* that I could replace int for Kid posX + posX with signed char
+because x = [0-208] and y = [-16 to 192] or [240 to 192] but would have to test of course
+
 
 25/01/2020
 Some are probable nice to haves!!

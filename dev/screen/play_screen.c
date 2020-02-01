@@ -7,6 +7,7 @@
 #include "..\engine\font_manager.h"
 #include "..\engine\frame_manager.h"
 #include "..\engine\gamer_manager.h"
+#include "..\engine\input_manager.h"
 #include "..\engine\level_manager.h"
 #include "..\engine\storage_manager.h"
 #include "..\engine\sprite_manager.h"
@@ -57,7 +58,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 	unsigned char gamer_direction = direction_type_none;
 
 	unsigned char proceed;
-	//unsigned char input;
+	unsigned char input;
 	unsigned int frame;
 	frame = fo->frame_count;
 
@@ -82,11 +83,12 @@ void screen_play_screen_update( unsigned char *screen_type )
 
 	// Continue...
 	frame = fo->frame_count;
+	frame_spot = 0;
 
 	// Move gamer.
 	if( direction_type_none == go->direction && lifecycle_type_idle == go->lifecycle )
 	{
-		if( 0 == frame || 20 == frame )
+		/*if( 0 == frame || 20 == frame )
 		{
 			engine_font_manager_draw_data( frame, 17, 17 );
 			engine_command_manager_add( frame, command_type_kid_mover, direction_type_rght );
@@ -94,16 +96,26 @@ void screen_play_screen_update( unsigned char *screen_type )
 		if( 40 == frame )
 		{
 			engine_command_manager_add( frame, command_type_end_gamer, 15 );
-		}
-		/*gamer_direction = engine_gamer_manager_direction();
-		if( direction_type_none != gamer_direction )
-		{
-			engine_font_manager_draw_data( gamer_direction, 10, 15 );
-			engine_font_manager_draw_data( frame_spot++, 27, 15 );
-			engine_font_manager_draw_data( frame, 17, 17 );
-
-			engine_command_manager_add( frame, command_type_kid_mover, gamer_direction );
 		}*/
+		input = engine_input_manager_hold_fire1();
+		if( input )
+		{
+			engine_font_manager_draw_text( "END!", 17, 14 );
+			engine_command_manager_add( frame, command_type_end_gamer, 15 );
+			frame_spot = 1;
+		}
+		else
+		{
+			gamer_direction = engine_gamer_manager_direction();
+			if( direction_type_none != gamer_direction )
+			{
+				engine_font_manager_draw_data( gamer_direction, 10, 15 );
+				//engine_font_manager_draw_data( frame_spot++, 27, 15 );
+				engine_font_manager_draw_data( frame, 17, 17 );
+
+				engine_command_manager_add( frame, command_type_kid_mover, gamer_direction );
+			}
+		}
 	}
 	else if( direction_type_none != go->direction && lifecycle_type_move == go->lifecycle )
 	{
@@ -129,13 +141,13 @@ void screen_play_screen_update( unsigned char *screen_type )
 	}*/
 
 	first_time = 0;
-	if( 40 == frame )
+	if( frame_spot )
 	{
 		engine_frame_manager_draw();
 		engine_delay_manager_draw();
 
-		//*screen_type = screen_type_intro;
-		*screen_type = screen_type_demo;
+		*screen_type = screen_type_intro;
+		//*screen_type = screen_type_demo;
 		return;
 	}
 

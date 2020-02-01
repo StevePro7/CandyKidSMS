@@ -69,7 +69,7 @@ void screen_intro_screen_update( unsigned char *screen_type )
 	engine_gamer_manager_draw();
 	engine_enemy_manager_draw();
 
-	input = engine_input_manager_hold_fire1();
+	input = engine_input_manager_hold_fire2();
 	if( input )
 	{
 		*screen_type = screen_type_demo;
