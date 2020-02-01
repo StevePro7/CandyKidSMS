@@ -64,9 +64,12 @@ void screen_func_screen_update( unsigned char *screen_type )
 {
 	struct_frame_object *fo = &global_frame_object;
 	struct_gamer_object *go = &global_gamer_object;
+	struct_enemy_object *eo;
 	unsigned char proceed;
 	//unsigned char input;
-	unsigned int frame = fo->frame_count;
+	unsigned char enemy;
+	unsigned int frame;
+	frame = fo->frame_count;
 
 	// Draw sprites first.
 	engine_gamer_manager_draw();
@@ -106,6 +109,29 @@ void screen_func_screen_update( unsigned char *screen_type )
 		engine_font_manager_draw_data( frame, 17, 18 );
 		engine_gamer_manager_stop();
 	}
+
+
+	// Move enemy.
+	enemy = actor_type_pro;
+	//for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
+	{
+		eo = &global_enemy_objects[ enemy ];
+		if( direction_type_none == eo->direction && lifecycle_type_idle == eo->lifecycle )
+		{
+		}
+		else if( direction_type_none != eo->direction && lifecycle_type_move == eo->lifecycle )
+		{
+			//  warning 110: conditional flow changed by optimizer: so said EVELYN the modified DOG
+			engine_enemy_manager_update( enemy );
+		}
+		if( direction_type_none != eo->direction && lifecycle_type_idle == eo->lifecycle )
+		{
+			// Check collision.
+			//engine_font_manager_draw_data( frame, 17, 18 );
+			engine_enemy_manager_stop( enemy );
+		}
+	}
+
 
 	// Execute all commands for this frame.
 	engine_command_manager_play( frame );
