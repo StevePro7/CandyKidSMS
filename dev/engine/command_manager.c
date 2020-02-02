@@ -49,27 +49,36 @@ void engine_command_manager_init()
 
 	// IMPORTANT execute + undo must be same order!!
 	execute[ command_type_all_empty ] = exec_command_all_empty;
-	execute[ command_type_kid_mover ] = engine_actor_manager_exec_kid_mover;
-	execute[ command_type_pro_mover ] = engine_actor_manager_exec_pro_mover;
-	execute[ command_type_adi_mover ] = engine_actor_manager_exec_adi_mover;
-	execute[ command_type_suz_mover ] = engine_actor_manager_exec_suz_mover;
+	execute[ command_type_gamer_mover ] = engine_actor_manager_exec_gamer_mover;
+	execute[ command_type_enemy_mover ] = engine_actor_manager_exec_enemy_mover;
+	execute[ command_type_gamer_speed ] = engine_actor_manager_exec_gamer_speed;
+	execute[ command_type_enemy_speed ] = engine_actor_manager_exec_enemy_speed;
 
-	execute[ command_type_kid_speed ] = engine_actor_manager_exec_kid_speed;
-	execute[ command_type_pro_speed ] = engine_actor_manager_exec_pro_speed;
-	execute[ command_type_adi_speed ] = engine_actor_manager_exec_adi_speed;
-	execute[ command_type_suz_speed ] = engine_actor_manager_exec_suz_speed;
+	//execute[ command_type_kid_mover ] = engine_actor_manager_exec_kid_mover;
+	//execute[ command_type_pro_mover ] = engine_actor_manager_exec_pro_mover;
+	//execute[ command_type_adi_mover ] = engine_actor_manager_exec_adi_mover;
+	//execute[ command_type_suz_mover ] = engine_actor_manager_exec_suz_mover;
+	//execute[ command_type_kid_speed ] = engine_actor_manager_exec_kid_speed;
+	//execute[ command_type_pro_speed ] = engine_actor_manager_exec_pro_speed;
+	//execute[ command_type_adi_speed ] = engine_actor_manager_exec_adi_speed;
+	//execute[ command_type_suz_speed ] = engine_actor_manager_exec_suz_speed;
 	execute[ command_type_end_gamer ] = exec_command_end_gamer;
 
-	undo[ command_type_all_empty ] = undo_command_all_empty;
-	undo[ command_type_kid_mover ] = engine_actor_manager_undo_kid_mover;
-	undo[ command_type_pro_mover ] = engine_actor_manager_undo_pro_mover;
-	undo[ command_type_adi_mover ] = engine_actor_manager_undo_adi_mover;
-	undo[ command_type_suz_mover ] = engine_actor_manager_undo_suz_mover;
 
-	undo[ command_type_kid_speed ] = engine_actor_manager_undo_kid_speed;
-	undo[ command_type_pro_speed ] = engine_actor_manager_undo_pro_speed;
-	undo[ command_type_adi_speed ] = engine_actor_manager_undo_adi_speed;
-	undo[ command_type_suz_speed ] = engine_actor_manager_undo_suz_speed;
+	undo[ command_type_all_empty ] = undo_command_all_empty;
+	undo[ command_type_gamer_mover ] = engine_actor_manager_exec_gamer_mover;
+	undo[ command_type_enemy_mover ] = engine_actor_manager_exec_enemy_mover;
+	undo[ command_type_gamer_speed ] = engine_actor_manager_exec_gamer_speed;
+	undo[ command_type_enemy_speed ] = engine_actor_manager_exec_enemy_speed;
+
+	//undo[ command_type_kid_mover ] = engine_actor_manager_undo_kid_mover;
+	//undo[ command_type_pro_mover ] = engine_actor_manager_undo_pro_mover;
+	//undo[ command_type_adi_mover ] = engine_actor_manager_undo_adi_mover;
+	//undo[ command_type_suz_mover ] = engine_actor_manager_undo_suz_mover;
+	//undo[ command_type_kid_speed ] = engine_actor_manager_undo_kid_speed;
+	//undo[ command_type_pro_speed ] = engine_actor_manager_undo_pro_speed;
+	//undo[ command_type_adi_speed ] = engine_actor_manager_undo_adi_speed;
+	//undo[ command_type_suz_speed ] = engine_actor_manager_undo_suz_speed;
 	undo[ command_type_end_gamer ] = undo_command_end_gamer;
 
 	command_index = 0;

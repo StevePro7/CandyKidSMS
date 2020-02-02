@@ -76,8 +76,11 @@ void screen_record_screen_update( unsigned char *screen_type )
 	if( input[ 0 ] )
 	{
 	//	//engine_command_manager_add( frame, command_type_all_empty, 5 );
-		engine_command_manager_add( frame, command_type_pro_mover, 05 );
-		engine_command_manager_add( frame, command_type_kid_mover, 10 );
+		//engine_command_manager_add( frame, command_type_pro_mover, 05 );
+		//engine_command_manager_add( frame, command_type_kid_mover, 10 );
+
+		engine_command_manager_add( frame, command_type_enemy_mover, 05 );
+		engine_command_manager_add( frame, command_type_gamer_mover, 10 );
 	}
 	//input[ 1 ] = 290 == frame;
 	//if( input[1] )

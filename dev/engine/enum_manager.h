@@ -83,7 +83,13 @@ typedef enum tag_enum_actor_type
 typedef enum tag_enum_command_type
 {
 	command_type_all_empty = 0,
-	command_type_kid_mover = 1,
+
+	command_type_gamer_mover = 1,
+	command_type_enemy_mover = 2,
+	command_type_gamer_speed = 3,
+	command_type_enemy_speed = 4,
+
+	/*command_type_kid_mover = 1,
 	command_type_pro_mover = 2,
 	command_type_adi_mover = 3,
 	command_type_suz_mover = 4,
@@ -91,7 +97,7 @@ typedef enum tag_enum_command_type
 	command_type_kid_speed = 5,
 	command_type_pro_speed = 6,
 	command_type_adi_speed = 7,
-	command_type_suz_speed = 8,
+	command_type_suz_speed = 8,*/
 
 	command_type_end_gamer = MAX_CMD_TYPE - 1,
 
