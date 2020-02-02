@@ -57,6 +57,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 	struct_gamer_object *go = &global_gamer_object;
 	struct_enemy_object *eo;
 	unsigned char gamer_direction = direction_type_none;
+	unsigned char enemy_direction = direction_type_none;
 
 	unsigned char proceed;
 	//unsigned char input;
@@ -92,7 +93,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 	{
 		if( 0 == frame )
 		{
-			engine_font_manager_draw_data( frame, 17, 17 );
+			engine_font_manager_draw_data( frame, 12, 14 );
 			engine_command_manager_add( frame, command_type_gamer_mover, direction_type_rght );
 		}
 		/*if( 40 == frame )
@@ -127,7 +128,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 	if( direction_type_none != go->direction && lifecycle_type_idle == go->lifecycle )
 	{
 		// Check collision.
-		engine_font_manager_draw_data( frame, 17, 18 );
+		engine_font_manager_draw_data( frame, 12, 15 );
 		engine_gamer_manager_stop();
 	}
 
@@ -137,14 +138,16 @@ void screen_play_screen_update( unsigned char *screen_type )
 	//for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
 	{
 		eo = &global_enemy_objects[ enemy ];
+		enemy_direction = direction_type_none;
 		if( direction_type_none == eo->direction && lifecycle_type_idle == eo->lifecycle )
 		{
 			if( 0 == frame )
 			{
-				engine_font_manager_draw_data( frame, 17, 17 );
+				engine_font_manager_draw_data( frame, 12, 16 );
 				// TODO map enemy to command 
 				//unsigned char command_type = engine_enemy_manager_get_mover( enemy );
-				engine_command_manager_add( frame, command_type_enemy_mover, enemy | direction_type_upxx );		// stevepro
+				enemy_direction = direction_type_rght;
+				engine_command_manager_add( frame, command_type_enemy_mover, ( enemy | ( enemy_direction << 4 ) ) );
 			}
 		}
 		else if( direction_type_none != eo->direction && lifecycle_type_move == eo->lifecycle )
@@ -155,7 +158,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 		if( direction_type_none != eo->direction && lifecycle_type_idle == eo->lifecycle )
 		{
 			// Check collision.
-			//engine_font_manager_draw_data( frame, 17, 18 );
+			engine_font_manager_draw_data( frame, 12, 17 );
 			engine_enemy_manager_stop( enemy );
 
 			engine_command_manager_add( frame, command_type_end_gamer, 0 );

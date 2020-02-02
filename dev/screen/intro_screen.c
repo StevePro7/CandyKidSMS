@@ -17,6 +17,15 @@ static unsigned int undo_frame;
 
 void screen_intro_screen_load()
 {
+	//unsigned char nibble1 = 0xF;
+	//unsigned char nibble2 = 0x5;
+	//unsigned char byte = nibble1 | ( nibble2 << 4 );	
+
+	unsigned char nibble1;
+	unsigned char nibble2;
+	unsigned char byte = 95;
+
+
 	// draw Candy Kid title
 	//engine_content_manager_load_title();
 	//engine_tile_manager_main_title( 2, 2 );
@@ -57,11 +66,19 @@ void screen_intro_screen_load()
 	undo_frame = engine_command_manager_align_undo();
 	engine_font_manager_draw_data( undo_frame, 31, 2 );*/
 
-	engine_board_manager_init();
-	engine_gamer_manager_init();
-	engine_enemy_manager_init();
+	//engine_board_manager_init();
+	//engine_gamer_manager_init();
+	//engine_enemy_manager_init();
 
+	//byte = 127;
 	engine_font_manager_draw_text( "INTR SCREEN...!!", 2, 10 );
+
+	//nibble1 = byte & 0x0f;
+	//nibble2 = ( byte >> 4 ) & 0x0f;
+	//engine_font_manager_draw_data( byte, 20, 12 );
+	//engine_font_manager_draw_data( nibble1, 20, 13 );
+	//engine_font_manager_draw_data( nibble2, 20, 14 );
+
 	first_time = 1;
 }
 
