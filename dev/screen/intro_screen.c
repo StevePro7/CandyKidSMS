@@ -1,7 +1,7 @@
 #include "intro_screen.h"
 #include "..\engine\board_manager.h"
 #include "..\engine\command_manager.h"
-//#include "..\engine\content_manager.h"
+#include "..\engine\content_manager.h"
 #include "..\engine\delay_manager.h"
 #include "..\engine\enemy_manager.h"
 #include "..\engine\enum_manager.h"
@@ -57,7 +57,11 @@ void screen_intro_screen_load()
 	undo_frame = engine_command_manager_align_undo();
 	engine_font_manager_draw_data( undo_frame, 31, 2 );*/
 
-	engine_font_manager_draw_text( "INTR SCREEN", 2, 10 );
+	engine_board_manager_init();
+	engine_gamer_manager_init();
+	engine_enemy_manager_init();
+
+	engine_font_manager_draw_text( "INTR SCREEN...!!", 2, 10 );
 	first_time = 1;
 }
 
@@ -72,7 +76,7 @@ void screen_intro_screen_update( unsigned char *screen_type )
 	input = engine_input_manager_hold_fire2();
 	if( input )
 	{
-		*screen_type = screen_type_demo;
+		//*screen_type = screen_type_demo;
 		return;
 	}
 

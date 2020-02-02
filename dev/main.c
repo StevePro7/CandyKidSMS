@@ -10,7 +10,7 @@ void main (void)
 
 	devkit_SMS_setSpriteMode( devkit_SPRITEMODE_NORMAL() );
 	devkit_SMS_useFirstHalfTilesforSprites_False();
-	//devkit_SMS_VDPturnOnFeature( devkit_VDPFEATURE_HIDEFIRSTCOL() );
+	devkit_SMS_VDPturnOnFeature( devkit_VDPFEATURE_HIDEFIRSTCOL() );
 
 	engine_content_manager_load_tiles();
 	//engine_content_manager_load_title();
@@ -18,11 +18,11 @@ void main (void)
 
 	//open_screen_type = screen_type_load;
 	//open_screen_type = screen_type_demo;
-	open_screen_type = screen_type_play;
+	//open_screen_type = screen_type_play;
 	//open_screen_type = screen_type_save;
-	//open_screen_type = screen_type_intro;
+	open_screen_type = screen_type_intro;
 	//open_screen_type = screen_type_record;
-	open_screen_type = screen_type_func;
+	//open_screen_type = screen_type_func;
 
 	engine_hack_manager_init();
 	engine_hack_manager_invert();

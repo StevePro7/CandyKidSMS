@@ -93,7 +93,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 		if( 0 == frame )
 		{
 			engine_font_manager_draw_data( frame, 17, 17 );
-			engine_command_manager_add( frame, command_type_kid_mover, direction_type_rght );
+			engine_command_manager_add( frame, command_type_gamer_mover, direction_type_rght );
 		}
 		/*if( 40 == frame )
 		{
@@ -144,7 +144,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 				engine_font_manager_draw_data( frame, 17, 17 );
 				// TODO map enemy to command 
 				//unsigned char command_type = engine_enemy_manager_get_mover( enemy );
-				engine_command_manager_add( frame, command_type_pro_mover, direction_type_upxx );
+				engine_command_manager_add( frame, command_type_enemy_mover, enemy | direction_type_upxx );		// stevepro
 			}
 		}
 		else if( direction_type_none != eo->direction && lifecycle_type_move == eo->lifecycle )

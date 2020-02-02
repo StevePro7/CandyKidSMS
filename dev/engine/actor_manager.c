@@ -10,6 +10,24 @@ void engine_actor_manager_update()
 }
 
 // Execute commands.
+void engine_actor_manager_exec_gamer_mover( unsigned char args )
+{
+	args = 0;
+}
+void engine_actor_manager_exec_enemy_mover( unsigned char args )
+{
+	args = 0;
+}
+void engine_actor_manager_exec_gamer_speed( unsigned char args )
+{
+	args = 0;
+}
+void engine_actor_manager_exec_enemy_speed( unsigned char args )
+{
+	args = 0;
+}
+
+
 void engine_actor_manager_exec_kid_mover( unsigned char args )
 {
 	//engine_font_manager_draw_text( "EXEC FIRE", 2, 12 );
@@ -96,5 +114,23 @@ void engine_actor_manager_undo_adi_speed( unsigned char args )
 void engine_actor_manager_undo_suz_speed( unsigned char args )
 {
 	engine_font_manager_draw_text( "                            ", 2, 19 );
+	args = 0;
+}
+
+
+void engine_actor_manager_undo_gamer_mover( unsigned char args )
+{
+	args = 0;
+}
+void engine_actor_manager_undo_enemy_mover( unsigned char args )
+{
+	args = 0;
+}
+void engine_actor_manager_undo_gamer_speed( unsigned char args )
+{
+	args = 0;
+}
+void engine_actor_manager_undo_enemy_speed( unsigned char args )
+{
 	args = 0;
 }
