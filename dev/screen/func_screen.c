@@ -22,7 +22,7 @@ void screen_func_screen_load()
 	engine_gamer_manager_init();
 
 	engine_command_manager_init();
-	engine_delay_manager_load( 40 );
+	engine_delay_manager_load( 0 );
 	engine_frame_manager_init();
 
 	engine_board_manager_init();

@@ -21,9 +21,9 @@ void screen_intro_screen_load()
 	//unsigned char nibble2 = 0x5;
 	//unsigned char byte = nibble1 | ( nibble2 << 4 );	
 
-	unsigned char nibble1;
-	unsigned char nibble2;
-	unsigned char byte = 95;
+	//unsigned char nibble1;
+	//unsigned char nibble2;
+	//unsigned char byte = 95;
 
 
 	// draw Candy Kid title
