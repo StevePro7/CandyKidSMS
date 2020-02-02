@@ -2,6 +2,8 @@
 
 void main (void)
 {
+	// Global variables.
+	static bool global_pause;
 	unsigned char open_screen_type;
 
 	engine_asm_manager_clear_VRAM();
@@ -12,10 +14,10 @@ void main (void)
 	devkit_SMS_useFirstHalfTilesforSprites_False();
 	devkit_SMS_VDPturnOnFeature( devkit_VDPFEATURE_HIDEFIRSTCOL() );
 
-	engine_content_manager_load_tiles();
-	//engine_content_manager_load_title();
-	engine_content_manager_load_sprites();
+	engine_content_manager_load_tiles_font();
+	engine_content_manager_load_sprites_game();
 
+	open_screen_type = screen_type_splash;
 	//open_screen_type = screen_type_load;
 	//open_screen_type = screen_type_demo;
 	//open_screen_type = screen_type_play;
@@ -23,7 +25,7 @@ void main (void)
 	//open_screen_type = screen_type_intro;
 	//open_screen_type = screen_type_record;
 	//open_screen_type = screen_type_func;
-	open_screen_type = screen_type_dead;
+	//open_screen_type = screen_type_dead;
 
 	engine_hack_manager_init();
 	engine_hack_manager_invert();
