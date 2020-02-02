@@ -15,9 +15,9 @@ void main (void)
 	devkit_SMS_VDPturnOnFeature( devkit_VDPFEATURE_HIDEFIRSTCOL() );
 
 	engine_content_manager_load_tiles_font();
+	engine_content_manager_load_tiles_game();
 	engine_content_manager_load_sprites_game();
 
-	open_screen_type = screen_type_splash;
 	//open_screen_type = screen_type_load;
 	//open_screen_type = screen_type_demo;
 	//open_screen_type = screen_type_play;
@@ -25,15 +25,36 @@ void main (void)
 	//open_screen_type = screen_type_intro;
 	//open_screen_type = screen_type_record;
 	//open_screen_type = screen_type_func;
-	//open_screen_type = screen_type_dead;
+	open_screen_type = screen_type_dead;
 
+	// TODO refactor into the state_manager
 	engine_hack_manager_init();
 	engine_hack_manager_invert();
+	// TODO refactor into the state_manager
 
 	engine_screen_manager_init( open_screen_type );
 	devkit_SMS_displayOn();
 	for( ;;)
 	{
+		if( devkit_SMS_queryPauseRequested() )
+		{
+			devkit_SMS_resetPauseRequest();
+			global_pause = !global_pause;
+			if( global_pause )
+			{
+				devkit_PSGSilenceChannels();
+			}
+			else
+			{
+				devkit_PSGRestoreVolumes();
+			}
+		}
+
+		if( global_pause )
+		{
+			continue;
+		}
+
 		devkit_SMS_initSprites();
 		engine_input_manager_update();
 		engine_screen_manager_update();
