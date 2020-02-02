@@ -14,9 +14,13 @@ typedef enum tag_enum_screen_type
 	screen_type_play = 6,
 	screen_type_record = 7,
 	screen_type_save = 8,
-	screen_type_test = 9,
-	screen_type_func = 10,
-	screen_type_beat = 11,
+	screen_type_pass = 9,
+	screen_type_dead = 10,
+	screen_type_cont = 11,
+	screen_type_over = 12,
+	screen_type_beat = 13,
+	screen_type_test = 14,
+	screen_type_func = 15,
 
 } enum_screen_type;
 
@@ -47,6 +51,8 @@ typedef enum tag_enum_tile_type
 	tile_type_bonusB = 4,
 	tile_type_bonusC = 5,
 	tile_type_bonusD = 6,
+	tile_type_oneup = 7,
+	tile_type_cross = 8,
 
 } enum_tile_type;
 
@@ -89,15 +95,15 @@ typedef enum tag_enum_command_type
 	command_type_gamer_speed = 3,
 	command_type_enemy_speed = 4,
 
-	/*command_type_kid_mover = 1,
-	command_type_pro_mover = 2,
-	command_type_adi_mover = 3,
-	command_type_suz_mover = 4,
+	//command_type_kid_mover = 1,
+	//command_type_pro_mover = 2,
+	//command_type_adi_mover = 3,
+	//command_type_suz_mover = 4,
 
-	command_type_kid_speed = 5,
-	command_type_pro_speed = 6,
-	command_type_adi_speed = 7,
-	command_type_suz_speed = 8,*/
+	//command_type_kid_speed = 5,
+	//command_type_pro_speed = 6,
+	//command_type_adi_speed = 7,
+	//command_type_suz_speed = 8,
 
 	command_type_end_gamer = MAX_CMD_TYPE - 1,
 
@@ -109,5 +115,12 @@ typedef enum tag_enum_cross_type
 	cross_type_full = 1,
 
 } enum_cross_type;
+
+typedef enum tag_enum_frame_type
+{
+	frame_type_stance = 0,
+	frame_type_toggle = 1,
+
+} enum_frame_type;
 
 #endif//_ENUM_MANAGER_H_

@@ -12,9 +12,13 @@
 #include "..\screen\play_screen.h"
 #include "..\screen\record_screen.h"
 #include "..\screen\save_screen.h"
+#include "..\screen\pass_screen.h"
+#include "..\screen\dead_screen.h"
+#include "..\screen\cont_screen.h"
+#include "..\screen\over_screen.h"
+#include "..\screen\beat_screen.h"
 #include "..\screen\test_screen.h"
 #include "..\screen\func_screen.h"
-#include "..\screen\beat_screen.h"
 
 static void( *load_method[ MAX_SCREEENS ] )( );
 static void( *update_method[ MAX_SCREEENS ] )( unsigned char *screen_type );
@@ -37,9 +41,13 @@ void engine_screen_manager_init( unsigned char open_screen_type )
 	load_method[ screen_type_play ] = screen_play_screen_load;
 	load_method[ screen_type_record ] = screen_record_screen_load;
 	load_method[ screen_type_save ] = screen_save_screen_load;
+	load_method[ screen_type_pass ] = screen_pass_screen_load;
+	load_method[ screen_type_dead ] = screen_dead_screen_load;
+	load_method[ screen_type_cont ] = screen_cont_screen_load;
+	load_method[ screen_type_over ] = screen_over_screen_load;
+	load_method[ screen_type_beat ] = screen_beat_screen_load;
 	load_method[ screen_type_test ] = screen_test_screen_load;
 	load_method[ screen_type_func ] = screen_func_screen_load;
-	load_method[ screen_type_beat ] = screen_beat_screen_load;
 
 	// Set update methods.
 	update_method[ screen_type_none ] = screen_none_screen_update;
@@ -51,9 +59,13 @@ void engine_screen_manager_init( unsigned char open_screen_type )
 	update_method[ screen_type_play ] = screen_play_screen_update;
 	update_method[ screen_type_record ] = screen_record_screen_update;
 	update_method[ screen_type_save ] = screen_save_screen_update;
+	update_method[ screen_type_pass ] = screen_pass_screen_update;
+	update_method[ screen_type_dead ] = screen_dead_screen_update;
+	update_method[ screen_type_cont ] = screen_cont_screen_update;
+	update_method[ screen_type_over ] = screen_over_screen_update;
+	update_method[ screen_type_beat ] = screen_beat_screen_update;
 	update_method[ screen_type_test ] = screen_test_screen_update;
 	update_method[ screen_type_func ] = screen_func_screen_update;
-	update_method[ screen_type_beat ] = screen_beat_screen_update;
 }
 
 void engine_screen_manager_update()
