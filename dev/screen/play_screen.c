@@ -26,7 +26,7 @@ void screen_play_screen_load()
 {
 	engine_command_manager_init();
 	engine_frame_manager_init();
-	engine_delay_manager_load( 0 );
+	engine_delay_manager_load( 20 );
 
 	engine_board_manager_init();
 	engine_gamer_manager_init();
@@ -141,12 +141,12 @@ void screen_play_screen_update( unsigned char *screen_type )
 		enemy_direction = direction_type_none;
 		if( direction_type_none == eo->direction && lifecycle_type_idle == eo->lifecycle )
 		{
-			if( 0 == frame )
+			if( 4 == frame )
 			{
 				engine_font_manager_draw_data( frame, 12, 16 );
 				// TODO map enemy to command 
 				//unsigned char command_type = engine_enemy_manager_get_mover( enemy );
-				enemy_direction = direction_type_rght;
+				enemy_direction = direction_type_upxx;
 				engine_command_manager_add( frame, command_type_enemy_mover, ( enemy | ( enemy_direction << 4 ) ) );
 			}
 		}
