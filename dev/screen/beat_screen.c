@@ -34,7 +34,7 @@ void screen_beat_screen_load()
 	{
 		frame = idx * 16;
 		frames[ idx ] = frame % MAX_BYTE_SIZE;
-		commands[ idx ] = engine_command_manager_type( frame, command_type_adi_mover );
+		commands[ idx ] = engine_command_manager_type( frame, command_type_enemy_mover );	// stevepro
 	}
 
 	engine_board_manager_init();
