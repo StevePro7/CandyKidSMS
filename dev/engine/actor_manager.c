@@ -6,7 +6,7 @@
 
 #define BYTE_NIBBLE_MASK	0x0f
 
-// Public method!!
+// Public methods.
 void engine_actor_manager_update()
 {
 }
