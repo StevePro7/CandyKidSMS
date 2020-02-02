@@ -4,7 +4,7 @@
 #include "font_manager.h"
 #include "gamer_manager.h"
 
-#define BYTE_NIBBLE_MASK	0x0f
+#define BYTE_NIBBLE_MASK	0x0F
 
 // Public methods.
 void engine_actor_manager_update()
