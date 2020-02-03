@@ -17,6 +17,7 @@ cd ..
 cd engine
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 asm_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 actor_manager.c
+sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 audio_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 board_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 command_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 content_manager.c
@@ -37,6 +38,7 @@ cd engine
 cd ..
 
 cd object
+sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 audio_object.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 board_object.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 command_object.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 delay_object.c
@@ -60,7 +62,7 @@ cd screen
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 record_screen.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 save_screen.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 pass_screen.c
-::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 dead_screen.c
+sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 dead_screen.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 cont_screen.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 over_screen.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 beat_screen.c
@@ -90,19 +92,23 @@ sdcc -o output.ihx -mz80 --no-std-crt0 --data-loc 0xC000  ^
 -Wl-b_BANK3=0x8000 ^
 -Wl-b_BANK4=0x8000 ^
 -Wl-b_BANK5=0x8000 ^
+-Wl-b_BANK6=0x8000 ^
 ..\lib\SMSlib.lib ^
 ..\lib\PSGlib.rel ^
 banks\bank2.rel ^
 banks\bank3.rel ^
 banks\bank4.rel ^
 banks\bank5.rel ^
+banks\bank6.rel ^
 devkit\_sms_manager.rel ^
 devkit\_snd_manager.rel ^
-engine\asm_manager.rel engine\actor_manager.rel engine\board_manager.rel engine\command_manager.rel engine\content_manager.rel ^
+engine\asm_manager.rel engine\actor_manager.rel engine\audio_manager.rel  engine\board_manager.rel engine\command_manager.rel ^
+engine\content_manager.rel ^
 engine\delay_manager.rel engine\enemy_manager.rel engine\enum_manager.rel engine\font_manager.rel ^
 engine\frame_manager.rel engine\gamer_manager.rel engine\global_manager.rel engine\hack_manager.rel engine\input_manager.rel ^
 engine\level_manager.rel engine\screen_manager.rel engine\sprite_manager.rel ^
 engine\storage_manager.rel engine\tile_manager.rel ^
+object\audio_object.rel ^
 object\board_object.rel object\command_object.rel object\delay_object.rel object\enemy_object.rel object\frame_object.rel ^
 object\gamer_object.rel object\hack_object.rel object\level_object.rel object\state_object.rel object\savegame_object.rel ^
 screen\none_screen.rel screen\splash_screen.rel screen\title_screen.rel screen\intro_screen.rel screen\load_screen.rel ^

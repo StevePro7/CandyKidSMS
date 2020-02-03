@@ -31,6 +31,7 @@
     <ClInclude Include="devkit\_snd_manager.h" />
     <ClInclude Include="engine\actor_manager.h" />
     <ClInclude Include="engine\asm_manager.h" />
+    <ClInclude Include="engine\audio_manager.h" />
     <ClInclude Include="engine\board_manager.h" />
     <ClInclude Include="engine\command_manager.h" />
     <ClInclude Include="engine\content_manager.h" />
@@ -51,6 +52,7 @@
     <ClInclude Include="game.h" />
     <ClInclude Include="gfx.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="object\audio_object.h" />
     <ClInclude Include="object\board_object.h" />
     <ClInclude Include="object\command_object.h" />
     <ClInclude Include="object\delay_object.h" />
@@ -89,6 +91,7 @@
     <ClCompile Include="devkit\_snd_manager.c" />
     <ClCompile Include="engine\actor_manager.c" />
     <ClCompile Include="engine\asm_manager.c" />
+    <ClCompile Include="engine\audio_manager.c" />
     <ClCompile Include="engine\board_manager.c" />
     <ClCompile Include="engine\command_manager.c" />
     <ClCompile Include="engine\content_manager.c" />
@@ -109,6 +112,7 @@
     <ClCompile Include="game.c" />
     <ClCompile Include="gfx.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="object\audio_object.c" />
     <ClCompile Include="object\board_object.c" />
     <ClCompile Include="object\command_object.c" />
     <ClCompile Include="object\delay_object.c" />

@@ -1,0 +1,64 @@
+XL2
+H 9 areas F global symbols
+M audio_manager
+O -mz80
+S _devkit_SFX_CHANNEL2 Ref0000
+S _over_audio_data Ref0000
+S _devkit_PSGPlay Ref0000
+S _over_audio_bank Ref0000
+S .__.ABS. Def0000
+S _devkit_PSGPlayNoRepeat Ref0000
+S _beat_audio_data Ref0000
+S _beat_audio_bank Ref0000
+S _title_audio_data Ref0000
+S _title_audio_bank Ref0000
+S _devkit_PSGSFXPlay Ref0000
+S _devkit_SMS_mapROMBank Ref0000
+A _CODE size 6E flags 0 addr 0
+S _engine_audio_manager_music_title Def0000
+S _engine_audio_manager_music_over Def0011
+S _engine_audio_manager_music_beat Def0022
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00
+R 00 00 00 00
+T 00 00 21 00 00 56 ED 4B 00 00 D5 33 C5 CD 48 00
+R 00 00 00 00 02 03 09 00 02 08 08 00 00 0E 00 00
+T 0E 00 F1 33 C9
+R 00 00 00 00
+T 11 00
+R 00 00 00 00
+T 11 00 21 00 00 56 ED 4B 00 00 D5 33 C5 CD 48 00
+R 00 00 00 00 02 03 03 00 02 08 01 00 00 0E 00 00
+T 1F 00 F1 33 C9
+R 00 00 00 00
+T 22 00
+R 00 00 00 00
+T 22 00 21 00 00 56 ED 4B 00 00 D5 33 C5 CD 48 00
+R 00 00 00 00 02 03 07 00 02 08 06 00 00 0E 00 00
+T 30 00 F1 33 C9
+R 00 00 00 00
+T 33 00
+R 00 00 00 00
+T 33 00 21 04 00 39 7E F5 33 CD 00 00 33 D1 C1 C5
+R 00 00 00 00 02 0A 0B 00
+T 41 00 D5 C5 CD 00 00 F1 C9
+R 00 00 00 00 02 05 02 00
+T 48 00
+R 00 00 00 00
+T 48 00 21 04 00 39 7E F5 33 CD 00 00 33 D1 C1 C5
+R 00 00 00 00 02 0A 0B 00
+T 56 00 D5 C5 CD 00 00 F1 C9
+R 00 00 00 00 02 05 05 00
+T 5D 00
+R 00 00 00 00
+T 5D 00 CD 00 00 65 D1 C1 C5 D5 E5 33 C5 CD 00 00
+R 00 00 00 00 02 03 00 00 02 0E 0A 00
+T 6B 00 F1 33 C9
+R 00 00 00 00
