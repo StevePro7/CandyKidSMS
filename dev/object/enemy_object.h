@@ -5,13 +5,14 @@
 
 typedef struct tag_struct_enemy_object
 {
-	unsigned char board;		// Board index for home spot.
 	unsigned char posnX;		// PositionX during movement.
 	unsigned char posnY;		// PositionY during movement.
 	unsigned char homeX;		// Home tileX on all restart.
 	unsigned char homeY;		// Home tileY on all restart.
-	unsigned char tileX;		// Base tileX on enemy stops. 
-	unsigned char tileY;		// Base tileY on enemy stops.
+	unsigned char homeZ;		// Home tile stored as R x C.
+	unsigned char tileX;		// Posn tileX on enemy stops. 
+	unsigned char tileY;		// Posn tileY on enemy stops.
+	unsigned char tileZ;		// Posn tileY on enemy stops.
 	unsigned char delay;
 	unsigned char timer;
 	unsigned char delta;

@@ -52,6 +52,14 @@ void engine_board_manager_set_tree_type( unsigned char tree_type )
 	bo->save_tree_type = tree_type;
 }
 
+void engine_board_manager_calc_position( unsigned char *tileX, unsigned char *tileY, unsigned char tileZ )
+{
+}
+void engine_board_manager_calc_tileSpot( unsigned char tileX, unsigned char tileY, unsigned char *tileZ )
+{
+	*tileZ = tileY * MAZE_ROWS + tileX;
+}
+
 void engine_board_manager_draw_full()
 {
 	struct_board_object *bo = &global_board_object;

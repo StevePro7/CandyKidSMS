@@ -36,9 +36,9 @@ void engine_enemy_manager_init()
 		homeX = board_homeX[ enemy ];
 		homeY = board_homeY[ enemy ];
 
-		eo->board = ( homeY + 2 ) * MAZE_COLS + ( homeX + 2 );
 		eo->homeX = homeX;
 		eo->homeY = homeY;
+		engine_board_manager_calc_tileSpot( eo->homeX, eo->homeY, &eo->homeZ );
 		eo->tileX = homeX;
 		eo->tileY = homeY;
 		eo->delay = 2;		// TODO hardcoded - inject!
@@ -201,4 +201,6 @@ static void calcd_spots( unsigned char enemy )
 	struct_board_object *bo = &global_board_object;
 	eo->posnX = bo->posnX[ eo->tileX ];
 	eo->posnY = bo->posnY[ eo->tileY ];
+	// Calculate exact tile as 1x byte.
+	engine_board_manager_calc_tileSpot( eo->tileX, eo->tileY, &eo->tileZ );
 }

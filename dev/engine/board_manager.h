@@ -10,6 +10,9 @@ void engine_board_manager_init();
 void engine_board_manager_set_exit_type( unsigned char exit_type );
 void engine_board_manager_set_tree_type( unsigned char tree_type );
 
+void engine_board_manager_calc_position( unsigned char *tileX, unsigned char *tileY, unsigned char tileZ );
+void engine_board_manager_calc_tileSpot( unsigned char tileX, unsigned char tileY, unsigned char *tileZ );
+
 void engine_board_manager_draw_full();
 void engine_board_manager_draw_exit();
 void engine_board_manager_main_full();

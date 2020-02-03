@@ -26,11 +26,12 @@ void engine_gamer_manager_init()
 	homeX = board_homeX[ actor_type_kid ];
 	homeY = board_homeY[ actor_type_kid ];
 
-	go->board = ( homeY + 2 ) * MAZE_COLS + ( homeX + 2 );
 	go->homeX = homeX;
 	go->homeY = homeY;
+	engine_board_manager_calc_tileSpot( go->homeX, go->homeY, &go->homeZ );
 	go->tileX = homeX;
 	go->tileY = homeY;
+
 	// Delay:	1, 2, 4, 8
 	go->delay = 1;
 	go->timer = 0;
@@ -213,4 +214,6 @@ static void calcd_spots()
 	struct_board_object *bo = &global_board_object;
 	go->posnX = bo->posnX[ go->tileX ];
 	go->posnY = bo->posnY[ go->tileY ];
+	// Calculate exact tile as 1x byte.
+	engine_board_manager_calc_tileSpot( go->tileX, go->tileY, &go->tileZ );
 }
