@@ -230,6 +230,9 @@
     <ClInclude Include="object\audio_object.h">
       <Filter>Header Files\object</Filter>
     </ClInclude>
+    <ClInclude Include="banks\bank7.h">
+      <Filter>Header Files\banks</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
@@ -405,6 +408,9 @@
     </ClCompile>
     <ClCompile Include="engine\audio_manager.c">
       <Filter>Source Files\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="banks\bank7.c">
+      <Filter>Source Files\banks</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

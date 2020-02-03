@@ -93,6 +93,7 @@ sdcc -o output.ihx -mz80 --no-std-crt0 --data-loc 0xC000  ^
 -Wl-b_BANK4=0x8000 ^
 -Wl-b_BANK5=0x8000 ^
 -Wl-b_BANK6=0x8000 ^
+-Wl-b_BANK7=0x8000 ^
 ..\lib\SMSlib.lib ^
 ..\lib\PSGlib.rel ^
 banks\bank2.rel ^
@@ -100,6 +101,7 @@ banks\bank3.rel ^
 banks\bank4.rel ^
 banks\bank5.rel ^
 banks\bank6.rel ^
+banks\bank7.rel ^
 devkit\_sms_manager.rel ^
 devkit\_snd_manager.rel ^
 engine\asm_manager.rel engine\actor_manager.rel engine\audio_manager.rel  engine\board_manager.rel engine\command_manager.rel ^

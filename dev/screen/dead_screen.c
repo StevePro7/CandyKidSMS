@@ -7,6 +7,7 @@
 void screen_dead_screen_load()
 {
 	engine_font_manager_draw_text( "DEAD SCREEN...!!", 2, 10 );
+	engine_audio_manager_music_game( 0 );
 }
 
 void screen_dead_screen_update( unsigned char *screen_type )
@@ -17,7 +18,8 @@ void screen_dead_screen_update( unsigned char *screen_type )
 	if( test )
 	{
 		engine_font_manager_draw_text( "MUSIC", 4, 14 );
-		engine_audio_manager_music_beat();
+		//engine_audio_manager_music_beat();
+		
 	}
 
 	*screen_type = screen_type_dead;

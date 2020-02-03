@@ -1,8 +1,9 @@
 XL2
-H 9 areas C global symbols
+H 9 areas D global symbols
 M audio_object
 O -mz80
 S _music_over_psg Ref0000
+S _music_game03_psg Ref0000
 S .__.ABS. Def0000
 S _music_beat_psg Ref0000
 S _music_title_psg Ref0000
@@ -41,7 +42,7 @@ T 06 00
 R 00 00 02 00
 T 00 00
 R 00 00 00 00
-T 00 00 06
+T 00 00 07
 R 00 00 00 00
 T 01 00
 R 00 00 00 00
@@ -58,15 +59,15 @@ R 00 00 00 00
 T 00 00
 R 00 00 07 00
 T 00 00 00 00
-R 00 00 07 00 02 02 03 00
+R 00 00 07 00 02 02 01 00
 T 02 00
 R 00 00 07 00
 T 02 00 00 00
-R 00 00 07 00 02 02 03 00
+R 00 00 07 00 02 02 04 00
 T 04 00
 R 00 00 07 00
 T 04 00 00 00
-R 00 00 07 00 02 02 02 00
+R 00 00 07 00 02 02 03 00
 T 06 00
 R 00 00 07 00
 T 06 00 00 00

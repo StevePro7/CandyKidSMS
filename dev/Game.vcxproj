@@ -27,6 +27,7 @@
     <ClInclude Include="banks\bank4.h" />
     <ClInclude Include="banks\bank5.h" />
     <ClInclude Include="banks\bank6.h" />
+    <ClInclude Include="banks\bank7.h" />
     <ClInclude Include="devkit\_sms_manager.h" />
     <ClInclude Include="devkit\_snd_manager.h" />
     <ClInclude Include="engine\actor_manager.h" />
@@ -87,6 +88,7 @@
     <ClCompile Include="banks\bank4.c" />
     <ClCompile Include="banks\bank5.c" />
     <ClCompile Include="banks\bank6.c" />
+    <ClCompile Include="banks\bank7.c" />
     <ClCompile Include="devkit\_sms_manager.c" />
     <ClCompile Include="devkit\_snd_manager.c" />
     <ClCompile Include="engine\actor_manager.c" />
