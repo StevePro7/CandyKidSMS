@@ -1,3 +1,63 @@
 Pacman Logic
 03/02/2020
 
+General
+once direction is set then continue in that direction
+if still moving across tiles then do not check for change in direction
+if not at junction then do not check for change in direction
+
+if moved across tile AND at junction then check AI Override()
+if at special AI Override tile then do not check for change in direction
+
+IMP
+this logic applies for Scatter AND Attack
+
+
+Home
+logic to move LRUD as necc. to get out of home
+then go to Scatter
+after Scatter for X seconds then goto Attack
+
+
+Scatter
+once change of direction established then do the following:
+try to find favored tile	i.e. tile in scatterTiles list
+if cannot find favored tile then order scatter tiles relative to current position
+and return first tile in the ordered list and find direction req'd to goto that tile
+else
+if found favored tile then get next favorecd tile from list and find direction to goto that tile
+
+HARD
+order scatterTiles relative to current position
+find direction method - Pacman is deterministic
+
+
+Attack
+each ghost has unique algorithm to attack
+
+
+
+Inky
+18,11
+ordered Tiles
+18,23
+
+
++		[0]	{X = 18 Y = 23}	System.Drawing.Point
++		[1]	{X = 21 Y = 23}	System.Drawing.Point
++		[2]	{X = 18 Y = 26}	System.Drawing.Point
++		[3]	{X = 21 Y = 26}	System.Drawing.Point
++		[4]	{X = 15 Y = 26}	System.Drawing.Point
++		[5]	{X = 26 Y = 26}	System.Drawing.Point
++		[6]	{X = 15 Y = 29}	System.Drawing.Point
++		[7]	{X = 26 Y = 29}	System.Drawing.Point
+
+
+		[0]	144	int
+		[1]	153	int
+		[2]	225	int
+		[3]	234	int
+		[4]	234	int
+		[5]	289	int
+		[6]	333	int
+		[7]	388	int
