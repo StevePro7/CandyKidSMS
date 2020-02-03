@@ -1,17 +1,18 @@
 XL2
-H 9 areas B global symbols
+H 9 areas C global symbols
 M dead_screen
 O -mz80
 S _engine_frame_manager_draw Ref0000
 S _engine_delay_manager_draw Ref0000
 S _engine_frame_manager_init Ref0000
 S _engine_font_manager_draw_text Ref0000
+S _engine_audio_manager_sound_accept Ref0000
 S _engine_frame_manager_update Ref0000
 S .__.ABS. Def0000
 S _engine_delay_manager_update Ref0000
 S _engine_input_manager_hold_right Ref0000
 S _engine_delay_manager_load Ref0000
-A _CODE size 62 flags 0 addr 0
+A _CODE size 6B flags 0 addr 0
 S _screen_dead_screen_update Def002D
 S _screen_dead_screen_load Def0000
 A _DATA size 1 flags 0 addr 0
@@ -29,7 +30,7 @@ R 00 00 01 00
 T 00 00
 R 00 00 00 00
 T 00 00 CD 00 00 21 00 00 E5 CD 00 00 21 02 0A E3
-R 00 00 00 00 02 03 02 00 02 0A 08 00
+R 00 00 00 00 02 03 02 00 02 0A 09 00
 T 0E 00 21 1D 00 E5 CD 00 00 F1 F1 21 00 00 36 01
 R 00 00 00 00 00 03 00 00 02 07 03 00 00 0C 01 00
 T 1C 00 C9
@@ -45,14 +46,18 @@ R 00 00 00 00
 T 2D 00 CD 00 00 CD 00 00 D1 C1 C5 D5 3A 00 00 B7
 R 00 00 00 00 02 03 00 00 02 06 01 00 00 0D 01 00
 T 3B 00 20 17 C5 CD 00 00 C1 7D B7 20 04 3E 0A 02
-R 00 00 00 00 02 06 06 00
+R 00 00 00 00 02 06 07 00
 T 49 00 C9
 R 00 00 00 00
 T 4A 00
 R 00 00 00 00
 T 4A 00 C5 CD 00 00 C1 21 00 00 36 01
-R 00 00 00 00 02 04 04 00 00 08 01 00
+R 00 00 00 00 02 04 05 00 00 08 01 00
 T 54 00
 R 00 00 00 00
-T 54 00 C5 CD 00 00 C1 21 00 00 36 00 3E 0A 02 C9
-R 00 00 00 00 02 04 07 00 00 08 01 00
+T 54 00 C5 CD 00 00 C1 7D B7 28 05 C5 CD 00 00 C1
+R 00 00 00 00 02 04 08 00 02 0D 04 00
+T 62 00
+R 00 00 00 00
+T 62 00 21 00 00 36 00 3E 0A 02 C9
+R 00 00 00 00 00 03 01 00

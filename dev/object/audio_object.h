@@ -17,4 +17,9 @@ extern const unsigned char beat_audio_bank[];
 extern const unsigned char *over_audio_data[];
 extern const unsigned char over_audio_bank[];
 
+
+// SFX.
+// TODO - do I want to do sfx this way?
+//extern const unsigned char *sound_effects[];
+
 #endif//_AUDIO_OBJECT_H_

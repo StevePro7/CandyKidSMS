@@ -2,6 +2,7 @@
 
 #include "..\banks\bank6.h"
 #include "..\banks\bank7.h"
+#include "..\psg.h"
 
 // Game.
 const unsigned char *game_audio_data[] = 
@@ -47,3 +48,15 @@ const unsigned char over_audio_bank[] =
 {
 	music_over_psg_bank,
 };
+
+
+// SFX.
+//const unsigned char *sound_effects[] =
+//{
+//	sound_accept_psg,
+//	sound_death_psg,
+//	sound_gem_psg,
+//	sound_level_psg,
+//	sound_power_psg,
+//	sound_reset_psg,
+//};

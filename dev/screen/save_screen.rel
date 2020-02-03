@@ -12,7 +12,7 @@ S _engine_input_manager_hold_right Ref0000
 S _engine_input_manager_move_fire1 Ref0000
 S _engine_tile_manager_draw_trees Ref0000
 S _engine_tile_manager_draw_bonus Ref0000
-A _CODE size 112 flags 0 addr 0
+A _CODE size 114 flags 0 addr 0
 S _screen_save_screen_load Def0000
 S _screen_save_screen_update Def0027
 A _DATA size 1 flags 0 addr 0
@@ -87,9 +87,9 @@ T EE 00 F1 06 00
 R 00 00 00 00
 T F1 00
 R 00 00 00 00
-T F1 00 78 87 57 14 14 C5 3E 14 F5 33 58 D5 CD
+T F1 00 78 87 57 14 14 C5 3E 14 F5 33 D5 33 C5 33
 R 00 00 00 00
-T FE 00 00 00 F1 33 C1 04 78 D6 0C 38 E8 21 12 12
-R 00 00 00 00 02 02 03 00
-T 0C 01 E5 CD 00 00 F1 C9
-R 00 00 00 00 02 04 05 00
+T FF 00 CD 00 00 F1 33 C1 04 78 D6 0C 38 E6 21
+R 00 00 00 00 02 03 03 00
+T 0C 01 12 12 E5 CD 00 00 F1 C9
+R 00 00 00 00 02 06 05 00

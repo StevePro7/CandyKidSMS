@@ -52,6 +52,12 @@ void screen_dead_screen_update( unsigned char *screen_type )
 	input = engine_input_manager_hold_right();
 	if( input )
 	{
+		engine_audio_manager_sound_accept();
+		//engine_audio_manager_sound_death();
+		//engine_audio_manager_sound_gem();
+		//engine_audio_manager_sound_level();
+		//engine_audio_manager_sound_power();
+		//engine_audio_manager_sound_reset();
 	}
 
 	first_time = 0;

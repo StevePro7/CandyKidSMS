@@ -4,12 +4,12 @@ M psg
 O -mz80
 S .__.ABS. Def0000
 A _CODE size 472 flags 0 addr 0
-S _sfx_level_psg Def021A
-S _sfx_reset_psg Def044F
-S _sfx_power_psg Def042C
-S _sfx_accept_psg Def0000
-S _sfx_gem_psg Def01FE
-S _sfx_death_psg Def0020
+S _sound_accept_psg Def0000
+S _sound_gem_psg Def01FE
+S _sound_death_psg Def0020
+S _sound_level_psg Def021A
+S _sound_reset_psg Def044F
+S _sound_power_psg Def042C
 A _DATA size 0 flags 0 addr 0
 A _INITIALIZED size 0 flags 0 addr 0
 A _DABS size 0 flags 8 addr 0
