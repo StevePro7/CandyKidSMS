@@ -28,14 +28,15 @@ void engine_enemy_manager_init()
 	unsigned char homeX;
 	unsigned char homeY;
 
-	unsigned char idx;
-	for( idx = 0; idx < MAX_ENEMIES; idx++ )
+	unsigned char enemy;
+	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
 	{
-		eo = &global_enemy_objects[ idx ];
+		eo = &global_enemy_objects[ enemy ];
 
-		homeX = board_homeX[ idx ];
-		homeY = board_homeY[ idx ];
+		homeX = board_homeX[ enemy ];
+		homeY = board_homeY[ enemy ];
 
+		eo->board = ( homeY + 2 ) * MAZE_COLS + ( homeX + 2 );
 		eo->homeX = homeX;
 		eo->homeY = homeY;
 		eo->tileX = homeX;
@@ -45,14 +46,14 @@ void engine_enemy_manager_init()
 		eo->delta = 0;
 		eo->total = 0;
 		eo->speed = 1;		// TODO hardcoded - inject!
-
+		eo->mover = 1;		// 1=move 0=stay.
 		eo->direction = direction_type_none;
 		eo->lifecycle = lifecycle_type_idle;
 
 		eo->image = 0;
 		eo->frame = 0;
 
-		frame = idx * NUM_ENTITY_IMAGE * NUM_ENTITY_FRAME + 0;
+		frame = enemy * NUM_ENTITY_IMAGE * NUM_ENTITY_FRAME + 0;
 
 		eo->images[ 0 ][ 0 ] = images[ frame + 0 ];
 		eo->images[ 0 ][ 1 ] = images[ frame + 1 ];
@@ -72,8 +73,8 @@ void engine_enemy_manager_init()
 		image = images[ frame + 3 ];
 		eo->images[ 1 ][ 1 ] = image;
 		*/
-		calcd_frame( idx );
-		calcd_spots( idx );
+		calcd_frame( enemy );
+		calcd_spots( enemy );
 	}
 }
 

@@ -25,6 +25,8 @@ void engine_gamer_manager_init()
 
 	homeX = board_homeX[ actor_type_kid ];
 	homeY = board_homeY[ actor_type_kid ];
+
+	go->board = ( homeY + 2 ) * MAZE_COLS + ( homeX + 2 );
 	go->homeX = homeX;
 	go->homeY = homeY;
 	go->tileX = homeX;

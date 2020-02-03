@@ -204,6 +204,9 @@ static void load_level( const unsigned char *data, const unsigned char bank, con
 			o++;
 		}
 	}
+
+	// Subtract candy count if enemy(s) not move and candy or their board spot.
+	idx = 0;
 }
 
 static void draw_tiles( unsigned char x, unsigned char y )
