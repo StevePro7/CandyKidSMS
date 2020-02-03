@@ -19,6 +19,7 @@
 #pragma disable_warning 110
 #endif
 
+// PLAY screen - is the main command add + execute driver
 static unsigned char first_time;
 static unsigned char frame_spot;
 

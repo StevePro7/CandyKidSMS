@@ -12,6 +12,8 @@
 #include "..\engine\storage_manager.h"
 #include "..\engine\tile_manager.h"
 
+// FUNC screen - is the main command playback driver
+// Assumes that commands have already been saved to SRAM
 static unsigned char first_time;
 
 void screen_func_screen_load()

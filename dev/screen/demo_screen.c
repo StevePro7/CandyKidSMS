@@ -11,6 +11,7 @@
 #include "..\engine\level_manager.h"
 #include "..\engine\storage_manager.h"
 
+// DEMO screen - was prototyping command playback but FUNC is better. 
 static unsigned char first_time;
 
 void screen_demo_screen_load()

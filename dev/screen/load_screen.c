@@ -11,6 +11,7 @@
 #include "..\engine\sprite_manager.h"
 #include "..\engine\tile_manager.h"
 
+// LOAD screen - test level manager load.
 void screen_load_screen_load()
 {
 	struct_hack_object *ho = &global_hack_object;
