@@ -7,9 +7,15 @@
 
 void screen_cont_screen_load()
 {
+	unsigned char tileX = 0;
+	unsigned char tileY = 0;
+	unsigned char tileZ = 0;
 	engine_board_manager_init();
 	engine_gamer_manager_init();
 	engine_enemy_manager_init();
+
+	tileZ = 59;
+	engine_board_manager_calc_position( &tileX, &tileY, tileZ );
 
 	engine_font_manager_draw_text( "CONT SCREEN!!", 2, 10 );
 }

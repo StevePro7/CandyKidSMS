@@ -54,6 +54,8 @@ void engine_board_manager_set_tree_type( unsigned char tree_type )
 
 void engine_board_manager_calc_position( unsigned char *tileX, unsigned char *tileY, unsigned char tileZ )
 {
+	*tileX = tileZ % MAZE_COLS;
+	*tileY = tileZ / MAZE_ROWS;
 }
 void engine_board_manager_calc_tileSpot( unsigned char tileX, unsigned char tileY, unsigned char *tileZ )
 {
