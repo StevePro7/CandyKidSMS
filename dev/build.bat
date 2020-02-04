@@ -18,19 +18,21 @@ cd engine
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 asm_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 actor_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 audio_manager.c
-sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 board_manager.c
+::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 board_manager.c
+::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 collision_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 command_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 content_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 delay_manager.c
-sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 enemy_manager.c
+::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 enemy_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 enum_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 font_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 frame_manager.c
-sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 gamer_manager.c
+::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 gamer_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 hack_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 global_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 input_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 level_manager.c
+sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 move_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 screen_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 sprite_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 storage_manager.c
@@ -39,7 +41,7 @@ cd ..
 
 cd object
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 audio_object.c
-sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 board_object.c
+::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 board_object.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 command_object.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 delay_object.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 enemy_object.c
@@ -104,11 +106,11 @@ banks\bank6.rel ^
 banks\bank7.rel ^
 devkit\_sms_manager.rel ^
 devkit\_snd_manager.rel ^
-engine\asm_manager.rel engine\actor_manager.rel engine\audio_manager.rel  engine\board_manager.rel engine\command_manager.rel ^
-engine\content_manager.rel ^
+engine\asm_manager.rel engine\actor_manager.rel engine\audio_manager.rel  engine\board_manager.rel ^
+engine\collision_manager.rel engine\command_manager.rel engine\content_manager.rel ^
 engine\delay_manager.rel engine\enemy_manager.rel engine\enum_manager.rel engine\font_manager.rel ^
 engine\frame_manager.rel engine\gamer_manager.rel engine\global_manager.rel engine\hack_manager.rel engine\input_manager.rel ^
-engine\level_manager.rel engine\screen_manager.rel engine\sprite_manager.rel ^
+engine\level_manager.rel engine\move_manager.rel engine\screen_manager.rel engine\sprite_manager.rel ^
 engine\storage_manager.rel engine\tile_manager.rel ^
 object\audio_object.rel ^
 object\board_object.rel object\command_object.rel object\delay_object.rel object\enemy_object.rel object\frame_object.rel ^
