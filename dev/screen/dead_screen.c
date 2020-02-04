@@ -90,13 +90,14 @@ void screen_dead_screen_update( unsigned char *screen_type )
 	frame = fo->frame_count;
 
 
-	// Move enemy.
+	// Move enemies.
 	enemy = actor_type_pro;
 	//for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
 	{
 		eo = &global_enemy_objects[ enemy ];
 		enemy_direction = direction_type_none;
 		
+		// Move enemy.
 		if( direction_type_none != eo->direction && lifecycle_type_move == eo->lifecycle )
 		{
 			//  warning 110: conditional flow changed by optimizer: so said EVELYN the modified DOG
@@ -111,6 +112,7 @@ void screen_dead_screen_update( unsigned char *screen_type )
 			engine_command_manager_add( frame, command_type_end_gamer, 0 );
 			frame_spot = 1;
 		}
+		// For continuity we want to check if actor can move immediately after stopping.
 		if( direction_type_none == eo->direction && lifecycle_type_idle == eo->lifecycle )
 		{
 			if( prevs_direction == direction_type_none )
