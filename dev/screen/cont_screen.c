@@ -17,7 +17,7 @@ void screen_cont_screen_load()
 	tileZ = 59;
 	engine_board_manager_calc_position( &tileX, &tileY, tileZ );
 
-	engine_font_manager_draw_text( "CONT SCREEN!!", 2, 10 );
+	engine_font_manager_draw_text( "CONT SCREEN..!!", 2, 8 );
 }
 
 void screen_cont_screen_update( unsigned char *screen_type )

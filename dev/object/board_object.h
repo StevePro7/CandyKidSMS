@@ -24,5 +24,6 @@ extern const unsigned char board_exitY[];
 
 extern const unsigned char board_homeX[];
 extern const unsigned char board_homeY[];
+extern unsigned char	   board_homeZ[];
 
 #endif//_BOARD_OBJECT_H_

@@ -1,5 +1,5 @@
 XL2
-H 9 areas 5 global symbols
+H 9 areas 6 global symbols
 M board_object
 O -mz80
 S .__.ABS. Def0000
@@ -9,13 +9,18 @@ S _board_homeY Def0014
 S _board_exitX Def0000
 S _board_exitY Def0008
 A _DATA size 0 flags 0 addr 0
-A _INITIALIZED size 0 flags 0 addr 0
+A _INITIALIZED size 4 flags 0 addr 0
+S _board_homeZ Def0000
 A _DABS size 0 flags 8 addr 0
 A _HOME size 0 flags 0 addr 0
 A _GSINIT size 0 flags 0 addr 0
 A _GSFINAL size 0 flags 0 addr 0
-A _INITIALIZER size 0 flags 0 addr 0
+A _INITIALIZER size 4 flags 0 addr 0
 A _CABS size 0 flags 8 addr 0
+T 00 00
+R 00 00 02 00
+T 00 00
+R 00 00 02 00
 T 00 00
 R 00 00 00 00
 T 00 00 04 09 0C 0C 09 04 01 01
@@ -32,3 +37,7 @@ T 14 00
 R 00 00 00 00
 T 14 00 0A 0A 03 04
 R 00 00 00 00
+T 00 00
+R 00 00 07 00
+T 00 00 00 00 00 00
+R 00 00 07 00

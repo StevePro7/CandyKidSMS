@@ -38,6 +38,12 @@ void engine_board_manager_init()
 	bo->left	= SCREEN_TILE_LEFT;
 	bo->right	= SCREEN_TILE_LEFT + ( SCREEN_TILE_WIDE - 2 ) * 2;
 	bo->right2	= SCREEN_TILE_LEFT + ( TREE_COLS - 1 ) * 2;
+
+	// Calculate board homeZ positions.
+	for( loop = 0; loop < MAX_ACTORS; loop++ )
+	{
+		engine_board_manager_calc_tileSpot( board_homeX[ loop ], board_homeY[ loop ], &board_homeZ[ loop ] );
+	}
 }
 
 void engine_board_manager_set_exit_type( unsigned char exit_type )

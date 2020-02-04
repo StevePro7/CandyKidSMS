@@ -4,6 +4,7 @@
 #define MAX_SCREEENS			16
 
 #define MAX_ENEMIES				3
+#define MAX_ACTORS				MAX_ENEMIES + 1
 
 #define INVALID_INDEX			-1
 
