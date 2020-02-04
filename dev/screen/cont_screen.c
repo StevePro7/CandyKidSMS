@@ -18,6 +18,11 @@ void screen_cont_screen_load()
 	engine_board_manager_calc_position( &tileX, &tileY, tileZ );
 
 	engine_font_manager_draw_text( "CONT SCREEN..!!", 2, 8 );
+
+	engine_font_manager_draw_data( board_homeZ[ 0 ], 10, 10 );
+	engine_font_manager_draw_data( board_homeZ[ 1 ], 10, 11 );
+	engine_font_manager_draw_data( board_homeZ[ 2 ], 10, 12 );
+	engine_font_manager_draw_data( board_homeZ[ 3 ], 10, 13 );
 }
 
 void screen_cont_screen_update( unsigned char *screen_type )
