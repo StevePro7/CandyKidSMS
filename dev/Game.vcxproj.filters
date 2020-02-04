@@ -233,6 +233,12 @@
     <ClInclude Include="banks\bank7.h">
       <Filter>Header Files\banks</Filter>
     </ClInclude>
+    <ClInclude Include="engine\move_manager.h">
+      <Filter>Header Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\collision_manager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
@@ -411,6 +417,12 @@
     </ClCompile>
     <ClCompile Include="banks\bank7.c">
       <Filter>Source Files\banks</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\move_manager.c">
+      <Filter>Source Files\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\collision_manager.c">
+      <Filter>Source Files\engine</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

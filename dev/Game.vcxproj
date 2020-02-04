@@ -34,6 +34,7 @@
     <ClInclude Include="engine\asm_manager.h" />
     <ClInclude Include="engine\audio_manager.h" />
     <ClInclude Include="engine\board_manager.h" />
+    <ClInclude Include="engine\collision_manager.h" />
     <ClInclude Include="engine\command_manager.h" />
     <ClInclude Include="engine\content_manager.h" />
     <ClInclude Include="engine\delay_manager.h" />
@@ -46,6 +47,7 @@
     <ClInclude Include="engine\hack_manager.h" />
     <ClInclude Include="engine\input_manager.h" />
     <ClInclude Include="engine\level_manager.h" />
+    <ClInclude Include="engine\move_manager.h" />
     <ClInclude Include="engine\screen_manager.h" />
     <ClInclude Include="engine\sprite_manager.h" />
     <ClInclude Include="engine\storage_manager.h" />
@@ -95,6 +97,7 @@
     <ClCompile Include="engine\asm_manager.c" />
     <ClCompile Include="engine\audio_manager.c" />
     <ClCompile Include="engine\board_manager.c" />
+    <ClCompile Include="engine\collision_manager.c" />
     <ClCompile Include="engine\command_manager.c" />
     <ClCompile Include="engine\content_manager.c" />
     <ClCompile Include="engine\delay_manager.c" />
@@ -107,6 +110,7 @@
     <ClCompile Include="engine\hack_manager.c" />
     <ClCompile Include="engine\input_manager.c" />
     <ClCompile Include="engine\level_manager.c" />
+    <ClCompile Include="engine\move_manager.c" />
     <ClCompile Include="engine\screen_manager.c" />
     <ClCompile Include="engine\sprite_manager.c" />
     <ClCompile Include="engine\storage_manager.c" />
