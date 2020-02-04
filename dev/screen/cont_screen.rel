@@ -1,19 +1,21 @@
 XL2
-H 9 areas B global symbols
+H 9 areas D global symbols
 M cont_screen
 O -mz80
 S _engine_level_manager_init_board Ref0000
 S _engine_board_manager_init Ref0000
 S _engine_gamer_manager_init Ref0000
 S _engine_font_manager_draw_text Ref0000
+S _engine_move_manager_opposite_direction Ref0000
 S .__.ABS. Def0000
 S _engine_enemy_manager_init Ref0000
 S _engine_level_manager_init_exits Ref0000
+S _engine_font_manager_draw_data Ref0000
 S _engine_board_manager_calc_position Ref0000
 S _engine_level_manager_load_level Ref0000
-A _CODE size 63 flags 0 addr 0
+A _CODE size 83 flags 0 addr 0
 S _screen_cont_screen_load Def0000
-S _screen_cont_screen_update Def005C
+S _screen_cont_screen_update Def007C
 A _DATA size 0 flags 0 addr 0
 A _INITIALIZED size 0 flags 0 addr 0
 A _DABS size 0 flags 8 addr 0
@@ -27,20 +29,24 @@ R 00 00 00 00
 T 00 00 DD E5 DD 21 00 00 DD 39 F5 DD 36 FE 00 DD
 R 00 00 00 00
 T 0E 00 36 FF 00 CD 00 00 CD 00 00 CD 00 00 CD
-R 00 00 00 00 02 06 01 00 02 09 02 00 02 0C 05 00
+R 00 00 00 00 02 06 01 00 02 09 02 00 02 0C 06 00
 T 1B 00 00 00 CD 00 00 21 00 00 E5 CD 00 00 F1 21
-R 00 00 00 00 02 02 00 00 02 05 06 00 02 0C 08 00
+R 00 00 00 00 02 02 00 00 02 05 07 00 02 0C 0A 00
 T 29 00 01 00 39 EB 21 00 00 39 4D 44 3E 3B F5 33
 R 00 00 00 00
-T 37 00 D5 C5 CD 00 00 F1 33 21 02 08 E3 21 4E 00
-R 00 00 00 00 02 05 07 00 00 0E 00 00
-T 45 00 E5 CD 00 00 DD F9 DD E1 C9
+T 37 00 D5 C5 CD 00 00 F1 33 21 02 08 E3 21 6E 00
+R 00 00 00 00 02 05 09 00 00 0E 00 00
+T 45 00 E5 CD 00 00 F1 21 0A 0E E3 21 04 00 E5 CD
 R 00 00 00 00 02 04 03 00
-T 4E 00
+T 53 00 00 00 F1 26 04 E3 33 CD 00 00 33 4D 06 00
+R 00 00 00 00 02 02 08 00 02 0A 04 00
+T 61 00 21 0A 0F E5 C5 CD 00 00 DD F9 DD E1 C9
+R 00 00 00 00 02 08 08 00
+T 6E 00
 R 00 00 00 00
-T 4E 00 43 4F 4E 54 20 53 43 52 45 45 4E 21 21 00
+T 6E 00 43 4F 4E 54 20 53 43 52 45 45 4E 21 21 00
 R 00 00 00 00
-T 5C 00
+T 7C 00
 R 00 00 00 00
-T 5C 00 C1 E1 E5 C5 36 0B C9
+T 7C 00 C1 E1 E5 C5 36 0B C9
 R 00 00 00 00

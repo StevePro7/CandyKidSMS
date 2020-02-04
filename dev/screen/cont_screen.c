@@ -5,12 +5,14 @@
 #include "..\engine\font_manager.h"
 #include "..\engine\gamer_manager.h"
 #include "..\engine\level_manager.h"
+#include "..\engine\move_manager.h"
 
 void screen_cont_screen_load()
 {
 	unsigned char tileX = 0;
 	unsigned char tileY = 0;
 	unsigned char tileZ = 0;
+	unsigned char direction;
 
 	engine_board_manager_init();
 	engine_gamer_manager_init();
@@ -29,6 +31,12 @@ void screen_cont_screen_load()
 	//engine_font_manager_draw_data( board_homeZ[ 1 ], 10, 11 );
 	//engine_font_manager_draw_data( board_homeZ[ 2 ], 10, 12 );
 	//engine_font_manager_draw_data( board_homeZ[ 3 ], 10, 13 );
+
+	direction = direction_type_rght;
+	engine_font_manager_draw_data( direction, 10, 14 );
+
+	direction = engine_move_manager_opposite_direction( direction );
+	engine_font_manager_draw_data( direction, 10, 15 );
 }
 
 void screen_cont_screen_update( unsigned char *screen_type )
