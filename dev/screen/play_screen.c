@@ -32,20 +32,18 @@ void screen_play_screen_load()
 	engine_board_manager_init();
 	engine_gamer_manager_init();
 	engine_enemy_manager_init();
-
-	engine_frame_manager_draw();
-	engine_delay_manager_draw();
-
-	engine_board_manager_debugger();
-	engine_board_manager_debugger();
-	engine_board_manager_side_tile();
-
 	engine_level_manager_init_board();
 	engine_level_manager_init_exits();
+
+	// Draw functions.
+	engine_board_manager_debugger();
+	engine_board_manager_side_tile();
 
 	engine_level_manager_load_level( 0, 0 );
 	engine_level_manager_draw_level();
 
+	engine_frame_manager_draw();
+	engine_delay_manager_draw();
 	engine_font_manager_draw_text( "PLAY SCREEN!", 2, 10 );
 
 	first_time = 1;
