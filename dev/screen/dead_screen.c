@@ -29,7 +29,7 @@ void screen_dead_screen_load()
 {
 	engine_command_manager_init();
 	engine_frame_manager_init();
-	engine_delay_manager_load( 0 );
+	engine_delay_manager_load( 10 );
 
 	engine_board_manager_init();
 	engine_gamer_manager_init();
@@ -108,7 +108,7 @@ void screen_dead_screen_update( unsigned char *screen_type )
 		if( 0 == frame )
 		{
 			engine_font_manager_draw_data( frame, 12, 14 );
-			gamer_direction = direction_type_rght;
+			gamer_direction = direction_type_down;
 			engine_command_manager_add( frame, command_type_gamer_mover, gamer_direction );
 		}
 	}
