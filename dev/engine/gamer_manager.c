@@ -156,6 +156,19 @@ void engine_gamer_manager_move( unsigned char direction )
 	calcd_frame();
 }
 
+void engine_gamer_manager_wrap( unsigned char direction )
+{
+	struct_gamer_object *go = &global_gamer_object;
+	if( 0 == go->tileX || ( MAZE_COLS - 1 ) == go->tileX )
+	{
+		go->tileX = direction_type_left == direction ? MAZE_COLS - 1 : 0;
+	}
+	if( 0 == go->tileY || ( MAZE_COLS - 1 ) == go->tileY )
+	{
+		go->tileY = direction_type_upxx == direction ? MAZE_ROWS - 1 : 0;
+	}
+}
+
 void engine_gamer_manager_stop()
 {
 	struct_gamer_object *go = &global_gamer_object;
@@ -163,6 +176,14 @@ void engine_gamer_manager_stop()
 	go->direction = direction_type_none;
 	go->frame = 0;
 	calcd_frame();
+
+	// Check if in exit then move in previous direction [and wrap game board as necessary].
+	if( go->tileX <= 1 || go->tileY <= 1 || go->tileX >= ( MAZE_COLS - 2 ) || go->tileY >= ( MAZE_ROWS - 2 ) )
+	{
+		engine_gamer_manager_wrap( go->prev_move );
+		engine_gamer_manager_move( go->prev_move );
+		return;
+	}
 
 	// TODO calc possible tiles actor can move in to.
 }

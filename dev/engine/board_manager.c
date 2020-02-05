@@ -108,8 +108,8 @@ void engine_board_manager_debugger()
 
 	unsigned char spot[] = { 1, 2, 4, 7, 9, 10 };
 	unsigned char loop;
-	//for( loop = 0; loop < 6; loop++ )
-	for( loop = 0; loop < 2; loop++ )
+	for( loop = 0; loop < 6; loop++ )
+	//for( loop = 0; loop < 2; loop++ )
 	{
 		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + spot[ loop ] * 2, 0 );
 		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + spot[ loop ] * 2, 22 );

@@ -29,7 +29,7 @@ void screen_dead_screen_load()
 {
 	engine_command_manager_init();
 	engine_frame_manager_init();
-	engine_delay_manager_load( 0 );
+	engine_delay_manager_load( 40 );
 
 	engine_board_manager_init();
 	engine_gamer_manager_init();
@@ -38,11 +38,11 @@ void screen_dead_screen_load()
 	engine_level_manager_init_exits();
 
 	// Draw functions.
-	//engine_board_manager_debugger();
-	//engine_board_manager_side_tile();
+	engine_board_manager_debugger();
+	engine_board_manager_side_tile();
 
 	engine_level_manager_load_level( 0, 0 );
-	//engine_level_manager_draw_level();
+	engine_level_manager_draw_level();
 
 	engine_frame_manager_draw();
 	engine_delay_manager_draw();
@@ -90,6 +90,30 @@ void screen_dead_screen_update( unsigned char *screen_type )
 	frame = fo->frame_count;
 
 
+	// Move gamer.
+	if( direction_type_none != go->direction && lifecycle_type_move == go->lifecycle )
+	{
+		//  warning 110: conditional flow changed by optimizer: so said EVELYN the modified DOG
+		engine_gamer_manager_update();
+	}
+	if( direction_type_none != go->direction && lifecycle_type_idle == go->lifecycle )
+	{
+		// Check collision.
+		engine_font_manager_draw_data( frame, 12, 16 );
+		engine_gamer_manager_stop();
+	}
+	// For continuity we want to check if actor can move immediately after stopping.
+	if( direction_type_none == go->direction && lifecycle_type_idle == go->lifecycle )
+	{
+		if( 0 == frame )
+		{
+			engine_font_manager_draw_data( frame, 12, 14 );
+			gamer_direction = direction_type_upxx;
+			engine_command_manager_add( frame, command_type_gamer_mover, gamer_direction );
+		}
+	}
+
+
 	// Move enemies.
 	enemy = actor_type_pro;
 	//for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
@@ -115,23 +139,23 @@ void screen_dead_screen_update( unsigned char *screen_type )
 		// For continuity we want to check if actor can move immediately after stopping.
 		if( direction_type_none == eo->direction && lifecycle_type_idle == eo->lifecycle )
 		{
-			if( prevs_direction == direction_type_none )
-			{
-				if( 0 == frame )
-				{
-					engine_font_manager_draw_data( frame, 12, 16 );
-					enemy_direction = direction_type_rght;
-					engine_command_manager_add( frame, command_type_enemy_mover, ( enemy | ( enemy_direction << 4 ) ) );
-					prevs_direction = enemy_direction;
-				}
-			}
-			else
-			{
-				engine_font_manager_draw_data( frame, 12, 16 );
-				enemy_direction = engine_move_manager_opposite_direction( prevs_direction );
-				engine_command_manager_add( frame, command_type_enemy_mover, ( enemy | ( enemy_direction << 4 ) ) );
-				prevs_direction = enemy_direction;
-			}
+			//if( prevs_direction == direction_type_none )
+			//{
+			//	if( 0 == frame )
+			//	{
+			//		engine_font_manager_draw_data( frame, 12, 16 );
+			//		enemy_direction = direction_type_rght;
+			//		engine_command_manager_add( frame, command_type_enemy_mover, ( enemy | ( enemy_direction << 4 ) ) );
+			//		prevs_direction = enemy_direction;
+			//	}
+			//}
+			//else
+			//{
+			//	engine_font_manager_draw_data( frame, 12, 16 );
+			//	enemy_direction = engine_move_manager_opposite_direction( prevs_direction );
+			//	engine_command_manager_add( frame, command_type_enemy_mover, ( enemy | ( enemy_direction << 4 ) ) );
+			//	prevs_direction = enemy_direction;
+			//}
 		}
 	}
 
