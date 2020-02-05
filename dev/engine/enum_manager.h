@@ -24,13 +24,23 @@ typedef enum tag_enum_screen_type
 
 } enum_screen_type;
 
+//typedef enum tag_enum_direction_type
+//{
+//	direction_type_none = 0,
+//	direction_type_upxx = 1,
+//	direction_type_down = 2,
+//	direction_type_left = 3,
+//	direction_type_rght = 4,
+//
+//} enum_direction_type;
+
 typedef enum tag_enum_direction_type
 {
-	direction_type_none = 0,
-	direction_type_upxx = 1,
-	direction_type_down = 2,
-	direction_type_left = 3,
-	direction_type_rght = 4,
+	direction_type_none = 0x00,
+	direction_type_upxx = 0x01,
+	direction_type_down = 0x02,
+	direction_type_left = 0x04,
+	direction_type_rght = 0x08,
 
 } enum_direction_type;
 

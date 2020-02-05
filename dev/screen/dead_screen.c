@@ -120,7 +120,7 @@ void screen_dead_screen_update( unsigned char *screen_type )
 				if( 0 == frame )
 				{
 					engine_font_manager_draw_data( frame, 12, 16 );
-					enemy_direction = direction_type_upxx;
+					enemy_direction = direction_type_rght;
 					engine_command_manager_add( frame, command_type_enemy_mover, ( enemy | ( enemy_direction << 4 ) ) );
 					prevs_direction = enemy_direction;
 				}

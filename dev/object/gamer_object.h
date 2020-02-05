@@ -18,7 +18,8 @@ typedef struct tag_struct_gamer_object
 	unsigned char delta;
 	unsigned char total;
 	unsigned char speed;
-	unsigned char direction;
+	unsigned char prev_move;	// Previous direction moved.
+	unsigned char direction;	// Current  direction moved.
 	unsigned char lifecycle;
 	unsigned int image;
 	unsigned char frame;

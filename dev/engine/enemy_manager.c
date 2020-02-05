@@ -47,6 +47,7 @@ void engine_enemy_manager_init()
 		eo->total = 0;
 		eo->speed = 1;		// TODO hardcoded - inject!
 		eo->mover = 1;		// 1=move 0=stay.
+		eo->prev_move = direction_type_none;
 		eo->direction = direction_type_none;
 		eo->lifecycle = lifecycle_type_idle;
 
@@ -184,6 +185,7 @@ void engine_enemy_manager_move( unsigned char enemy, unsigned char direction )
 void engine_enemy_manager_stop( unsigned char enemy )
 {
 	struct_enemy_object *eo = &global_enemy_objects[ enemy ];
+	eo->prev_move = eo->direction;
 	eo->direction = direction_type_none;
 	eo->frame = 0;
 	calcd_frame( enemy );

@@ -40,6 +40,7 @@ void engine_gamer_manager_init()
 	go->speed = 1;
 	// Speed:	1, 2, 4, 8
 
+	go->prev_move = direction_type_none;
 	go->direction = direction_type_none;
 	go->lifecycle = lifecycle_type_idle;
 
@@ -158,9 +159,12 @@ void engine_gamer_manager_move( unsigned char direction )
 void engine_gamer_manager_stop()
 {
 	struct_gamer_object *go = &global_gamer_object;
+	go->prev_move = go->direction;
 	go->direction = direction_type_none;
 	go->frame = 0;
 	calcd_frame();
+
+	// TODO calc possible tiles actor can move in to.
 }
 
 unsigned char engine_gamer_manager_direction()
