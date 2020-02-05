@@ -1,45 +1,54 @@
 #include "cont_screen.h"
 #include "..\engine\board_manager.h"
+#include "..\engine\command_manager.h"
+#include "..\engine\delay_manager.h"
 #include "..\engine\enemy_manager.h"
 #include "..\engine\enum_manager.h"
 #include "..\engine\font_manager.h"
+#include "..\engine\frame_manager.h"
 #include "..\engine\gamer_manager.h"
 #include "..\engine\level_manager.h"
 #include "..\engine\move_manager.h"
 
 void screen_cont_screen_load()
 {
-	unsigned char tileX = 0;
-	unsigned char tileY = 0;
-	unsigned char tileZ = 0;
-	//unsigned char direction;
+	engine_command_manager_init();
+	engine_frame_manager_init();
+	engine_delay_manager_load( 0 );
 
 	engine_board_manager_init();
 	engine_gamer_manager_init();
 	engine_enemy_manager_init();
-
 	engine_level_manager_init_board();
 	engine_level_manager_init_exits();
-	engine_level_manager_load_level(0, 0);
 
-	tileZ = 59;
-	engine_board_manager_calc_position( &tileX, &tileY, tileZ );
+	// Draw functions.
+	engine_board_manager_debugger();
+	engine_board_manager_side_tile();
 
-	engine_font_manager_draw_text( "CONT SCREEN!!", 2, 8 );
+	engine_level_manager_load_level( 0, 0 );
+	engine_level_manager_draw_level();
 
-	//engine_font_manager_draw_data( board_homeZ[ 0 ], 10, 10 );
-	//engine_font_manager_draw_data( board_homeZ[ 1 ], 10, 11 );
-	//engine_font_manager_draw_data( board_homeZ[ 2 ], 10, 12 );
-	//engine_font_manager_draw_data( board_homeZ[ 3 ], 10, 13 );
-
-	/*direction = direction_type_rght;
-	engine_font_manager_draw_data( direction, 10, 14 );
-
-	direction = engine_move_manager_opposite_direction( direction );
-	engine_font_manager_draw_data( direction, 10, 15 );*/
+	//engine_frame_manager_draw();
+	//engine_delay_manager_draw();
+	engine_font_manager_draw_text( "CONT SCREEN!!", 2, 7 );
 }
 
 void screen_cont_screen_update( unsigned char *screen_type )
 {
+	struct_frame_object *fo = &global_frame_object;
+	struct_gamer_object *go = &global_gamer_object;
+	unsigned char tile_type;
+	unsigned char coll_type;
+
+	// Draw sprites first.
+	engine_gamer_manager_draw();
+	//engine_enemy_manager_draw();
+
+	// TODO delete
+	tile_type = engine_level_manager_get_tile_type( go->tileX, go->tileY );
+	coll_type = engine_level_manager_get_collision( go->tileX, go->tileY, direction_type_upxx );
+	// TODO delete
+
 	*screen_type = screen_type_cont;
 }

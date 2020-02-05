@@ -140,21 +140,47 @@ void engine_level_manager_draw_level()
 	}
 }
 
-// Assumes call to draw 12x12 i.e. include tree border.
-//void engine_level_manager_draw_level_12()
-//{
-//	struct_level_object *lo = &global_level_object;
-//	unsigned char row, col;
-//
-//	for( row = 0; row < TREE_ROWS; row++ )
-//	{
-//		for( col = 0; col < TREE_COLS; col++ )
-//		{
-//			draw_tiles_12( col, row );
-//		}
-//	}
-//}
+unsigned char engine_level_manager_get_tile_type( unsigned char x, unsigned char y )
+{
+	struct_level_object *lo = &global_level_object;
+	unsigned char tile;
+	unsigned char type;
 
+	engine_board_manager_calc_tileSpot( x, y, &tile );
+	type = lo->drawtiles_array[ tile ];
+	return type;
+}
+
+unsigned char engine_level_manager_get_collision( unsigned char x, unsigned char y, unsigned char direction )
+{
+	struct_level_object *lo = &global_level_object;
+	unsigned char tile;
+	unsigned char type;
+
+	// Note: x and y can never go out-of-bounds as if gamer in exits then there will be no collision checks.
+	if( direction_type_upxx == direction )
+	{
+		y--;
+	}
+	else 	if( direction_type_down == direction )
+	{
+		y++;
+	}
+	else if( direction_type_left == direction )
+	{
+		x--;
+	}
+	else if( direction_type_rght == direction )
+	{
+		x++;
+	}
+
+	engine_board_manager_calc_tileSpot( x, y, &tile );
+	type = lo->collision_array[ tile ];
+	return type;
+}
+
+// Private helper methods.
 static void load_level( const unsigned char *data, const unsigned char bank, const unsigned char size )
 {
 	struct_level_object *lo = &global_level_object;
@@ -186,7 +212,7 @@ static void load_level( const unsigned char *data, const unsigned char bank, con
 				idx = ( row + 2 ) * MAZE_COLS + ( col + 2 );
 
 				lo->drawtiles_array[ idx ] = tile_type;
-				
+
 				if( tile_type_candy == tile_type )
 				{
 					lo->candyCount++;
@@ -220,16 +246,3 @@ static void draw_tiles( unsigned char x, unsigned char y )
 
 	engine_tile_manager_draw_tile( tile, SCREEN_TILE_LEFT + ( x + 1 ) * 2, ( y + 1 ) * 2 );
 }
-
-// Assumes call to draw 12x12 i.e. include tree border.
-//static void draw_tiles_12( unsigned char x, unsigned char y )
-//{
-//	struct_level_object *lo = &global_level_object;
-//	unsigned char tile;
-//	unsigned int idx;
-//
-//	idx = ( y + 1 ) * MAZE_COLS + ( x + 1 );
-//	tile = lo->drawtiles_array[ idx ];
-//
-//	engine_tile_manager_draw_tile( tile, SCREEN_TILE_LEFT + x * 2, y * 2 );
-//}
