@@ -167,6 +167,8 @@ void engine_gamer_manager_wrap( unsigned char direction )
 	{
 		go->tileY = direction_type_upxx == direction ? MAZE_ROWS - 1 : 0;
 	}
+
+	calcd_spots();
 }
 
 void engine_gamer_manager_stop()
@@ -178,6 +180,7 @@ void engine_gamer_manager_stop()
 	calcd_frame();
 
 	// Check if in exit then move in previous direction [and wrap game board as necessary].
+	engine_font_manager_draw_data( go->tileX, 20, 16 );
 	if( go->tileX <= 1 || go->tileY <= 1 || go->tileX >= ( MAZE_COLS - 2 ) || go->tileY >= ( MAZE_ROWS - 2 ) )
 	{
 		engine_gamer_manager_wrap( go->prev_move );

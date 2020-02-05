@@ -29,7 +29,7 @@ void screen_dead_screen_load()
 {
 	engine_command_manager_init();
 	engine_frame_manager_init();
-	engine_delay_manager_load( 40 );
+	engine_delay_manager_load( 20 );
 
 	engine_board_manager_init();
 	engine_gamer_manager_init();
@@ -39,7 +39,7 @@ void screen_dead_screen_load()
 
 	// Draw functions.
 	engine_board_manager_debugger();
-	engine_board_manager_side_tile();
+	//engine_board_manager_side_tile();
 
 	engine_level_manager_load_level( 0, 0 );
 	engine_level_manager_draw_level();
@@ -108,7 +108,7 @@ void screen_dead_screen_update( unsigned char *screen_type )
 		if( 0 == frame )
 		{
 			engine_font_manager_draw_data( frame, 12, 14 );
-			gamer_direction = direction_type_upxx;
+			gamer_direction = direction_type_rght;
 			engine_command_manager_add( frame, command_type_gamer_mover, gamer_direction );
 		}
 	}
