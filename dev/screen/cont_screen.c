@@ -38,6 +38,7 @@ void screen_cont_screen_update( unsigned char *screen_type )
 {
 	struct_frame_object *fo = &global_frame_object;
 	struct_gamer_object *go = &global_gamer_object;
+	unsigned char direction;
 	unsigned char tile_type;
 	unsigned char next_tile;
 	unsigned char twos_tile;
@@ -53,8 +54,9 @@ void screen_cont_screen_update( unsigned char *screen_type )
 	twos_tile = engine_level_manager_get_next_tile( go->tileX, go->tileY, direction_type_upxx, offset_type_two );
 	coll_type = engine_level_manager_get_next_coll( go->tileX, go->tileY, direction_type_upxx );
 
+	direction = engine_gamer_manager_mover_direction();
 	tile_type = engine_gamer_manager_mover_direction();
-	engine_font_manager_draw_data( tile_type, 17, 7 );
+	engine_font_manager_draw_data( direction, 17, 7 );
 	// TODO delete
 
 	*screen_type = screen_type_cont;

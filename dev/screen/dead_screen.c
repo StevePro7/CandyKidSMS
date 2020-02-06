@@ -60,6 +60,8 @@ void screen_dead_screen_update( unsigned char *screen_type )
 	struct_enemy_object *eo;
 	unsigned char gamer_direction = direction_type_none;
 	unsigned char enemy_direction = direction_type_none;
+	unsigned char mover_direction = direction_type_none;
+
 
 	unsigned char proceed;
 	//unsigned char input;
@@ -73,6 +75,8 @@ void screen_dead_screen_update( unsigned char *screen_type )
 
 	engine_frame_manager_draw();
 	engine_delay_manager_draw();
+
+
 	if( !first_time )
 	{
 		proceed = engine_delay_manager_update();
@@ -109,7 +113,7 @@ void screen_dead_screen_update( unsigned char *screen_type )
 		{
 			engine_font_manager_draw_data( frame, 12, 14 );
 			gamer_direction = direction_type_down;
-			engine_command_manager_add( frame, command_type_gamer_mover, gamer_direction );
+			//engine_command_manager_add( frame, command_type_gamer_mover, gamer_direction );
 		}
 	}
 
@@ -162,6 +166,13 @@ void screen_dead_screen_update( unsigned char *screen_type )
 
 	// Execute all commands for this frame.
 	engine_command_manager_execute( frame );
+
+
+
+	// TODO delete - testing the mover [random]  direction!
+	mover_direction = engine_gamer_manager_mover_direction();
+	engine_font_manager_draw_data( mover_direction, 17, 9 );
+	//engine_font_manager_draw_data( frame, 17, 9 );
 
 
 	first_time = 0;
