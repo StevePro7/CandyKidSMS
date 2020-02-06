@@ -192,15 +192,17 @@ unsigned char engine_move_manager_actor_direction( unsigned char direction )
 	unsigned char loop;
 	unsigned char time;
 
-	// If actor already traveling in direction return that direction,
+	// If actor already traveling in direction then return that direction,
 	if( direction_type_none != direction )
 	{
 		return direction;
 	}
 
-	// Otherwise calculate random direction for further game code use.
+	// Otherwise calculate random direction for further game code function.
 	direction = 1;
 	time = rand() % 4;
+
+	// Algorithm will give 1, 2, 4, 8	that is : Up / Down / Left / Right.
 	for( loop = 0; loop < time; loop++ )
 	{
 		direction *= 2;
