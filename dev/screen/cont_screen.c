@@ -39,6 +39,8 @@ void screen_cont_screen_update( unsigned char *screen_type )
 	struct_frame_object *fo = &global_frame_object;
 	struct_gamer_object *go = &global_gamer_object;
 	unsigned char tile_type;
+	unsigned char next_tile;
+	unsigned char twos_tile;
 	unsigned char coll_type;
 
 	// Draw sprites first.
@@ -47,7 +49,9 @@ void screen_cont_screen_update( unsigned char *screen_type )
 
 	// TODO delete
 	tile_type = engine_level_manager_get_tile_type( go->tileX, go->tileY );
-	coll_type = engine_level_manager_get_collision( go->tileX, go->tileY, direction_type_upxx );
+	next_tile = engine_level_manager_get_next_tile( go->tileX, go->tileY, direction_type_upxx, offset_type_one );
+	twos_tile = engine_level_manager_get_next_tile( go->tileX, go->tileY, direction_type_upxx, offset_type_two );
+	coll_type = engine_level_manager_get_next_coll( go->tileX, go->tileY, direction_type_upxx );
 	// TODO delete
 
 	*screen_type = screen_type_cont;

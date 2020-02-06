@@ -150,34 +150,70 @@ unsigned char engine_level_manager_get_tile_type( unsigned char x, unsigned char
 	type = lo->drawtiles_array[ tile ];
 	return type;
 }
+//unsigned char engine_level_manager_get_collision( unsigned char x, unsigned char y, unsigned char direction ) {}
 
-unsigned char engine_level_manager_get_collision( unsigned char x, unsigned char y, unsigned char direction )
+unsigned char engine_level_manager_get_next_tile( unsigned char x, unsigned char y, unsigned char direction, unsigned char offset )
+{
+	struct_level_object *lo = &global_level_object;
+	unsigned char tile;
+
+	// Note: x and y can never go out-of-bounds as if gamer in exits then there will be no collision checks.
+	if( direction_type_upxx == direction )
+	{
+		y -= offset;
+	}
+	else 	if( direction_type_down == direction )
+	{
+		y += offset;
+	}
+	else if( direction_type_left == direction )
+	{
+		x -= offset;
+	}
+	else if( direction_type_rght == direction )
+	{
+		x += offset;
+	}
+
+	engine_board_manager_calc_tileSpot( x, y, &tile );
+	return tile;
+}
+
+unsigned char engine_level_manager_get_next_coll( unsigned char x, unsigned char y, unsigned char direction )
 {
 	struct_level_object *lo = &global_level_object;
 	unsigned char tile;
 	unsigned char type;
 
-	// Note: x and y can never go out-of-bounds as if gamer in exits then there will be no collision checks.
-	if( direction_type_upxx == direction )
-	{
-		y--;
-	}
-	else 	if( direction_type_down == direction )
-	{
-		y++;
-	}
-	else if( direction_type_left == direction )
-	{
-		x--;
-	}
-	else if( direction_type_rght == direction )
-	{
-		x++;
-	}
-
-	engine_board_manager_calc_tileSpot( x, y, &tile );
+	tile = engine_level_manager_get_next_tile( x, y, direction, offset_type_one );
 	type = lo->collision_array[ tile ];
 	return type;
+
+	//struct_level_object *lo = &global_level_object;
+	//unsigned char tile;
+	//unsigned char type;
+
+	//// Note: x and y can never go out-of-bounds as if gamer in exits then there will be no collision checks.
+	//if( direction_type_upxx == direction )
+	//{
+	//	y--;
+	//}
+	//else 	if( direction_type_down == direction )
+	//{
+	//	y++;
+	//}
+	//else if( direction_type_left == direction )
+	//{
+	//	x--;
+	//}
+	//else if( direction_type_rght == direction )
+	//{
+	//	x++;
+	//}
+
+	//engine_board_manager_calc_tileSpot( x, y, &tile );
+	//type = lo->collision_array[ tile ];
+	//return type;
 }
 
 // Private helper methods.

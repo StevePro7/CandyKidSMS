@@ -133,4 +133,12 @@ typedef enum tag_enum_frame_type
 
 } enum_frame_type;
 
+typedef enum tag_enum_offset_type
+{
+	offset_type_none = 0,
+	offset_type_one = 1,
+	offset_type_two = 2,
+
+} enum_offset_type;
+
 #endif//_ENUM_MANAGER_H_

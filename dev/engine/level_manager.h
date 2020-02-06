@@ -12,6 +12,8 @@ void engine_level_manager_load_level( const unsigned char world, const unsigned 
 void engine_level_manager_draw_level();
 
 unsigned char engine_level_manager_get_tile_type( unsigned char x, unsigned char y );
-unsigned char engine_level_manager_get_collision( unsigned char x, unsigned char y, unsigned char direction );
+//unsigned char engine_level_manager_get_collision( unsigned char x, unsigned char y );
+unsigned char engine_level_manager_get_next_tile( unsigned char x, unsigned char y, unsigned char direction, unsigned char offset );
+unsigned char engine_level_manager_get_next_coll( unsigned char x, unsigned char y, unsigned char direction );
 
 #endif//_LEVEL_MANAGER_H_

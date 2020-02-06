@@ -1,6 +1,10 @@
 # CandyKidSMS
 Candy Kid for the Sega Master System
 
+06/02/2020
+Starting to investigate the movement and find direction so I wondered what if player direction is none
+but in Player Reset() direction is hardcoded to right so always valid to calculate the next tile.
+
 01/02/2020
 Here is the out outline for SRAM
 0000
