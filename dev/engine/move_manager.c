@@ -6,6 +6,138 @@
 // Global variable.
 //struct_move_object global_move_object;
 
+unsigned char engine_move_manager_exec_direction()
+{
+	unsigned char deltaX, deltaY, plusX, minusY;
+	unsigned char index;
+
+	unsigned char srceX, srceY, destX, destY;
+	srceX = 18;
+	srceY = 11;
+
+	destX = 27;
+	destY = 30;
+
+
+	index = 0;
+	plusX = 0;
+	minusY = 0;
+
+
+	// Determine which directions...
+	deltaX = 0;
+	if( srceX > destX )
+	{
+		deltaX = srceX - destX;
+	}
+	else if( srceX < destX )
+	{
+		deltaX = destX - srceX;
+		plusX = 1;
+	}
+
+	deltaY = 0;
+	if( srceY > destY )
+	{
+		deltaY = srceY - destY;
+		minusY = 1;
+	}
+	else if( srceY < destY )
+	{
+		deltaY = destY - srceY;
+	}
+
+
+	// Determine which direction index to use.
+	if( deltaX > deltaY )
+	{
+		if( plusX )
+		{
+			index = minusY ? 0 : 1;
+		}
+		else
+		{
+			index = minusY ? 2 : 3;
+		}
+	}
+	else
+	{
+		if( plusX )
+		{
+			index = minusY ? 4 : 5;
+		}
+		else
+		{
+			index = minusY ? 6 : 7;
+		}
+	}
+
+	return index;
+}
+
+unsigned char engine_move_manager_find_direction( unsigned char srceX, unsigned char srceY, unsigned char destX, unsigned char destY )
+{
+	unsigned char deltaX;
+	unsigned char deltaY;
+	unsigned char plusX;
+	unsigned char minusY;
+	unsigned char index;
+
+	index = 0;
+	plusX = 0;
+	minusY = 0;
+
+	// Determine which directions...
+	deltaX = 0;
+	if( srceX > destX )
+	{
+		deltaX = srceX - destX;
+	}
+	else if( srceX < destX )
+	{
+		deltaX = destX - srceX;
+		plusX = 1;
+	}
+
+	deltaY = 0;
+	if( srceY > destY )
+	{
+		deltaY = srceY - destY;
+		minusY = 1;
+	}
+	else if( srceY < destY )
+	{
+		deltaY = destY - srceY;
+	}
+
+
+	// Determine which direction index to use.
+	if( deltaX > deltaY )
+	{
+		if( plusX )
+		{
+			index = minusY ? 0 : 1;
+		}
+		else
+		{
+			index = minusY ? 2 : 3;
+		}
+	}
+	else
+	{
+		if( plusX )
+		{
+			index = minusY ? 4 : 5;
+		}
+		else
+		{
+			index = minusY ? 6 : 7;
+		}
+	}
+
+	return index;
+}
+
 void engine_move_manager_init()
 {
 	unsigned char y = move_exec_direction[ 0 ][ 1 ];
@@ -55,7 +187,7 @@ unsigned char engine_move_manager_opposite_direction( unsigned char direction )
 	return direction_type_none;
 }
 
-unsigned char engine_gamer_manager_actor_direction( unsigned char direction )
+unsigned char engine_move_manager_actor_direction( unsigned char direction )
 {
 	unsigned char loop;
 	unsigned char time;

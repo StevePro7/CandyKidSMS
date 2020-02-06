@@ -46,7 +46,7 @@ void screen_cont_screen_update( unsigned char *screen_type )
 	unsigned char next_tile;
 	unsigned char twos_tile;
 	unsigned char coll_type;
-	unsigned char x, y;
+	unsigned char gx, gy;
 	coll_type = move_find_direction[ 10 ];
  
 	eo = &global_enemy_objects[ actor_type_pro ];
@@ -60,9 +60,15 @@ void screen_cont_screen_update( unsigned char *screen_type )
 	// TODO delete
 	//tile_type = engine_level_manager_get_tile_type( go->tileX, go->tileY );
 	next_tile = engine_level_manager_get_next_tile( go->tileX, go->tileY, direction, offset_type_one );
-	engine_board_manager_calc_position( &x, &y, next_tile );
+	//engine_board_manager_calc_position( &gx, &gy, next_tile );
 	twos_tile = engine_level_manager_get_next_tile( go->tileX, go->tileY, direction, offset_type_two );
-	engine_board_manager_calc_position( &x, &y, twos_tile );
+	engine_board_manager_calc_position( &gx, &gy, twos_tile );
+
+
+	direction = engine_move_manager_exec_direction();
+	direction = engine_move_manager_find_direction( eo->tileX, eo->tileY, gx, gy );
+
+
 	coll_type = engine_level_manager_get_next_coll( go->tileX, go->tileY, direction);
 
 	direction = engine_gamer_manager_mover_direction();
