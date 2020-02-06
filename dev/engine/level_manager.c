@@ -229,6 +229,7 @@ unsigned char engine_level_manager_get_next_coll( unsigned char x, unsigned char
 // Private helper methods.
 static void load_level( const unsigned char *data, const unsigned char bank, const unsigned char size, unsigned char mult )
 {
+	unsigned char directions[] = { direction_type_upxx, direction_type_down, direction_type_left, direction_type_rght };
 	struct_level_object *lo = &global_level_object;
 
 	const unsigned char *o = data;
@@ -238,6 +239,8 @@ static void load_level( const unsigned char *data, const unsigned char bank, con
 	unsigned int idx;
 	unsigned char tile_type;
 	unsigned char coll_type;
+	unsigned char dirX_type;
+	unsigned char direction;
 
 	lo->load_cols = size / MAX_ROWS;
 	lo->draw_cols = lo->load_cols - CRLF;
@@ -282,6 +285,31 @@ static void load_level( const unsigned char *data, const unsigned char bank, con
 	idx = 0;
 
 	// TODO now that level loaded pre-calculate the "next" tiles for each tile.
+	for( row = 0; row < MAX_ROWS; row++ )
+	{
+		for( col = 0; col < MAX_COLS; col++ )
+		{
+			unsigned char x = col + 2;
+			unsigned char y = row + 2;
+
+			dirX_type = direction_type_none;
+			for( idx = 0; idx < NUM_DIRECTIONS; idx++ )
+			{
+				direction = directions[ idx ];
+				coll_type = engine_level_manager_get_next_coll( x, y, direction );
+				if( coll_type_empty == coll_type )
+				{
+					dirX_type |= direction;
+				}
+			}
+
+			//idx = x * MAZE_COLS + y;
+			idx = y * MAZE_COLS + x;
+			lo->direction_array[ idx ] = dirX_type;
+		}
+	}
+
+	
 }
 
 static void draw_tiles( unsigned char x, unsigned char y, unsigned char multipler )
