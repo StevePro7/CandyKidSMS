@@ -68,7 +68,7 @@ void engine_tile_manager_load_coll( unsigned char *coll_type, unsigned char tile
 }
 
 // TODO rename this as is too generic!
-void engine_tile_manager_draw_tile( unsigned char index, unsigned char x, unsigned char y )
+void engine_tile_manager_draw_tile( unsigned char index, unsigned char multiplier, unsigned char x, unsigned char y )
 {
 	engine_tile_manager_draw_blank( x, y );
 
@@ -78,7 +78,7 @@ void engine_tile_manager_draw_tile( unsigned char index, unsigned char x, unsign
 	}
 	else if( index >= tile_type_bonusA  && index <= tile_type_bonusD )
 	{
-		engine_tile_manager_draw_bonus( index, 1, x, y );
+		engine_tile_manager_draw_bonus( index, multiplier, x, y );
 	}
 	else if( tile_type_candy == index )
 	{

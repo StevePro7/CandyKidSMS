@@ -7,6 +7,9 @@
 #include "..\devkit\_sms_manager.h"
 #include <stdlib.h>
 
+// TODO calculate based on levels
+#define MULTIPLIER_LEVEL	70
+
 // Global variable.
 struct_level_object global_level_object;
 
@@ -15,8 +18,8 @@ struct_level_object global_level_object;
 #define LF		'\n'			// 0x0a
 
 // Private helper methods.
-static void load_level( const unsigned char *data, const unsigned char bank, const unsigned char size );
-static void draw_tiles( unsigned char x, unsigned char y );
+static void load_level( const unsigned char *data, const unsigned char bank, const unsigned char size, unsigned char mult );
+static void draw_tiles( unsigned char x, unsigned char y, unsigned char multipler );
 
 void engine_level_manager_init_board()
 {
@@ -32,6 +35,7 @@ void engine_level_manager_init_board()
 
 			lo->drawtiles_array[ idx ] = tile_type_blank;
 			lo->collision_array[ idx ] = coll_type_empty;
+			lo->direction_array[ idx ] = direction_type_none;
 		}
 	}
 
@@ -65,21 +69,25 @@ void engine_level_manager_init_exits()
 	unsigned char loop;
 	unsigned char tmpX;
 	unsigned char tmpY;
-	unsigned char idx = 0;
+	unsigned char idx;
 
+	// TODO test this still draws correct trees!!
+	// Want to leave coll type to block for all border trees
 	unsigned char tile_type;
-	unsigned char coll_type;
-	if( exit_type_public != bo->save_exit_type )
-	{
-		tile_type = tile_type_trees;
-		coll_type = coll_type_block;
-	}
-	else
-	{
-		tile_type = tile_type_blank;
-		coll_type = coll_type_empty;
-	}
+	tile_type = exit_type_public != bo->save_exit_type ? tile_type_trees : tile_type_blank;
+	//unsigned char coll_type;
+	//if( exit_type_public != bo->save_exit_type )
+	//{
+	//	tile_type = tile_type_trees;
+	//	//coll_type = coll_type_block;
+	//}
+	//else
+	//{
+	//	tile_type = tile_type_blank;
+	//	//coll_type = coll_type_empty;
+	//}
 
+	idx = 0;
 	for( loop = 0; loop < MAX_EXITS_PUBLIC; loop++ )
 	{
 		tmpX = board_exitX[ loop ];
@@ -87,7 +95,7 @@ void engine_level_manager_init_exits()
 
 		idx = tmpY * MAZE_ROWS + tmpX;
 		lo->drawtiles_array[ idx ] = tile_type;
-		lo->collision_array[ idx ] = coll_type;
+		//lo->collision_array[ idx ] = coll_type;
 	}
 }
 
@@ -96,11 +104,13 @@ void engine_level_manager_load_level( const unsigned char world, const unsigned 
 	unsigned char halve;
 	unsigned char level;
 	unsigned char index;
+	unsigned char mult;
 
 	halve = TOT_WORLDS / 2 * MAX_ROUNDS;
 	level = world * MAX_ROUNDS + round;
 	index = 0;
 
+	mult = ( level >= MULTIPLIER_LEVEL ) + 1;
 	if( level >= halve )
 	{
 		index = level - halve;
@@ -115,14 +125,14 @@ void engine_level_manager_load_level( const unsigned char world, const unsigned 
 		const unsigned char *data = levelAAdata[ index ];
 		const unsigned char bank = levelAAbank[ index ];
 		const unsigned char size = levelAAsize[ index ];
-		load_level( data, bank, size );
+		load_level( data, bank, size, mult );
 	}
 	else
 	{
 		const unsigned char *data = levelBBdata[ index ];
 		const unsigned char bank = levelBBbank[ index ];
 		const unsigned char size = levelBBsize[ index ];
-		load_level( data, bank, size );
+		load_level( data, bank, size, mult );
 	}
 }
 
@@ -135,7 +145,7 @@ void engine_level_manager_draw_level()
 	{
 		for( col = 0; col < MAX_COLS; col++ )
 		{
-			draw_tiles( col, row );
+			draw_tiles( col, row, lo->multiplier );
 		}
 	}
 }
@@ -157,7 +167,7 @@ unsigned char engine_level_manager_get_next_tile( unsigned char x, unsigned char
 	struct_level_object *lo = &global_level_object;
 	unsigned char tile;
 
-	// Note: x and y can never go out-of-bounds as if gamer in exits then there will be no collision checks.
+	// Note: x and y can never go out-of-bounds: if gamer in exits then there will be no collision checks.
 	if( direction_type_upxx == direction )
 	{
 		y -= offset;
@@ -217,7 +227,7 @@ unsigned char engine_level_manager_get_next_coll( unsigned char x, unsigned char
 }
 
 // Private helper methods.
-static void load_level( const unsigned char *data, const unsigned char bank, const unsigned char size )
+static void load_level( const unsigned char *data, const unsigned char bank, const unsigned char size, unsigned char mult )
 {
 	struct_level_object *lo = &global_level_object;
 
@@ -234,6 +244,7 @@ static void load_level( const unsigned char *data, const unsigned char bank, con
 
 	lo->candyCount = 0;
 	lo->bonusCount = 0;
+	lo->multiplier = mult;
 
 	devkit_SMS_mapROMBank( bank );
 	for( row = 0; row < MAX_ROWS; row++ )
@@ -269,16 +280,18 @@ static void load_level( const unsigned char *data, const unsigned char bank, con
 
 	// Subtract candy count if enemy(s) not move and candy or their board spot.
 	idx = 0;
+
+	// TODO now that level loaded pre-calculate the "next" tiles for each tile.
 }
 
-static void draw_tiles( unsigned char x, unsigned char y )
+static void draw_tiles( unsigned char x, unsigned char y, unsigned char multipler )
 {
 	struct_level_object *lo = &global_level_object;
 	unsigned char tile;
-	unsigned int idx;
+	unsigned char idx;
 
 	idx = ( y + 2 ) * MAZE_COLS + ( x + 2 );
 	tile = lo->drawtiles_array[ idx ];
 
-	engine_tile_manager_draw_tile( tile, SCREEN_TILE_LEFT + ( x + 1 ) * 2, ( y + 1 ) * 2 );
+	engine_tile_manager_draw_tile( tile, multipler, SCREEN_TILE_LEFT + ( x + 1 ) * 2, ( y + 1 ) * 2 );
 }

@@ -29,7 +29,8 @@ void screen_load_screen_load()
 	engine_level_manager_init_board();
 	engine_level_manager_init_exits();
 
-	engine_level_manager_load_level( ho->hack_world, ho->hack_round );
+	//engine_level_manager_load_level( ho->hack_world, ho->hack_round );
+	engine_level_manager_load_level( 0, 0 );
 	engine_level_manager_draw_level();
 
 	engine_font_manager_draw_data( ho->hack_world + 1, 31, 0 );

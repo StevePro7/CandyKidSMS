@@ -5,13 +5,16 @@
 
 typedef struct tag_struct_level_object
 {
-	unsigned char collision_array[ MAZE_ROWS * MAZE_COLS ];
 	unsigned char drawtiles_array[ MAZE_ROWS * MAZE_COLS ];
+	unsigned char collision_array[ MAZE_ROWS * MAZE_COLS ];
+	unsigned char direction_array[ MAZE_ROWS * MAZE_COLS ];
+
 	unsigned int load_cols;
 	unsigned int draw_cols;
 
 	unsigned char candyCount;
 	unsigned char bonusCount;
+	unsigned char multiplier;
 
 } struct_level_object;
 
