@@ -172,7 +172,7 @@ unsigned char engine_level_manager_get_next_tile( unsigned char x, unsigned char
 	{
 		y -= offset;
 	}
-	else 	if( direction_type_down == direction )
+	else if( direction_type_down == direction )
 	{
 		y += offset;
 	}

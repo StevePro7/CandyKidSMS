@@ -64,6 +64,7 @@
     <ClInclude Include="object\gamer_object.h" />
     <ClInclude Include="object\hack_object.h" />
     <ClInclude Include="object\level_object.h" />
+    <ClInclude Include="object\move_object.h" />
     <ClInclude Include="object\savegame_object.h" />
     <ClInclude Include="object\state_object.h" />
     <ClInclude Include="psg.h" />
@@ -127,6 +128,7 @@
     <ClCompile Include="object\gamer_object.c" />
     <ClCompile Include="object\hack_object.c" />
     <ClCompile Include="object\level_object.c" />
+    <ClCompile Include="object\move_object.c" />
     <ClCompile Include="object\savegame_object.c" />
     <ClCompile Include="object\state_object.c" />
     <ClCompile Include="psg.c" />

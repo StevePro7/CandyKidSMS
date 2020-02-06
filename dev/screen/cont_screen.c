@@ -32,27 +32,38 @@ void screen_cont_screen_load()
 	//engine_frame_manager_draw();
 	//engine_delay_manager_draw();
 	//engine_font_manager_draw_text( "CONT SCREEN!!", 2, 7 );
+	engine_move_manager_init();
 }
 
 void screen_cont_screen_update( unsigned char *screen_type )
 {
 	struct_frame_object *fo = &global_frame_object;
 	struct_gamer_object *go = &global_gamer_object;
+	struct_enemy_object *eo;
+
 	unsigned char direction;
 	unsigned char tile_type;
 	unsigned char next_tile;
 	unsigned char twos_tile;
 	unsigned char coll_type;
+	unsigned char x, y;
+	coll_type = move_find_direction[ 10 ];
+ 
+	eo = &global_enemy_objects[ actor_type_pro ];
 
 	// Draw sprites first.
 	engine_gamer_manager_draw();
 	//engine_enemy_manager_draw();
 
+	direction = direction_type_rght;
+
 	// TODO delete
 	//tile_type = engine_level_manager_get_tile_type( go->tileX, go->tileY );
-	next_tile = engine_level_manager_get_next_tile( go->tileX, go->tileY, direction_type_upxx, offset_type_one );
-	twos_tile = engine_level_manager_get_next_tile( go->tileX, go->tileY, direction_type_upxx, offset_type_two );
-	coll_type = engine_level_manager_get_next_coll( go->tileX, go->tileY, direction_type_upxx );
+	next_tile = engine_level_manager_get_next_tile( go->tileX, go->tileY, direction, offset_type_one );
+	engine_board_manager_calc_position( &x, &y, next_tile );
+	twos_tile = engine_level_manager_get_next_tile( go->tileX, go->tileY, direction, offset_type_two );
+	engine_board_manager_calc_position( &x, &y, twos_tile );
+	coll_type = engine_level_manager_get_next_coll( go->tileX, go->tileY, direction);
 
 	direction = engine_gamer_manager_mover_direction();
 	tile_type = engine_gamer_manager_mover_direction();
