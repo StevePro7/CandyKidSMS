@@ -303,13 +303,10 @@ static void load_level( const unsigned char *data, const unsigned char bank, con
 				}
 			}
 
-			//idx = x * MAZE_COLS + y;
 			idx = y * MAZE_COLS + x;
 			lo->direction_array[ idx ] = dirX_type;
 		}
 	}
-
-	
 }
 
 static void draw_tiles( unsigned char x, unsigned char y, unsigned char multipler )
