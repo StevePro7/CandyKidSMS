@@ -5,6 +5,7 @@
 #include "global_manager.h"
 #include "input_manager.h"
 #include "sprite_manager.h"
+#include <stdlib.h>
 
 #define SPRITE_TILES_GAMER	256 + 96
 
@@ -191,7 +192,7 @@ void engine_gamer_manager_stop()
 	// TODO calc possible tiles actor can move in to.
 }
 
-unsigned char engine_gamer_manager_direction()
+unsigned char engine_gamer_manager_input_direction()
 {
 	struct_gamer_object *go = &global_gamer_object;
 	unsigned char direction = direction_type_none;
@@ -230,6 +231,31 @@ unsigned char engine_gamer_manager_direction()
 
 	return direction;
 }
+
+unsigned char engine_gamer_manager_mover_direction()
+{
+	struct_gamer_object *go = &global_gamer_object;
+	unsigned char dirX;
+	unsigned char loop;
+	unsigned char time;
+
+	// If gamer already travelling in direction return that direction,
+	if( direction_type_none != go->direction )
+	{
+		return go->direction;
+	}
+
+	// Otherwise calculate random direction for enemy to target.
+	dirX = 1;
+	time = rand() % 4;
+	for( loop = 0; loop < time; loop++ )
+	{
+		dirX *= 2;
+	}
+
+	return dirX;
+}
+
 
 static void calcd_frame()
 {

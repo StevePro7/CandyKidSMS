@@ -126,7 +126,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 		//}
 		//else
 		//{
-		//	gamer_direction = engine_gamer_manager_direction();
+		//	gamer_direction = engine_gamer_manager_input_direction();
 		//	if( direction_type_none != gamer_direction )
 		//	{
 		//		engine_font_manager_draw_data( gamer_direction, 10, 15 );
@@ -189,7 +189,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 	engine_command_manager_execute( frame );
 
 
-	/*gamer_direction = engine_gamer_manager_direction();
+	/*gamer_direction = engine_gamer_manager_input_direction();
 	if( direction_type_none != gamer_direction )
 	{
 		engine_font_manager_draw_text( "RIGHT", 10, 15 );

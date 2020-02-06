@@ -14,6 +14,7 @@ void engine_gamer_manager_text();
 void engine_gamer_manager_move( unsigned char direction );
 void engine_gamer_manager_wrap( unsigned char direction );
 void engine_gamer_manager_stop();
-unsigned char engine_gamer_manager_direction();
+unsigned char engine_gamer_manager_input_direction();
+unsigned char engine_gamer_manager_mover_direction();
 
 #endif//_GAMER_MANAGER_H_

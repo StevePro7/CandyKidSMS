@@ -31,7 +31,7 @@ void screen_cont_screen_load()
 
 	//engine_frame_manager_draw();
 	//engine_delay_manager_draw();
-	engine_font_manager_draw_text( "CONT SCREEN!!", 2, 7 );
+	//engine_font_manager_draw_text( "CONT SCREEN!!", 2, 7 );
 }
 
 void screen_cont_screen_update( unsigned char *screen_type )
@@ -48,10 +48,13 @@ void screen_cont_screen_update( unsigned char *screen_type )
 	//engine_enemy_manager_draw();
 
 	// TODO delete
-	tile_type = engine_level_manager_get_tile_type( go->tileX, go->tileY );
+	//tile_type = engine_level_manager_get_tile_type( go->tileX, go->tileY );
 	next_tile = engine_level_manager_get_next_tile( go->tileX, go->tileY, direction_type_upxx, offset_type_one );
 	twos_tile = engine_level_manager_get_next_tile( go->tileX, go->tileY, direction_type_upxx, offset_type_two );
 	coll_type = engine_level_manager_get_next_coll( go->tileX, go->tileY, direction_type_upxx );
+
+	tile_type = engine_gamer_manager_mover_direction();
+	engine_font_manager_draw_data( tile_type, 17, 7 );
 	// TODO delete
 
 	*screen_type = screen_type_cont;
