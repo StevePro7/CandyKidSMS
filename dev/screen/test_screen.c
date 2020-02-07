@@ -24,6 +24,7 @@ void screen_test_screen_load()
 	unsigned char lower_nibble = 0;
 	engine_font_manager_draw_text( "TESTER SCREEN!!", 4, 0 );
 
+	/*
 
 	// xDist = 0;	Sort = 3; Half = 1;		Byte = 49.
 	byte = engine_move_manager_find_direction( 18, 14, 18, 23 );
@@ -68,6 +69,8 @@ void screen_test_screen_load()
 	// Index = 7;	Sort = 3; Half = 1;		Byte = 49.
 	byte = engine_move_manager_find_direction( 18, 11, 13, 23 );
 	split( byte, &upper_nibble, &lower_nibble );
+
+	*/
 }
 
 void screen_test_screen_update( unsigned char *screen_type )

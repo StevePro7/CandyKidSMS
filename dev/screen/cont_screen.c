@@ -66,7 +66,7 @@ void screen_cont_screen_update( unsigned char *screen_type )
 
 
 	//direction = engine_move_manager_exec_direction();
-	direction = engine_move_manager_find_direction( eo->tileX, eo->tileY, gx, gy );
+	//direction = engine_move_manager_find_direction( eo->tileX, eo->tileY, gx, gy );
 
 
 	coll_type = engine_level_manager_get_next_coll( go->tileX, go->tileY, direction);
