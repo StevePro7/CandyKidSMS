@@ -1,0 +1,41 @@
+Log entry07
+
+07-Feb-2020
+This whole week I made a BIG start on movement of the Candy Mama using the XNA Pacman as a guide
+with a ton of prep work like working out what tiles are available outside various tiles and going
+thru the AI logic to decide what direction to move given position of Pacmand and the target tile
+i.e. calc'ing the target tile depending on Pacman and which ghost
+I made a look at the scatter algorithm and I understand how each ghost goes to its respective corner
+and cycles until going into Attack mode but I'm not 100% sure how to apply to CK
+
+Anyway, yesterday after replicating the FindDirection() method for all 8x possibilities I came into work
+today eager to integrate this FindDirection() with the NextTile() work from last 1-2 days but I had shock:
+The code wouldn't work on emulator anymore!!
+
+I checked the error and the Sega ROM header was not recognized
+basically the ROM had overrun the final 0x7FFF bytes into 0x8000
+
+Therefore, I have to do a complete overhaul of the program architecture...!!
+I studied Astro Force code base again specifically with regards to the fixed bank
+
+Ironically, I see that fixedbank - which I never really understood what / why etc but I see "Data bank"
+so I think aha all the data is extracted from direct inline object code and stored here and ROM banked
+in each time it is required
+And if some content is req'd and ROM bank'd in then immed. afterwards the fixedbank is banked in again
+afterwards as will most likely be used by game code soon there after
+
+NB: I also wonder if this is how the PSG of 10KB works - e.g. for Platform Explorer
+ROM bank that content in and play music then resume main game code
+I could never understand that but anyhow back to the problem at hand
+
+I spend some time today and create brand new repo and begin to bank the original gfx content to bank2
+NB: I will do the psg the same way
+I set up bank2-15 to prep the game for 256KB and create fixedbank similar to Astro Force
+
+I believe that I will have to replace all struct object with extern byte[] etc
+I will need to trial this to see if this will solve the problem
+
+I was thinking to write some code that will determine how many free bytes pre 0x7FFF are left to the last
+object code byte built by the complier
+
+NB: I still have the org repo with the branch that I cut with WIP
