@@ -85,6 +85,11 @@ unsigned char engine_move_manager_find_direction( unsigned char srceX, unsigned 
 	unsigned char minusY;
 	unsigned char index;
 
+	unsigned char sort;
+	unsigned char half;
+	unsigned char full;
+	unsigned char byte;
+
 	index = 0;
 	plusX = 0;
 	minusY = 0;
@@ -119,10 +124,12 @@ unsigned char engine_move_manager_find_direction( unsigned char srceX, unsigned 
 		if( plusX )
 		{
 			index = minusY ? 0 : 1;
+			sort = 0;
 		}
 		else
 		{
 			index = minusY ? 2 : 3;
+			sort = 1;
 		}
 	}
 	else
@@ -130,14 +137,22 @@ unsigned char engine_move_manager_find_direction( unsigned char srceX, unsigned 
 		if( plusX )
 		{
 			index = minusY ? 4 : 5;
+			sort = 2;
 		}
 		else
 		{
 			index = minusY ? 6 : 7;
+			sort = 3;
 		}
 	}
 
-	return index;
+	half = minusY ? 0 : 1;
+
+	// Upper nibble sets sort index.
+	// Lower nibble sets half value.
+	byte = ( half | ( sort << 4 ) );
+	full = ( half | ( sort << 4 ) );
+	return full;
 }
 
 void engine_move_manager_init()

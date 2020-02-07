@@ -167,6 +167,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 		{
 			if( 4 == frame )
 			{
+				unsigned byte = ( enemy | ( enemy_direction << 4 ) );
 				engine_font_manager_draw_data( frame, 12, 18 );
 				// TODO map enemy to command 
 				//unsigned char command_type = engine_enemy_manager_get_mover( enemy );
