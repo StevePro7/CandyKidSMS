@@ -31,8 +31,8 @@ void screen_cont_screen_load()
 
 	//engine_frame_manager_draw();
 	//engine_delay_manager_draw();
-	//engine_font_manager_draw_text( "CONT SCREEN!!", 2, 7 );
-	engine_move_manager_init();
+	engine_font_manager_draw_text( "CONT SCREEN....!!", 2, 7 );
+//	engine_move_manager_init();
 }
 
 void screen_cont_screen_update( unsigned char *screen_type )
@@ -65,7 +65,7 @@ void screen_cont_screen_update( unsigned char *screen_type )
 	engine_board_manager_calc_position( &gx, &gy, twos_tile );
 
 
-	direction = engine_move_manager_exec_direction();
+	//direction = engine_move_manager_exec_direction();
 	direction = engine_move_manager_find_direction( eo->tileX, eo->tileY, gx, gy );
 
 

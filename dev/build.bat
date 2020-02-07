@@ -66,7 +66,7 @@ sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 load_scre
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 save_screen.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 pass_screen.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 dead_screen.c
-::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 cont_screen.c
+sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 cont_screen.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 over_screen.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 beat_screen.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 test_screen.c
@@ -115,7 +115,8 @@ engine\level_manager.rel engine\move_manager.rel engine\screen_manager.rel engin
 engine\storage_manager.rel engine\tile_manager.rel ^
 object\audio_object.rel ^
 object\board_object.rel object\command_object.rel object\delay_object.rel object\enemy_object.rel object\frame_object.rel ^
-object\gamer_object.rel object\hack_object.rel object\level_object.rel object\state_object.rel object\savegame_object.rel ^
+object\gamer_object.rel object\hack_object.rel object\level_object.rel object\move_object.rel ^
+object\state_object.rel object\savegame_object.rel ^
 screen\none_screen.rel screen\splash_screen.rel screen\title_screen.rel screen\intro_screen.rel screen\load_screen.rel ^
 screen\demo_screen.rel screen\play_screen.rel 	screen\record_screen.rel screen\save_screen.rel screen\pass_screen.rel ^
 screen\dead_screen.rel screen\cont_screen.rel 	screen\over_screen.rel 	screen\beat_screen.rel 	screen\test_screen.rel ^

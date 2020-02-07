@@ -4,7 +4,7 @@
 #include "..\engine\enum_manager.h"
 
 extern const unsigned char	move_find_direction[];
-extern const unsigned char	move_exec_direction[8][4];
+//extern const unsigned char	move_exec_direction[8][4];
 
 //typedef struct tag_struct_move_object
 //{

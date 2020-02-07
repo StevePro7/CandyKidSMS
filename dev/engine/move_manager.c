@@ -6,6 +6,7 @@
 // Global variable.
 //struct_move_object global_move_object;
 
+/*
 unsigned char engine_move_manager_exec_direction()
 {
 	unsigned char deltaX, deltaY, plusX, minusY;
@@ -74,6 +75,7 @@ unsigned char engine_move_manager_exec_direction()
 
 	return index;
 }
+*/
 
 unsigned char engine_move_manager_find_direction( unsigned char srceX, unsigned char srceY, unsigned char destX, unsigned char destY )
 {
@@ -140,7 +142,7 @@ unsigned char engine_move_manager_find_direction( unsigned char srceX, unsigned 
 
 void engine_move_manager_init()
 {
-	unsigned char y = move_exec_direction[ 0 ][ 1 ];
+	//unsigned char y = move_exec_direction[ 0 ][ 1 ];
 	unsigned char x = move_find_direction[ 10 ];
 	
 	/*struct_move_object *mo = &global_move_object;
