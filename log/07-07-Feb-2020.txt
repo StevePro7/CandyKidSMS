@@ -1,5 +1,20 @@
 Log entry07
 
+08-Feb-2020
+IMPORTANT
+started messing around with the fixedbank as used in Astro Force and I can't see how fixedbank
+is ROM banked in i.e. all data here in data bank will be part of initial 32KB ROM
+which is the problem that I currently face
+
+However, I tried to mess around with read only data in ROM bank but everything MUST be const
+e.g.
+exter const unsigned char bank15_txt[];
+      const unsigned char bank15_txt[] = {};
+
+if you remove const here then the code will NOT build that bank and the ROM will be incomplete
+and just black screen!!
+
+
 07-Feb-2020
 This whole week I made a BIG start on movement of the Candy Mama using the XNA Pacman as a guide
 with a ton of prep work like working out what tiles are available outside various tiles and going
