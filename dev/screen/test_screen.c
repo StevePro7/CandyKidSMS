@@ -22,7 +22,7 @@ void screen_test_screen_load()
 	unsigned char byte = 0;
 	unsigned char upper_nibble = 0;
 	unsigned char lower_nibble = 0;
-	engine_font_manager_draw_text( "TESTER SCREEN!!", 4, 0 );
+	engine_font_manager_draw_text( "TEST SCREEN...!!", 4, 0 );
 
 	/*
 

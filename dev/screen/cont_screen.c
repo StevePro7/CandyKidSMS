@@ -47,7 +47,7 @@ void screen_cont_screen_update( unsigned char *screen_type )
 	unsigned char twos_tile;
 	unsigned char coll_type;
 	unsigned char gx, gy;
-	coll_type = move_find_direction[ 10 ];
+	//coll_type = move_find_direction[ 10 ];
  
 	eo = &global_enemy_objects[ actor_type_pro ];
 

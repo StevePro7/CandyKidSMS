@@ -7,74 +7,74 @@
 //struct_move_object global_move_object;
 
 
-unsigned char engine_move_manager_exec_direction()
-{
-	unsigned char deltaX, deltaY, plusX, minusY;
-	unsigned char index;
-
-	unsigned char srceX, srceY, destX, destY;
-	srceX = 18;
-	srceY = 11;
-
-	destX = 27;
-	destY = 30;
-
-
-	index = 0;
-	plusX = 0;
-	minusY = 0;
-
-
-	// Determine which directions...
-	deltaX = 0;
-	if( srceX > destX )
-	{
-		deltaX = srceX - destX;
-	}
-	else if( srceX < destX )
-	{
-		deltaX = destX - srceX;
-		plusX = 1;
-	}
-
-	deltaY = 0;
-	if( srceY > destY )
-	{
-		deltaY = srceY - destY;
-		minusY = 1;
-	}
-	else if( srceY < destY )
-	{
-		deltaY = destY - srceY;
-	}
-
-
-	// Determine which direction index to use.
-	if( deltaX > deltaY )
-	{
-		if( plusX )
-		{
-			index = minusY ? 0 : 1;
-		}
-		else
-		{
-			index = minusY ? 2 : 3;
-		}
-	}
-	else
-	{
-		if( plusX )
-		{
-			index = minusY ? 4 : 5;
-		}
-		else
-		{
-			index = minusY ? 6 : 7;
-		}
-	}
-
-	return index;
-}
+//unsigned char engine_move_manager_exec_direction()
+//{
+//	unsigned char deltaX, deltaY, plusX, minusY;
+//	unsigned char index;
+//
+//	unsigned char srceX, srceY, destX, destY;
+//	srceX = 18;
+//	srceY = 11;
+//
+//	destX = 27;
+//	destY = 30;
+//
+//
+//	index = 0;
+//	plusX = 0;
+//	minusY = 0;
+//
+//
+//	// Determine which directions...
+//	deltaX = 0;
+//	if( srceX > destX )
+//	{
+//		deltaX = srceX - destX;
+//	}
+//	else if( srceX < destX )
+//	{
+//		deltaX = destX - srceX;
+//		plusX = 1;
+//	}
+//
+//	deltaY = 0;
+//	if( srceY > destY )
+//	{
+//		deltaY = srceY - destY;
+//		minusY = 1;
+//	}
+//	else if( srceY < destY )
+//	{
+//		deltaY = destY - srceY;
+//	}
+//
+//
+//	// Determine which direction index to use.
+//	if( deltaX > deltaY )
+//	{
+//		if( plusX )
+//		{
+//			index = minusY ? 0 : 1;
+//		}
+//		else
+//		{
+//			index = minusY ? 2 : 3;
+//		}
+//	}
+//	else
+//	{
+//		if( plusX )
+//		{
+//			index = minusY ? 4 : 5;
+//		}
+//		else
+//		{
+//			index = minusY ? 6 : 7;
+//		}
+//	}
+//
+//	return index;
+//}
 
 
 //unsigned char engine_move_manager_find_direction( unsigned char srceX, unsigned char srceY, unsigned char destX, unsigned char destY )
@@ -158,7 +158,7 @@ unsigned char engine_move_manager_exec_direction()
 void engine_move_manager_init()
 {
 	//unsigned char y = move_exec_direction[ 0 ][ 1 ];
-	unsigned char x = move_find_direction[ 10 ];
+	//unsigned char x = move_find_direction[ 10 ];
 	
 	/*struct_move_object *mo = &global_move_object;
 	mo->find_direction[ 0 ][ 1 ] = direction_type_rght; mo->find_direction[ 0 ][ 1 ] = direction_type_rght; mo->find_direction[ 0 ][ 1 ] = direction_type_rght;
