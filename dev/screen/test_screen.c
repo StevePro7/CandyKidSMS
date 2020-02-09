@@ -24,6 +24,7 @@ void screen_test_screen_load()
 	unsigned char lower_nibble = 0;
 	engine_font_manager_draw_text( "TEST SCREEN...!!", 4, 0 );
 
+	engine_board_manager_init();
 	/*
 
 	// xDist = 0;	Sort = 3; Half = 1;		Byte = 49.

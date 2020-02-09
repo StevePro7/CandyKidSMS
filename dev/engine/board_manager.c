@@ -2,6 +2,7 @@
 #include "enum_manager.h"
 #include "global_manager.h"
 #include "tile_manager.h"
+#include <stdio.h>
 
 #define TOP_EXIT_Y		6
 #define BOT_EXIT_Y		16
@@ -19,13 +20,21 @@ void engine_board_manager_init()
 	unsigned char left = SCREEN_TILE_LEFT * TILE_HALF;
 	int data;
 	signed char offset;
+	unsigned char bob;
+	unsigned char idx;
 
 	for( loop = 0; loop < MAZE_ROWS; loop++ )
 	{
 		offset = loop - 1;
 		data = offset * TILE_SIZE;
+
+		bob = data;
+		printf( "%d\n", bob );
 		bo->posnX[ loop ] = data + left;
 		bo->posnY[ loop ] = data;
+
+		idx = loop * MAZE_ROWS + loop;
+		
 	}
 
 	// TODO delete as will be set before hand!!
