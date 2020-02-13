@@ -54,3 +54,16 @@ I was thinking to write some code that will determine how many free bytes pre 0x
 object code byte built by the complier
 
 NB: I still have the org repo with the branch that I cut with WIP
+
+
+13/02/2020
+IMPORTANT
+when doing the music I found that the music was not playing...
+if fact it was but you couldn't hear the music unless this was the last line of code in the load function
+engine_audio_manager_music_game( 0 );
+
+Another thing to watch out for is that if you have static data in the fixedbank then that is OK
+but you MUST remember to ROM bank into (15) to get the static data and then you MUST remember to ROM bank into (2)
+whenever you need to draw font or graphics etc. otherwise you won't "see" anything...
+
+In fact this was so important that I put ROM_bank(2) into the font manager and tile manager...!

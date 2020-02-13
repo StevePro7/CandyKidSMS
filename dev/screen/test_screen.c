@@ -1,4 +1,5 @@
 #include "test_screen.h"
+#include "..\engine\audio_manager.h"
 #include "..\engine\board_manager.h"
 #include "..\engine\command_manager.h"
 #include "..\engine\delay_manager.h"
@@ -72,6 +73,8 @@ void screen_test_screen_load()
 	split( byte, &upper_nibble, &lower_nibble );
 
 	*/
+	engine_audio_manager_music_game( 0 );
+	//engine_audio_manager_music_beat();
 }
 
 void screen_test_screen_update( unsigned char *screen_type )
