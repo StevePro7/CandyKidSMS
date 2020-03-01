@@ -1,0 +1,44 @@
+Log entry08
+
+01-Mar-2020
+I have been so busy working on game play features that I had really documented much in the last 3-4wks!!
+
+Thu, 27th Feb I took an Annual Leave day off work as I really wanted to get the layout screens done
+[Load], Init, Ready, [Play], Dead, Cont, Over
+
+but I was "sidetracked" because during game play I noticed some performance issues during game play
+I found that printing score constantly wasn't great but was exacerbated by the fact that score is long
+data type so I revert back to int [2bytes] and that helped a lot.
+Problem is I need to think my point scoring system as the max would be 65535 - oh well
+
+But there was noticeable impact on music each frame esp. on Attack mode; Scatter mode OK
+At first I thought there was an issue with the attack algorithms esp. Suz as she was the most complicated
+so I spent a bunch of time trying to create a more optimal attack algorithm and seemed to make some 
+progress in the sense that things "seemed" a bit better - a slight notice in music perf but not as bad
+
+
+Today I did the gamer boost
+Fast forward to tonight and this really noticeable esp. on Attack when ghosts speed fast
+so I thought adding the boost causing the problem
+Didn't seem so bad on 2x mamas but 3x really bad esp. on fast
+
+The most noticeable massive drop in perf was in corner and Kid trying to do "thru" avoid tree on border
+I thought there was an overflow on calculation or something but then I think that I worked out the issue:
+When you are next to avoid tree and try to move and it blocks you then gamer direction = none
+
+and on Attack mode the Mamas use Kid direction to help determine so if is none [above] 
+then I choose random direction - and isn't there a while loop or multiplication thing
+rand() % 4
+0, 1, 2, 3
+and then loop to get 2 to the power or 0, 1, 2, 3 i.e. 1, 2, 4, 8 to calc direction U, D, L, R
+
+
+CORRECT
+it was the rand() function on the this method
+engine_move_manager_actor_direction()
+
+which I thought was used for both Adi and Suz but was only Adi
+either way I am not going to use this because there is significant + noticeable perf improvement
+
+NB:
+I had a similar experience with Platform Explorer with the built-in Abs() function!!
