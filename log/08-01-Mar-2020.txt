@@ -42,3 +42,20 @@ either way I am not going to use this because there is significant + noticeable 
 
 NB:
 I had a similar experience with Platform Explorer with the built-in Abs() function!!
+
+
+01/03/2020
+Implement the Kid boost late Sun night but only before moving tiles... works but can't move and boost half way across tile...!
+but at least all the functionality of the main loop is complete with good perf
+
+02/03/2020
+Mon morning and I extended the boost to kick in mid way if you want... if you hold down then will keep boosting and if you don't move won't subtract boost value so all good... had to re-arrange the code for all this to work but one good side effect is you don't get stung for boost in exit if you don't want 'cos you can boost into exit and the next 4x auto moves you can let go of fire1 and go at "normal" speed and not pay for 4x units boost
+
+
+03/03/2020
+Follow up: thought I had cracked this but found one bottle neck that if C/Mama went at top speed [4,1] and Kid tried to pass blocking avoid tree then the music / perf would degrade... this is same in Platform Explorer and I thought to have idea to calculate block once and cache in variable and if don't move and try again then read the value from cache
+Turns out that I didn't implement this because the Mamas will go top speed [2,1] and the music seems to be OK
+
+04/03/2020
+I am running out of ROM...!!  Still - up to 0x7000 after adding final screen placeholders so I need to use fixed bank more
+I decide to refactor and put static into fixedbank
