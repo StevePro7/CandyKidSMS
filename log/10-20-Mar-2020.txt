@@ -1,0 +1,18 @@
+Log entry10
+
+20-Mar-2020
+One week out from the competition and I see major funky weird behavior.
+Start and play all the way to the end and get game over then weird stuff
+
+I sent an email to Claudio + Michael over the week and Michael did some debugging
+Long story short it seems to be function pointers that cause the issue.
+
+I have function pointers in 2x places:
+command manager
+screen manager
+
+I used them in screen Mgr before in Platform Explorer without issue
+so I thought that I may have exhausted too many screens and cut a branch and reduced them
+
+However, I ran old and new version of the code and if I disable ghosts and do not issue any commands
+myself and quit out then there are no issues at all
