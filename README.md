@@ -1,6 +1,14 @@
 # CandyKidSMS
 Candy Kid for the Sega Master System
 
+22/03/2021
+One thing that I noticed is that on boss screen if you lose all lives then you are prompted to continue
+If you choose No then game over but when you continue you have to repeat the world / round before boss
+e.g. W01 R02 or W03 R10
+But I will leave this as a game design decision because if I auto skip then potentially you may not see
+the Beat screen on W10 R10 and Continue No
+
+
 01/02/2020
 Here is the out outline for SRAM
 0000
